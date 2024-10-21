@@ -1,0 +1,286 @@
+user_id	movie_id	rating	title	genre	age	gender	occupation
+655	274	3	Sabrina (1995)	Comedy	50	F	healthcare
+655	126	2	"Spitfire Grill, The (1996)"	Drama	50	F	healthcare
+655	693	3	Casino (1995)	Drama	50	F	healthcare
+655	1403	3	Caro Diario (Dear Diary) (1994)	Drama	50	F	healthcare
+655	198	4	Nikita (La Femme Nikita) (1990)	Thriller	50	F	healthcare
+655	670	3	Body Snatchers (1993)	Horror	50	F	healthcare
+655	523	3	Cool Hand Luke (1967)	Comedy	50	F	healthcare
+655	736	3	Shadowlands (1993)	Drama	50	F	healthcare
+655	53	2	Natural Born Killers (1994)	Thriller	50	F	healthcare
+655	66	2	While You Were Sleeping (1995)	Romance	50	F	healthcare
+655	281	2	"River Wild, The (1994)"	Action	50	F	healthcare
+655	52	3	"Madness of King George, The (1994)"	Drama	50	F	healthcare
+655	224	3	Ridicule (1996)	Drama	50	F	healthcare
+655	918	2	City of Angels (1998)	Romance	50	F	healthcare
+655	344	4	"Apostle, The (1997)"	Drama	50	F	healthcare
+655	14	3	"Postino, Il (1994)"	Drama	50	F	healthcare
+655	935	3	Paradise Road (1997)	Drama	50	F	healthcare
+655	179	4	"Clockwork Orange, A (1971)"	Sci-Fi	50	F	healthcare
+655	98	4	"Silence of the Lambs, The (1991)"	Drama	50	F	healthcare
+655	726	2	Fluke (1995)	Children's	50	F	healthcare
+655	945	2	Charade (1963)	Thriller	50	F	healthcare
+655	185	4	Psycho (1960)	Thriller	50	F	healthcare
+655	347	3	Wag the Dog (1997)	Drama	50	F	healthcare
+655	1158	3	"Fille seule, La (A Single Girl) (1995)"	Drama	50	F	healthcare
+655	205	3	Patton (1970)	War	50	F	healthcare
+655	550	2	Die Hard: With a Vengeance (1995)	Thriller	50	F	healthcare
+655	303	4	Ulee's Gold (1997)	Drama	50	F	healthcare
+655	805	2	Manhattan Murder Mystery (1993)	Mystery	50	F	healthcare
+655	58	3	Quiz Show (1994)	Drama	50	F	healthcare
+655	162	3	On Golden Pond (1981)	Drama	50	F	healthcare
+655	100	3	Fargo (1996)	Thriller	50	F	healthcare
+655	1651	4	"Spanish Prisoner, The (1997)"	Drama	50	F	healthcare
+655	51	2	Legends of the Fall (1994)	Western	50	F	healthcare
+655	727	2	Immortal Beloved (1994)	Drama	50	F	healthcare
+655	744	2	Michael Collins (1996)	Drama	50	F	healthcare
+655	1097	3	"Hate (Haine, La) (1995)"	Drama	50	F	healthcare
+655	509	3	My Left Foot (1989)	Drama	50	F	healthcare
+655	959	3	Dazed and Confused (1993)	Comedy	50	F	healthcare
+655	685	2	Executive Decision (1996)	Thriller	50	F	healthcare
+655	1370	3	I Can't Sleep (J'ai pas sommeil) (1994)	Thriller	50	F	healthcare
+655	476	2	"First Wives Club, The (1996)"	Comedy	50	F	healthcare
+655	273	4	Heat (1995)	Crime	50	F	healthcare
+655	1232	3	Madonna: Truth or Dare (1991)	Documentary	50	F	healthcare
+655	1605	3	Love Serenade (1996)	Comedy	50	F	healthcare
+655	508	3	"People vs. Larry Flynt, The (1996)"	Drama	50	F	healthcare
+655	533	2	"Daytrippers, The (1996)"	Mystery	50	F	healthcare
+655	27	3	Bad Boys (1995)	Action	50	F	healthcare
+655	517	4	Manhattan (1979)	Comedy	50	F	healthcare
+655	628	3	Sleepers (1996)	Crime	50	F	healthcare
+655	283	3	Emma (1996)	Romance	50	F	healthcare
+655	36	2	Mad Love (1995)	Romance	50	F	healthcare
+655	505	3	Dial M for Murder (1954)	Thriller	50	F	healthcare
+655	707	3	Enchanted April (1991)	Drama	50	F	healthcare
+655	280	2	Up Close and Personal (1996)	Romance	50	F	healthcare
+655	950	3	Georgia (1995)	Drama	50	F	healthcare
+655	611	3	Laura (1944)	Film-Noir	50	F	healthcare
+655	210	3	Indiana Jones and the Last Crusade (1989)	Action	50	F	healthcare
+655	576	2	Cliffhanger (1993)	Action	50	F	healthcare
+655	1319	3	"Neon Bible, The (1995)"	Drama	50	F	healthcare
+655	252	2	"Lost World: Jurassic Park, The (1997)"	Thriller	50	F	healthcare
+655	1208	3	Kiss of Death (1995)	Crime	50	F	healthcare
+655	1007	3	Waiting for Guffman (1996)	Comedy	50	F	healthcare
+655	1351	3	Lover's Knot (1996)	Comedy	50	F	healthcare
+655	1046	3	Malice (1993)	Thriller	50	F	healthcare
+655	1169	3	Fresh (1994)	Drama	50	F	healthcare
+655	1395	3	Hurricane Streets (1998)	Drama	50	F	healthcare
+655	1418	4	"Joy Luck Club, The (1993)"	Drama	50	F	healthcare
+655	134	4	Citizen Kane (1941)	Drama	50	F	healthcare
+655	1045	3	Fearless (1993)	Drama	50	F	healthcare
+655	32	4	Crumb (1994)	Documentary	50	F	healthcare
+655	525	2	"Big Sleep, The (1946)"	Mystery	50	F	healthcare
+655	962	5	Ruby in Paradise (1993)	Drama	50	F	healthcare
+655	782	3	Little Odessa (1994)	Drama	50	F	healthcare
+655	159	3	Basic Instinct (1992)	Thriller	50	F	healthcare
+655	1016	3	Con Air (1997)	Adventure	50	F	healthcare
+655	1029	1	Jury Duty (1995)	Comedy	50	F	healthcare
+655	1585	4	American Dream (1990)	Documentary	50	F	healthcare
+655	527	3	Gandhi (1982)	Drama	50	F	healthcare
+655	698	4	"Browning Version, The (1994)"	Drama	50	F	healthcare
+655	1379	3	Love and Other Catastrophes (1996)	Romance	50	F	healthcare
+655	208	3	Young Frankenstein (1974)	Horror	50	F	healthcare
+655	1134	3	Get on the Bus (1996)	Drama	50	F	healthcare
+655	909	3	Dangerous Beauty (1998)	Drama	50	F	healthcare
+655	1008	3	I Shot Andy Warhol (1996)	Drama	50	F	healthcare
+655	1607	3	Hurricane Streets (1998)	Drama	50	F	healthcare
+655	77	3	"Firm, The (1993)"	Thriller	50	F	healthcare
+655	500	2	Fly Away Home (1996)	Children's	50	F	healthcare
+655	1538	3	All Over Me (1997)	Drama	50	F	healthcare
+655	792	3	Bullets Over Broadway (1994)	Comedy	50	F	healthcare
+655	284	2	Tin Cup (1996)	Romance	50	F	healthcare
+655	619	3	Extreme Measures (1996)	Thriller	50	F	healthcare
+655	733	3	Go Fish (1994)	Drama	50	F	healthcare
+655	936	3	Brassed Off (1996)	Romance	50	F	healthcare
+655	1085	2	Carried Away (1996)	Romance	50	F	healthcare
+655	481	2	"Apartment, The (1960)"	Comedy	50	F	healthcare
+655	1649	3	"Big One, The (1997)"	Comedy	50	F	healthcare
+655	672	2	Candyman (1992)	Horror	50	F	healthcare
+655	213	4	"Room with a View, A (1986)"	Drama	50	F	healthcare
+655	1017	3	Trees Lounge (1996)	Drama	50	F	healthcare
+655	728	2	Junior (1994)	Comedy	50	F	healthcare
+655	97	3	Dances with Wolves (1990)	Adventure	50	F	healthcare
+655	867	4	"Whole Wide World, The (1996)"	Drama	50	F	healthcare
+655	117	2	"Rock, The (1996)"	Thriller	50	F	healthcare
+655	149	4	Jude (1996)	Drama	50	F	healthcare
+655	271	3	Starship Troopers (1997)	Adventure	50	F	healthcare
+655	1067	2	Bottle Rocket (1996)	Comedy	50	F	healthcare
+655	572	2	Blown Away (1994)	Thriller	50	F	healthcare
+655	1197	3	"Family Thing, A (1996)"	Comedy	50	F	healthcare
+655	1252	3	"Contempt (Mepris, Le) (1963)"	Drama	50	F	healthcare
+655	166	3	Manon of the Spring (Manon des sources) (1986)	Drama	50	F	healthcare
+655	1475	3	Bhaji on the Beach (1993)	Comedy	50	F	healthcare
+655	393	2	Mrs. Doubtfire (1993)	Comedy	50	F	healthcare
+655	958	3	To Live (Huozhe) (1994)	Drama	50	F	healthcare
+655	321	3	Mother (1996)	Comedy	50	F	healthcare
+655	1103	3	Trust (1990)	Drama	50	F	healthcare
+655	291	3	Absolute Power (1997)	Mystery	50	F	healthcare
+655	286	3	"English Patient, The (1996)"	Drama	50	F	healthcare
+655	183	4	Alien (1979)	Thriller	50	F	healthcare
+655	1226	3	Night Falls on Manhattan (1997)	Drama	50	F	healthcare
+655	1108	3	Feast of July (1995)	Drama	50	F	healthcare
+655	1194	5	Once Were Warriors (1994)	Drama	50	F	healthcare
+655	923	3	Raise the Red Lantern (1991)	Drama	50	F	healthcare
+655	25	3	"Birdcage, The (1996)"	Comedy	50	F	healthcare
+655	1128	3	Heidi Fleiss: Hollywood Madam (1995) 	Documentary	50	F	healthcare
+655	402	2	Ghost (1990)	Thriller	50	F	healthcare
+655	20	3	Angels and Insects (1995)	Romance	50	F	healthcare
+655	172	4	"Empire Strikes Back, The (1980)"	Drama	50	F	healthcare
+655	875	3	She's So Lovely (1997)	Drama	50	F	healthcare
+655	129	3	Bound (1996)	Crime	50	F	healthcare
+655	960	3	Naked (1993)	Drama	50	F	healthcare
+655	1255	3	Broken English (1996)	Drama	50	F	healthcare
+655	1344	3	"Story of Xinghua, The (1993)"	Drama	50	F	healthcare
+655	656	3	M (1931)	Film-Noir	50	F	healthcare
+655	175	3	Brazil (1985)	Sci-Fi	50	F	healthcare
+655	330	2	187 (1997)	Drama	50	F	healthcare
+655	516	2	Local Hero (1983)	Comedy	50	F	healthcare
+655	1642	4	Some Mother's Son (1996)	Drama	50	F	healthcare
+655	38	2	"Net, The (1995)"	Thriller	50	F	healthcare
+655	187	5	"Godfather: Part II, The (1974)"	Action	50	F	healthcare
+655	60	3	Three Colors: Blue (1993)	Drama	50	F	healthcare
+655	228	3	Star Trek: The Wrath of Khan (1982)	Adventure	50	F	healthcare
+655	610	4	Gigi (1958)	Musical	50	F	healthcare
+655	1629	3	Nico Icon (1995)	Documentary	50	F	healthcare
+655	629	3	Victor/Victoria (1982)	Comedy	50	F	healthcare
+655	717	1	"Juror, The (1996)"	Thriller	50	F	healthcare
+655	150	3	Swingers (1996)	Drama	50	F	healthcare
+655	778	2	Don Juan DeMarco (1995)	Drama	50	F	healthcare
+655	739	4	Pretty Woman (1990)	Comedy	50	F	healthcare
+655	42	3	Clerks (1994)	Comedy	50	F	healthcare
+655	1462	3	"Thieves (Voleurs, Les) (1996)"	Crime	50	F	healthcare
+655	1532	2	Foreign Student (1994)	Drama	50	F	healthcare
+655	1131	5	Safe (1995)	Thriller	50	F	healthcare
+655	522	3	Down by Law (1986)	Comedy	50	F	healthcare
+655	806	3	Menace II Society (1993)	Crime	50	F	healthcare
+655	880	2	Soul Food (1997)	Drama	50	F	healthcare
+655	1490	2	Fausto (1993)	Comedy	50	F	healthcare
+655	753	3	Burnt By the Sun (1994)	Drama	50	F	healthcare
+655	1535	3	"Enfer, L' (1994)"	Drama	50	F	healthcare
+655	1600	3	Guantanamera (1994)	Comedy	50	F	healthcare
+655	1560	2	Clean Slate (Coup de Torchon) (1981)	Crime	50	F	healthcare
+655	700	3	Miami Rhapsody (1995)	Comedy	50	F	healthcare
+655	1644	1	Sudden Manhattan (1996)	Comedy	50	F	healthcare
+655	433	2	Heathers (1989)	Comedy	50	F	healthcare
+655	498	3	"African Queen, The (1951)"	Adventure	50	F	healthcare
+655	70	2	Four Weddings and a Funeral (1994)	Romance	50	F	healthcare
+655	903	3	Afterglow (1997)	Romance	50	F	healthcare
+655	64	4	"Shawshank Redemption, The (1994)"	Drama	50	F	healthcare
+655	906	2	Oscar & Lucinda (1997)	Romance	50	F	healthcare
+655	740	3	Jane Eyre (1996)	Drama	50	F	healthcare
+655	239	2	Sneakers (1992)	Crime	50	F	healthcare
+655	92	3	True Romance (1993)	Romance	50	F	healthcare
+655	86	4	"Remains of the Day, The (1993)"	Drama	50	F	healthcare
+655	354	2	"Wedding Singer, The (1998)"	Comedy	50	F	healthcare
+655	44	2	Dolores Claiborne (1994)	Thriller	50	F	healthcare
+655	647	3	Ran (1985)	Drama	50	F	healthcare
+655	234	3	Jaws (1975)	Action	50	F	healthcare
+655	537	3	My Own Private Idaho (1991)	Drama	50	F	healthcare
+655	529	4	My Life as a Dog (Mitt liv som hund) (1985)	Drama	50	F	healthcare
+655	294	3	Liar Liar (1997)	Comedy	50	F	healthcare
+655	1221	3	When a Man Loves a Woman (1994)	Drama	50	F	healthcare
+655	293	4	Donnie Brasco (1997)	Crime	50	F	healthcare
+655	1140	3	"Road to Wellville, The (1994)"	Comedy	50	F	healthcare
+655	167	4	Private Benjamin (1980)	Comedy	50	F	healthcare
+655	1602	3	"Price Above Rubies, A (1998)"	Drama	50	F	healthcare
+655	346	4	Jackie Brown (1997)	Drama	50	F	healthcare
+655	654	3	Chinatown (1974)	Thriller	50	F	healthcare
+655	475	3	Trainspotting (1996)	Drama	50	F	healthcare
+655	1288	3	Denise Calls Up (1995)	Comedy	50	F	healthcare
+655	1061	2	"Evening Star, The (1996)"	Comedy	50	F	healthcare
+655	319	3	Everyone Says I Love You (1996)	Romance	50	F	healthcare
+655	772	3	Kids (1995)	Drama	50	F	healthcare
+655	19	2	Antonia's Line (1995)	Drama	50	F	healthcare
+655	310	3	"Rainmaker, The (1997)"	Drama	50	F	healthcare
+655	326	2	G.I. Jane (1997)	War	50	F	healthcare
+655	612	3	Lost Horizon (1937)	Drama	50	F	healthcare
+655	320	5	Paradise Lost: The Child Murders at Robin Hood Hills (1996)	Documentary	50	F	healthcare
+655	1436	2	Mr. Jones (1993)	Drama	50	F	healthcare
+655	979	3	"Trigger Effect, The (1996)"	Drama	50	F	healthcare
+655	904	5	Ma vie en rose (My Life in Pink) (1997)	Comedy	50	F	healthcare
+655	124	3	Lone Star (1996)	Mystery	50	F	healthcare
+655	50	4	Star Wars (1977)	Adventure	50	F	healthcare
+655	547	4	"Young Poisoner's Handbook, The (1995)"	Crime	50	F	healthcare
+655	1466	3	Margaret's Museum (1995)	Drama	50	F	healthcare
+655	694	3	Persuasion (1995)	Romance	50	F	healthcare
+655	288	3	Scream (1996)	Horror	50	F	healthcare
+655	1639	4	Bitter Sugar (Azucar Amargo) (1996)	Drama	50	F	healthcare
+655	831	2	Escape from L.A. (1996)	Adventure	50	F	healthcare
+655	216	4	When Harry Met Sally... (1989)	Romance	50	F	healthcare
+655	474	3	Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1963)	Sci-Fi	50	F	healthcare
+655	24	3	Rumble in the Bronx (1995)	Action	50	F	healthcare
+655	1650	4	"Butcher Boy, The (1998)"	Drama	50	F	healthcare
+655	895	3	Scream 2 (1997)	Thriller	50	F	healthcare
+655	289	3	Evita (1996)	Drama	50	F	healthcare
+655	521	3	"Deer Hunter, The (1978)"	Drama	50	F	healthcare
+655	161	2	Top Gun (1986)	Action	50	F	healthcare
+655	1281	3	Manny & Lo (1996)	Drama	50	F	healthcare
+655	221	3	Breaking the Waves (1996)	Drama	50	F	healthcare
+655	1062	3	Four Days in September (1997)	Drama	50	F	healthcare
+655	732	3	Dave (1993)	Romance	50	F	healthcare
+655	604	4	It Happened One Night (1934)	Comedy	50	F	healthcare
+655	1196	3	"Savage Nights (Nuits fauves, Les) (1992)"	Drama	50	F	healthcare
+655	1192	4	"Boys of St. Vincent, The (1993)"	Drama	50	F	healthcare
+655	1211	4	Blue Sky (1994)	Drama	50	F	healthcare
+655	202	2	Groundhog Day (1993)	Comedy	50	F	healthcare
+655	518	2	Miller's Crossing (1990)	Drama	50	F	healthcare
+655	684	3	In the Line of Fire (1993)	Thriller	50	F	healthcare
+655	800	2	In the Mouth of Madness (1995)	Thriller	50	F	healthcare
+655	417	2	"Parent Trap, The (1961)"	Drama	50	F	healthcare
+655	190	3	Henry V (1989)	War	50	F	healthcare
+655	345	3	Deconstructing Harry (1997)	Drama	50	F	healthcare
+655	385	3	True Lies (1994)	Adventure	50	F	healthcare
+655	536	3	Ponette (1996)	Drama	50	F	healthcare
+655	81	3	"Hudsucker Proxy, The (1994)"	Comedy	50	F	healthcare
+655	306	3	"Mrs. Brown (Her Majesty, Mrs. Brown) (1997)"	Drama	50	F	healthcare
+655	1069	1	Amateur (1994)	Drama	50	F	healthcare
+655	708	3	"Sex, Lies, and Videotape (1989)"	Drama	50	F	healthcare
+655	1368	5	Mina Tannenbaum (1994)	Drama	50	F	healthcare
+655	87	3	Searching for Bobby Fischer (1993)	Drama	50	F	healthcare
+655	324	3	Lost Highway (1997)	Mystery	50	F	healthcare
+655	249	3	Austin Powers: International Man of Mystery (1997)	Comedy	50	F	healthcare
+655	1099	3	"Red Firecracker, Green Firecracker (1994)"	Drama	50	F	healthcare
+655	750	2	Amistad (1997)	Drama	50	F	healthcare
+655	165	3	Jean de Florette (1986)	Drama	50	F	healthcare
+655	257	3	Men in Black (1997)	Sci-Fi	50	F	healthcare
+655	632	3	Sophie's Choice (1982)	Drama	50	F	healthcare
+655	387	3	"Age of Innocence, The (1993)"	Drama	50	F	healthcare
+655	594	3	Heavy (1995)	Romance	50	F	healthcare
+655	466	3	Red Rock West (1992)	Thriller	50	F	healthcare
+655	1171	3	Wild Reeds (1994)	Drama	50	F	healthcare
+655	48	4	Hoop Dreams (1994)	Documentary	50	F	healthcare
+655	1009	2	Stealing Beauty (1996)	Drama	50	F	healthcare
+655	215	2	Field of Dreams (1989)	Drama	50	F	healthcare
+655	265	3	"Hunt for Red October, The (1990)"	Thriller	50	F	healthcare
+655	207	3	Cyrano de Bergerac (1990)	Drama	50	F	healthcare
+655	1501	3	Prisoner of the Mountains (Kavkazsky Plennik) (1996)	War	50	F	healthcare
+655	152	3	Sleeper (1973)	Sci-Fi	50	F	healthcare
+655	302	4	L.A. Confidential (1997)	Mystery	50	F	healthcare
+655	919	2	"City of Lost Children, The (1995)"	Adventure	50	F	healthcare
+655	275	4	Sense and Sensibility (1995)	Drama	50	F	healthcare
+655	1223	3	King of the Hill (1993)	Drama	50	F	healthcare
+655	89	4	Blade Runner (1982)	Sci-Fi	50	F	healthcare
+655	770	2	Devil in a Blue Dress (1995)	Crime	50	F	healthcare
+655	1421	3	My Crazy Life (Mi vida loca) (1993)	Drama	50	F	healthcare
+655	921	3	Farewell My Concubine (1993)	Drama	50	F	healthcare
+655	955	3	Before Sunrise (1995)	Drama	50	F	healthcare
+655	297	4	Ulee's Gold (1997)	Drama	50	F	healthcare
+655	188	3	Full Metal Jacket (1987)	War	50	F	healthcare
+655	1378	3	Rhyme & Reason (1997)	Documentary	50	F	healthcare
+655	1053	1	Now and Then (1995)	Drama	50	F	healthcare
+655	1167	3	"Sum of Us, The (1994)"	Comedy	50	F	healthcare
+655	405	2	Mission: Impossible (1996)	Adventure	50	F	healthcare
+655	631	4	"Crying Game, The (1992)"	War	50	F	healthcare
+655	887	3	Eve's Bayou (1997)	Drama	50	F	healthcare
+655	974	2	Eye for an Eye (1996)	Thriller	50	F	healthcare
+655	1322	2	Metisse (Cafe au Lait) (1993)	Comedy	50	F	healthcare
+655	651	4	Glory (1989)	Drama	50	F	healthcare
+655	425	3	Bob Roberts (1992)	Comedy	50	F	healthcare
+655	1632	3	Land and Freedom (Tierra y libertad) (1995)	War	50	F	healthcare
+655	449	3	Star Trek: The Motion Picture (1979)	Adventure	50	F	healthcare
+655	248	2	Grosse Pointe Blank (1997)	Crime	50	F	healthcare
+655	1	2	Toy Story (1995)	Animation	50	F	healthcare
+655	26	3	"Brothers McMullen, The (1995)"	Comedy	50	F	healthcare
+655	483	4	Casablanca (1942)	Drama	50	F	healthcare
+655	1553	4	"Underneath, The (1995)"	Thriller	50	F	healthcare
+655	1074	3	Reality Bites (1994)	Comedy	50	F	healthcare

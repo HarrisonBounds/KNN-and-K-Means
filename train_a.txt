@@ -1,0 +1,338 @@
+user_id	movie_id	rating	title	genre	age	gender	occupation
+405	56	4	Pulp Fiction (1994)	Crime	22	F	healthcare
+405	592	1	True Crime (1995)	Mystery	22	F	healthcare
+405	1582	1	T-Men (1947)	Film-Noir	22	F	healthcare
+405	171	1	Delicatessen (1991)	Sci-Fi	22	F	healthcare
+405	580	1	"Englishman Who Went Up a Hill, But Came Down a Mountain, The (1995)"	Comedy	22	F	healthcare
+405	1409	1	"Swan Princess, The (1994)"	Children's	22	F	healthcare
+405	953	3	Unstrung Heroes (1995)	Comedy	22	F	healthcare
+405	994	1	"Last Time I Committed Suicide, The (1997)"	Drama	22	F	healthcare
+405	387	1	"Age of Innocence, The (1993)"	Drama	22	F	healthcare
+405	1432	1	"Mighty, The (1998)"	Drama	22	F	healthcare
+405	190	2	Henry V (1989)	War	22	F	healthcare
+405	521	4	"Deer Hunter, The (1978)"	Drama	22	F	healthcare
+405	1177	1	Dunston Checks In (1996)	Comedy	22	F	healthcare
+405	1503	1	Gold Diggers: The Secret of Bear Mountain (1995)	Children's	22	F	healthcare
+405	524	1	"Great Dictator, The (1940)"	Comedy	22	F	healthcare
+405	570	1	Wyatt Earp (1994)	Western	22	F	healthcare
+405	721	1	Mallrats (1995)	Comedy	22	F	healthcare
+405	210	5	Indiana Jones and the Last Crusade (1989)	Action	22	F	healthcare
+405	465	1	"Jungle Book, The (1994)"	Adventure	22	F	healthcare
+405	692	5	"American President, The (1995)"	Comedy	22	F	healthcare
+405	583	1	Romeo Is Bleeding (1993)	Thriller	22	F	healthcare
+405	186	5	"Blues Brothers, The (1980)"	Comedy	22	F	healthcare
+405	78	2	Free Willy (1993)	Adventure	22	F	healthcare
+405	11	4	Seven (Se7en) (1995)	Crime	22	F	healthcare
+405	1578	1	"Collectionneuse, La (1967)"	Drama	22	F	healthcare
+405	787	3	Roommates (1995)	Drama	22	F	healthcare
+405	414	1	My Favorite Year (1982)	Comedy	22	F	healthcare
+405	172	5	"Empire Strikes Back, The (1980)"	Drama	22	F	healthcare
+405	430	1	Duck Soup (1933)	Comedy	22	F	healthcare
+405	773	1	Mute Witness (1994)	Thriller	22	F	healthcare
+405	178	3	12 Angry Men (1957)	Drama	22	F	healthcare
+405	647	1	Ran (1985)	Drama	22	F	healthcare
+405	789	1	Swimming with Sharks (1995)	Drama	22	F	healthcare
+405	1118	1	Up in Smoke (1978)	Comedy	22	F	healthcare
+405	426	1	"Transformers: The Movie, The (1986)"	Thriller	22	F	healthcare
+405	1338	1	Two Deaths (1995)	Drama	22	F	healthcare
+405	1554	4	Safe Passage (1994)	Drama	22	F	healthcare
+405	656	1	M (1931)	Film-Noir	22	F	healthcare
+405	1561	1	Tigrero: A Film That Was Never Made (1994)	Drama	22	F	healthcare
+405	440	1	Amityville II: The Possession (1982)	Horror	22	F	healthcare
+405	722	1	Nine Months (1995)	Comedy	22	F	healthcare
+405	540	1	Money Train (1995)	Action	22	F	healthcare
+405	997	1	Stuart Saves His Family (1995)	Comedy	22	F	healthcare
+405	232	4	Young Guns (1988)	Comedy	22	F	healthcare
+405	1100	1	What Happened Was... (1994)	Romance	22	F	healthcare
+405	442	1	"Amityville Curse, The (1990)"	Horror	22	F	healthcare
+405	72	3	"Mask, The (1994)"	Crime	22	F	healthcare
+405	135	5	2001: A Space Odyssey (1968)	Mystery	22	F	healthcare
+405	700	1	Miami Rhapsody (1995)	Comedy	22	F	healthcare
+405	1434	1	Shooting Fish (1997)	Romance	22	F	healthcare
+405	96	3	Terminator 2: Judgment Day (1991)	Sci-Fi	22	F	healthcare
+405	1565	1	Daens (1992)	Drama	22	F	healthcare
+405	734	2	Made in America (1993)	Comedy	22	F	healthcare
+405	1469	1	Tom and Huck (1995)	Adventure	22	F	healthcare
+405	964	1	"Month by the Lake, A (1995)"	Drama	22	F	healthcare
+405	1250	1	Best of the Best 3: No Turning Back (1995)	Action	22	F	healthcare
+405	214	4	Pink Floyd - The Wall (1982)	Musical	22	F	healthcare
+405	450	1	Star Trek V: The Final Frontier (1989)	Action	22	F	healthcare
+405	127	5	"Godfather, The (1972)"	Action	22	F	healthcare
+405	719	1	Canadian Bacon (1994)	Comedy	22	F	healthcare
+405	90	4	So I Married an Axe Murderer (1993)	Romance	22	F	healthcare
+405	1230	1	Ready to Wear (Pret-A-Porter) (1994)	Comedy	22	F	healthcare
+405	206	1	Akira (1988)	Animation	22	F	healthcare
+405	1531	1	Far From Home: The Adventures of Yellow Dog (1995)	Adventure	22	F	healthcare
+405	695	1	Kicking and Screaming (1995)	Drama	22	F	healthcare
+405	92	1	True Romance (1993)	Romance	22	F	healthcare
+405	1176	3	Welcome To Sarajevo (1997)	Drama	22	F	healthcare
+405	639	1	"Tin Drum, The (Blechtrommel, Die) (1979)"	Drama	22	F	healthcare
+405	366	3	Dangerous Minds (1995)	Drama	22	F	healthcare
+405	470	1	Tombstone (1993)	Western	22	F	healthcare
+405	1555	1	"Secret Adventures of Tom Thumb, The (1993)"	Children's	22	F	healthcare
+405	699	2	Little Women (1994)	Drama	22	F	healthcare
+405	575	5	City Slickers II: The Legend of Curly's Gold (1994)	Comedy	22	F	healthcare
+405	422	1	Aladdin and the King of Thieves (1996)	Children's	22	F	healthcare
+405	1353	1	1-900 (1994)	Romance	22	F	healthcare
+405	1227	3	"Awfully Big Adventure, An (1995)"	Drama	22	F	healthcare
+405	451	5	Grease (1978)	Comedy	22	F	healthcare
+405	1188	3	Young Guns II (1990)	Comedy	22	F	healthcare
+405	1207	1	Jade (1995)	Thriller	22	F	healthcare
+405	230	2	Star Trek IV: The Voyage Home (1986)	Sci-Fi	22	F	healthcare
+405	62	1	Stargate (1994)	Sci-Fi	22	F	healthcare
+405	771	1	Johnny Mnemonic (1995)	Action	22	F	healthcare
+405	1247	1	Bad Girls (1994)	Western	22	F	healthcare
+405	188	1	Full Metal Jacket (1987)	War	22	F	healthcare
+405	578	1	Demolition Man (1993)	Sci-Fi	22	F	healthcare
+405	1563	1	"Promise, The (Versprechen, Das) (1994)"	Romance	22	F	healthcare
+405	350	1	Fallen (1998)	Action	22	F	healthcare
+405	1046	2	Malice (1993)	Thriller	22	F	healthcare
+405	432	3	Fantasia (1940)	Animation	22	F	healthcare
+405	775	1	Something to Talk About (1995)	Romance	22	F	healthcare
+405	650	1	"Seventh Seal, The (Sjunde inseglet, Det) (1957)"	Drama	22	F	healthcare
+405	1316	1	"Horse Whisperer, The (1998)"	Drama	22	F	healthcare
+405	1275	1	Killer (Bulletproof Heart) (1994)	Thriller	22	F	healthcare
+405	361	2	Incognito (1997)	Crime	22	F	healthcare
+405	551	1	Lord of Illusions (1995)	Horror	22	F	healthcare
+405	1113	1	Mrs. Parker and the Vicious Circle (1994)	Drama	22	F	healthcare
+405	1109	1	Death and the Maiden (1994)	Thriller	22	F	healthcare
+405	785	1	Only You (1994)	Romance	22	F	healthcare
+405	581	3	Kalifornia (1993)	Drama	22	F	healthcare
+405	30	1	Belle de jour (1967)	Drama	22	F	healthcare
+405	759	1	Fair Game (1995)	Action	22	F	healthcare
+405	1058	1	"War, The (1994)"	Adventure	22	F	healthcare
+405	1317	1	"Journey of August King, The (1995)"	Drama	22	F	healthcare
+405	1519	2	New Jersey Drive (1995)	Crime	22	F	healthcare
+405	1045	3	Fearless (1993)	Drama	22	F	healthcare
+405	959	1	Dazed and Confused (1993)	Comedy	22	F	healthcare
+405	1217	3	Assassins (1995)	Thriller	22	F	healthcare
+405	449	1	Star Trek: The Motion Picture (1979)	Adventure	22	F	healthcare
+405	169	1	"Wrong Trousers, The (1993)"	Animation	22	F	healthcare
+405	527	5	Gandhi (1982)	Drama	22	F	healthcare
+405	1029	1	Jury Duty (1995)	Comedy	22	F	healthcare
+405	1248	1	Blink (1994)	Thriller	22	F	healthcare
+405	371	1	"Bridges of Madison County, The (1995)"	Romance	22	F	healthcare
+405	593	1	Stalingrad (1993)	War	22	F	healthcare
+405	1435	1	"Steal Big, Steal Little (1995)"	Comedy	22	F	healthcare
+405	795	2	Richie Rich (1994)	Children's	22	F	healthcare
+405	673	5	Cape Fear (1962)	Thriller	22	F	healthcare
+405	1167	1	"Sum of Us, The (1994)"	Comedy	22	F	healthcare
+405	396	1	Serial Mom (1994)	Crime	22	F	healthcare
+405	1421	1	My Crazy Life (Mi vida loca) (1993)	Drama	22	F	healthcare
+405	1178	1	Major Payne (1994)	Comedy	22	F	healthcare
+405	1557	1	Yankee Zulu (1994)	Drama	22	F	healthcare
+405	579	1	Fatal Instinct (1993)	Comedy	22	F	healthcare
+405	386	3	Addams Family Values (1993)	Comedy	22	F	healthcare
+405	510	1	"Magnificent Seven, The (1954)"	Drama	22	F	healthcare
+405	467	4	"Bronx Tale, A (1993)"	Drama	22	F	healthcare
+405	765	1	Boomerang (1992)	Comedy	22	F	healthcare
+405	1562	1	"Eye of Vichy, The (Oeil de Vichy, L') (1993)"	Documentary	22	F	healthcare
+405	768	3	Casper (1995)	Children's	22	F	healthcare
+405	1175	1	Hugo Pool (1997)	Romance	22	F	healthcare
+405	1180	1	I Love Trouble (1994)	Action	22	F	healthcare
+405	511	2	Lawrence of Arabia (1962)	War	22	F	healthcare
+405	1004	1	Geronimo: An American Legend (1993)	Drama	22	F	healthcare
+405	530	1	"Man Who Would Be King, The (1975)"	Adventure	22	F	healthcare
+405	652	1	Rosencrantz and Guildenstern Are Dead (1990)	Drama	22	F	healthcare
+405	1550	3	Destiny Turns on the Radio (1995)	Comedy	22	F	healthcare
+405	522	1	Down by Law (1986)	Comedy	22	F	healthcare
+405	1424	1	I Like It Like That (1994)	Romance	22	F	healthcare
+405	217	1	Bram Stoker's Dracula (1992)	Horror	22	F	healthcare
+405	88	3	Sleepless in Seattle (1993)	Romance	22	F	healthcare
+405	318	5	Schindler's List (1993)	Drama	22	F	healthcare
+405	670	1	Body Snatchers (1993)	Horror	22	F	healthcare
+405	28	4	Apollo 13 (1995)	Action	22	F	healthcare
+405	437	1	Amityville 1992: It's About Time (1992)	Horror	22	F	healthcare
+405	192	5	Raging Bull (1980)	Drama	22	F	healthcare
+405	1586	1	Lashou shentan (1992)	Drama	22	F	healthcare
+405	1318	1	Catwalk (1995)	Documentary	22	F	healthcare
+405	941	1	With Honors (1994)	Drama	22	F	healthcare
+405	565	2	Village of the Damned (1995)	Horror	22	F	healthcare
+405	228	1	Star Trek: The Wrath of Khan (1982)	Adventure	22	F	healthcare
+405	541	1	Mortal Kombat (1995)	Action	22	F	healthcare
+405	514	1	Annie Hall (1977)	Romance	22	F	healthcare
+405	623	1	Angels in the Outfield (1994)	Children's	22	F	healthcare
+405	216	2	When Harry Met Sally... (1989)	Romance	22	F	healthcare
+405	87	1	Searching for Bobby Fischer (1993)	Drama	22	F	healthcare
+405	1066	1	Balto (1995)	Children's	22	F	healthcare
+405	423	5	E.T. the Extra-Terrestrial (1982)	Children's	22	F	healthcare
+405	1110	1	Tank Girl (1995)	Action	22	F	healthcare
+405	463	1	"Secret of Roan Inish, The (1994)"	Adventure	22	F	healthcare
+405	227	1	Star Trek VI: The Undiscovered Country (1991)	Sci-Fi	22	F	healthcare
+405	197	4	"Graduate, The (1967)"	Drama	22	F	healthcare
+405	393	4	Mrs. Doubtfire (1993)	Comedy	22	F	healthcare
+405	1391	1	For Ever Mozart (1996)	Drama	22	F	healthcare
+405	1168	1	Little Buddha (1993)	Drama	22	F	healthcare
+405	949	5	How to Make an American Quilt (1995)	Drama	22	F	healthcare
+405	1580	1	Liebelei (1933)	Romance	22	F	healthcare
+405	1268	1	Bitter Moon (1992)	Drama	22	F	healthcare
+405	999	1	Clean Slate (1994)	Comedy	22	F	healthcare
+405	308	1	FairyTale: A True Story (1997)	Drama	22	F	healthcare
+405	1384	1	Squeeze (1996)	Drama	22	F	healthcare
+405	53	2	Natural Born Killers (1994)	Thriller	22	F	healthcare
+405	753	1	Burnt By the Sun (1994)	Drama	22	F	healthcare
+405	693	2	Casino (1995)	Drama	22	F	healthcare
+405	1530	1	Jefferson in Paris (1995)	Drama	22	F	healthcare
+405	462	2	Like Water For Chocolate (Como agua para chocolate) (1992)	Drama	22	F	healthcare
+405	1119	3	Some Kind of Wonderful (1987)	Drama	22	F	healthcare
+405	77	1	"Firm, The (1993)"	Thriller	22	F	healthcare
+405	946	2	"Fox and the Hound, The (1981)"	Children's	22	F	healthcare
+405	175	1	Brazil (1985)	Sci-Fi	22	F	healthcare
+405	669	1	Body Parts (1991)	Horror	22	F	healthcare
+405	142	1	Bedknobs and Broomsticks (1971)	Adventure	22	F	healthcare
+405	559	5	Interview with the Vampire (1994)	Horror	22	F	healthcare
+405	654	2	Chinatown (1974)	Thriller	22	F	healthcare
+405	793	1	Crooklyn (1994)	Comedy	22	F	healthcare
+405	1479	1	Reckless (1995)	Comedy	22	F	healthcare
+405	189	1	"Grand Day Out, A (1992)"	Animation	22	F	healthcare
+405	574	1	Boxing Helena (1993)	Mystery	22	F	healthcare
+405	400	1	"Little Rascals, The (1994)"	Children's	22	F	healthcare
+405	302	4	L.A. Confidential (1997)	Mystery	22	F	healthcare
+405	778	1	Don Juan DeMarco (1995)	Drama	22	F	healthcare
+405	625	3	"Sword in the Stone, The (1963)"	Children's	22	F	healthcare
+405	671	2	Bride of Frankenstein (1935)	Horror	22	F	healthcare
+405	31	1	Crimson Tide (1995)	Thriller	22	F	healthcare
+405	664	1	"Paris, Texas (1984)"	Drama	22	F	healthcare
+405	653	1	Touch of Evil (1958)	Thriller	22	F	healthcare
+405	452	5	Jaws 2 (1978)	Action	22	F	healthcare
+405	1240	1	Ghost in the Shell (Kokaku kidotai) (1995)	Sci-Fi	22	F	healthcare
+405	622	1	Swiss Family Robinson (1960)	Children's	22	F	healthcare
+405	40	2	"To Wong Foo, Thanks for Everything! Julie Newmar (1995)"	Comedy	22	F	healthcare
+405	1139	1	Hackers (1995)	Thriller	22	F	healthcare
+405	947	1	"Big Blue, The (Grand bleu, Le) (1988)"	Adventure	22	F	healthcare
+405	655	5	Stand by Me (1986)	Comedy	22	F	healthcare
+405	1566	1	"Man from Down Under, The (1943)"	Drama	22	F	healthcare
+405	49	1	I.Q. (1994)	Comedy	22	F	healthcare
+405	648	1	"Quiet Man, The (1952)"	Romance	22	F	healthcare
+405	772	1	Kids (1995)	Drama	22	F	healthcare
+405	1210	1	Virtuosity (1995)	Thriller	22	F	healthcare
+405	1589	1	Schizopolis (1996)	Comedy	22	F	healthcare
+405	212	1	"Unbearable Lightness of Being, The (1988)"	Drama	22	F	healthcare
+405	552	1	Species (1995)	Sci-Fi	22	F	healthcare
+405	780	3	Dumb & Dumber (1994)	Comedy	22	F	healthcare
+405	469	1	Short Cuts (1993)	Drama	22	F	healthcare
+405	624	4	"Three Caballeros, The (1945)"	Animation	22	F	healthcare
+405	431	3	Highlander (1986)	Action	22	F	healthcare
+405	1111	1	Double Happiness (1994)	Drama	22	F	healthcare
+405	50	5	Star Wars (1977)	Adventure	22	F	healthcare
+405	969	3	Winnie the Pooh and the Blustery Day (1968)	Children's	22	F	healthcare
+405	185	4	Psycho (1960)	Thriller	22	F	healthcare
+405	179	1	"Clockwork Orange, A (1971)"	Sci-Fi	22	F	healthcare
+405	1592	1	"Magic Hour, The (1998)"	Drama	22	F	healthcare
+405	996	1	"Big Green, The (1995)"	Comedy	22	F	healthcare
+405	66	5	While You Were Sleeping (1995)	Romance	22	F	healthcare
+405	1099	1	"Red Firecracker, Green Firecracker (1994)"	Drama	22	F	healthcare
+405	1018	1	Tie Me Up! Tie Me Down! (1990)	Drama	22	F	healthcare
+405	1267	1	Clockers (1995)	Drama	22	F	healthcare
+405	1547	2	"Show, The (1995)"	Documentary	22	F	healthcare
+405	207	1	Cyrano de Bergerac (1990)	Drama	22	F	healthcare
+405	1400	1	Picture Bride (1995)	Drama	22	F	healthcare
+405	557	1	Farinelli: il castrato (1994)	Drama	22	F	healthcare
+405	76	3	Carlito's Way (1993)	Drama	22	F	healthcare
+405	649	1	Once Upon a Time in America (1984)	Thriller	22	F	healthcare
+405	239	3	Sneakers (1992)	Crime	22	F	healthcare
+405	1346	1	Dingo (1992)	Drama	22	F	healthcare
+405	812	1	Andre (1994)	Adventure	22	F	healthcare
+405	791	1	"Baby-Sitters Club, The (1995)"	Children's	22	F	healthcare
+405	761	1	Nick of Time (1995)	Thriller	22	F	healthcare
+405	191	4	Amadeus (1984)	Mystery	22	F	healthcare
+405	67	5	Ace Ventura: Pet Detective (1994)	Comedy	22	F	healthcare
+405	726	1	Fluke (1995)	Children's	22	F	healthcare
+405	2	1	GoldenEye (1995)	Thriller	22	F	healthcare
+405	554	1	Waterworld (1995)	Adventure	22	F	healthcare
+405	732	5	Dave (1993)	Romance	22	F	healthcare
+405	1439	1	Jason's Lyric (1994)	Drama	22	F	healthcare
+405	395	3	Robin Hood: Men in Tights (1993)	Comedy	22	F	healthcare
+405	560	1	"Kid in King Arthur's Court, A (1995)"	Sci-Fi	22	F	healthcare
+405	98	4	"Silence of the Lambs, The (1991)"	Drama	22	F	healthcare
+405	374	1	Mighty Morphin Power Rangers: The Movie (1995)	Children's	22	F	healthcare
+405	1221	1	When a Man Loves a Woman (1994)	Drama	22	F	healthcare
+405	729	4	Nell (1994)	Drama	22	F	healthcare
+405	1253	1	"Tie That Binds, The (1995)"	Thriller	22	F	healthcare
+405	1290	2	Country Life (1994)	Romance	22	F	healthcare
+405	1588	1	Salut cousin! (1996)	Comedy	22	F	healthcare
+405	573	3	Body Snatchers (1993)	Sci-Fi	22	F	healthcare
+405	1166	1	Love & Human Remains (1993)	Comedy	22	F	healthcare
+405	1590	1	"To Have, or Not (1995)"	Drama	22	F	healthcare
+405	1148	1	Tom & Viv (1994)	Drama	22	F	healthcare
+405	525	1	"Big Sleep, The (1946)"	Mystery	22	F	healthcare
+405	776	1	Three Wishes (1995)	Drama	22	F	healthcare
+405	644	3	"Thin Blue Line, The (1988)"	Documentary	22	F	healthcare
+405	957	1	Pushing Hands (1992)	Comedy	22	F	healthcare
+405	416	2	Old Yeller (1957)	Drama	22	F	healthcare
+405	419	4	Mary Poppins (1964)	Musical	22	F	healthcare
+405	1587	1	Terror in a Texas Town (1958)	Western	22	F	healthcare
+405	769	1	Congo (1995)	Adventure	22	F	healthcare
+405	211	1	M*A*S*H (1970)	Comedy	22	F	healthcare
+405	1307	1	Carmen Miranda: Bananas Is My Business (1994)	Documentary	22	F	healthcare
+405	788	1	Relative Fear (1994)	Thriller	22	F	healthcare
+405	404	4	Pinocchio (1940)	Children's	22	F	healthcare
+405	667	1	Audrey Rose (1977)	Horror	22	F	healthcare
+405	1108	1	Feast of July (1995)	Drama	22	F	healthcare
+405	714	1	Carrington (1995)	Romance	22	F	healthcare
+405	1571	1	Touki Bouki (Journey of the Hyena) (1973)	Drama	22	F	healthcare
+405	971	1	Mediterraneo (1991)	War	22	F	healthcare
+405	1200	1	Kim (1950)	Drama	22	F	healthcare
+405	1549	1	Dream Man (1995)	Thriller	22	F	healthcare
+405	226	2	Die Hard 2 (1990)	Thriller	22	F	healthcare
+405	627	1	Robin Hood: Prince of Thieves (1991)	Drama	22	F	healthcare
+405	702	1	Barcelona (1994)	Romance	22	F	healthcare
+405	643	1	The Innocent (1994)	Drama	22	F	healthcare
+405	399	1	"Three Musketeers, The (1993)"	Adventure	22	F	healthcare
+405	569	1	Wolf (1994)	Drama	22	F	healthcare
+405	41	1	Billy Madison (1995)	Comedy	22	F	healthcare
+405	70	3	Four Weddings and a Funeral (1994)	Romance	22	F	healthcare
+405	1182	1	Cops and Robbersons (1994)	Comedy	22	F	healthcare
+405	85	4	"Ref, The (1994)"	Comedy	22	F	healthcare
+405	548	1	"NeverEnding Story III, The (1994)"	Fantasy	22	F	healthcare
+405	1558	1	Aparajito (1956)	Drama	22	F	healthcare
+405	73	5	Maverick (1994)	Comedy	22	F	healthcare
+405	39	1	Strange Days (1995)	Sci-Fi	22	F	healthcare
+405	517	3	Manhattan (1979)	Comedy	22	F	healthcare
+405	1575	1	"I, Worst of All (Yo, la peor de todas) (1990)"	Drama	22	F	healthcare
+405	1159	1	Stalker (1979)	Sci-Fi	22	F	healthcare
+405	1274	1	Robocop 3 (1993)	Thriller	22	F	healthcare
+405	720	1	First Knight (1995)	Drama	22	F	healthcare
+405	588	2	Beauty and the Beast (1991)	Musical	22	F	healthcare
+405	51	1	Legends of the Fall (1994)	Western	22	F	healthcare
+405	1425	1	I'll Do Anything (1994)	Comedy	22	F	healthcare
+405	1074	3	Reality Bites (1994)	Comedy	22	F	healthcare
+405	796	3	Speechless (1994)	Romance	22	F	healthcare
+405	1579	1	Baton Rouge (1988)	Thriller	22	F	healthcare
+405	1112	2	Cobb (1994)	Drama	22	F	healthcare
+405	519	2	"Treasure of the Sierra Madre, The (1948)"	Adventure	22	F	healthcare
+405	710	4	Better Off Dead... (1985)	Comedy	22	F	healthcare
+405	707	1	Enchanted April (1991)	Drama	22	F	healthcare
+405	1184	1	"Endless Summer 2, The (1994)"	Documentary	22	F	healthcare
+405	1265	2	Star Maps (1997)	Drama	22	F	healthcare
+405	1239	1	Cutthroat Island (1995)	Action	22	F	healthcare
+405	1522	1	Trial by Jury (1994)	Thriller	22	F	healthcare
+405	956	2	Nobody's Fool (1994)	Drama	22	F	healthcare
+405	555	1	White Man's Burden (1995)	Drama	22	F	healthcare
+405	1104	1	C'est arrive pres de chez vous (1992)	Drama	22	F	healthcare
+405	183	1	Alien (1979)	Thriller	22	F	healthcare
+405	141	2	"20,000 Leagues Under the Sea (1954)"	Children's	22	F	healthcare
+405	528	1	"Killing Fields, The (1984)"	Drama	22	F	healthcare
+405	556	1	Wild Bill (1995)	Western	22	F	healthcare
+405	1539	1	Being Human (1993)	Drama	22	F	healthcare
+405	1444	2	That Darn Cat! (1965)	Comedy	22	F	healthcare
+405	1179	1	Man of the House (1995)	Comedy	22	F	healthcare
+405	1231	1	Marked for Death (1990)	Action	22	F	healthcare
+405	1042	1	Just Cause (1995)	Mystery	22	F	healthcare
+405	265	2	"Hunt for Red October, The (1990)"	Thriller	22	F	healthcare
+405	1585	1	American Dream (1990)	Documentary	22	F	healthcare
+405	68	1	"Crow, The (1994)"	Romance	22	F	healthcare
+405	1209	3	Mixed Nuts (1994)	Comedy	22	F	healthcare
+405	427	5	To Kill a Mockingbird (1962)	Drama	22	F	healthcare
+405	1422	1	Suture (1993)	Thriller	22	F	healthcare
+405	421	1	William Shakespeare's Romeo and Juliet (1996)	Romance	22	F	healthcare
+405	1518	2	Losing Isaiah (1995)	Drama	22	F	healthcare
+405	397	4	Striking Distance (1993)	Action	22	F	healthcare
+405	1442	1	"Scarlet Letter, The (1995)"	Drama	22	F	healthcare
+405	504	2	Bonnie and Clyde (1967)	Crime	22	F	healthcare
+405	651	5	Glory (1989)	Drama	22	F	healthcare
+405	904	1	Ma vie en rose (My Life in Pink) (1997)	Comedy	22	F	healthcare
+405	606	3	All About Eve (1950)	Drama	22	F	healthcare
+405	1470	2	Gumby: The Movie (1995)	Animation	22	F	healthcare
+405	1478	1	Dead Presidents (1995)	Drama	22	F	healthcare
+405	184	1	Army of Darkness (1993)	Horror	22	F	healthcare

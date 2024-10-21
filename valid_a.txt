@@ -1,0 +1,200 @@
+user_id	movie_id	rating	title	genre	age	gender	occupation
+405	184	1	Army of Darkness (1993)	Horror	22	F	healthcare
+405	1193	1	Before the Rain (Pred dozhdot) (1994)	Drama	22	F	healthcare
+405	1560	1	Clean Slate (Coup de Torchon) (1981)	Crime	22	F	healthcare
+405	1206	1	Amos & Andrew (1993)	Comedy	22	F	healthcare
+405	802	1	Hard Target (1993)	Action	22	F	healthcare
+405	1471	1	Hideaway (1995)	Thriller	22	F	healthcare
+405	939	5	Murder in the First (1995)	Thriller	22	F	healthcare
+405	1063	5	"Little Princess, A (1995)"	Drama	22	F	healthcare
+405	537	1	My Own Private Idaho (1991)	Drama	22	F	healthcare
+405	520	2	"Great Escape, The (1963)"	Adventure	22	F	healthcare
+405	1553	1	"Underneath, The (1995)"	Thriller	22	F	healthcare
+405	1517	1	Race the Sun (1996)	Drama	22	F	healthcare
+405	199	1	"Bridge on the River Kwai, The (1957)"	War	22	F	healthcare
+405	1559	1	Hostile Intentions (1994)	Thriller	22	F	healthcare
+405	1032	1	Little Big League (1994)	Children's	22	F	healthcare
+405	415	2	"Apple Dumpling Gang, The (1975)"	Western	22	F	healthcare
+405	645	1	Paris Is Burning (1990)	Documentary	22	F	healthcare
+405	461	3	Smoke (1995)	Drama	22	F	healthcare
+405	807	1	Poetic Justice (1993)	Drama	22	F	healthcare
+405	82	4	Jurassic Park (1993)	Adventure	22	F	healthcare
+405	779	1	Drop Zone (1994)	Action	22	F	healthcare
+405	1146	2	Calendar Girl (1993)	Drama	22	F	healthcare
+405	403	5	Batman (1989)	Adventure	22	F	healthcare
+405	509	1	My Left Foot (1989)	Drama	22	F	healthcare
+405	22	5	Braveheart (1995)	Action	22	F	healthcare
+405	1404	1	Withnail and I (1987)	Comedy	22	F	healthcare
+405	5	4	Copycat (1995)	Thriller	22	F	healthcare
+405	1484	1	"Jerky Boys, The (1994)"	Action	22	F	healthcare
+405	1031	1	Lassie (1994)	Adventure	22	F	healthcare
+405	94	5	Home Alone (1990)	Comedy	22	F	healthcare
+405	1576	1	"Hungarian Fairy Tale, A (1987)"	Fantasy	22	F	healthcare
+405	1437	1	House Party 3 (1994)	Comedy	22	F	healthcare
+405	739	2	Pretty Woman (1990)	Comedy	22	F	healthcare
+405	586	4	Terminal Velocity (1994)	Action	22	F	healthcare
+405	200	2	"Shining, The (1980)"	Horror	22	F	healthcare
+405	1078	1	Oliver & Company (1988)	Children's	22	F	healthcare
+405	364	1	Ace Ventura: When Nature Calls (1995)	Comedy	22	F	healthcare
+405	391	1	Last Action Hero (1993)	Comedy	22	F	healthcare
+405	376	5	Houseguest (1994)	Comedy	22	F	healthcare
+405	786	1	"Perez Family, The (1995)"	Comedy	22	F	healthcare
+405	515	1	"Boot, Das (1981)"	Drama	22	F	healthcare
+405	132	5	"Wizard of Oz, The (1939)"	Drama	22	F	healthcare
+405	1249	1	For Love or Money (1993)	Comedy	22	F	healthcare
+405	562	1	"Quick and the Dead, The (1995)"	Adventure	22	F	healthcare
+405	215	5	Field of Dreams (1989)	Drama	22	F	healthcare
+405	63	3	"Santa Clause, The (1994)"	Children's	22	F	healthcare
+405	1569	1	"Vie est belle, La (Life is Rosey) (1987)"	Drama	22	F	healthcare
+405	1568	1	Vermont Is For Lovers (1992)	Comedy	22	F	healthcare
+405	716	1	Home for the Holidays (1995)	Drama	22	F	healthcare
+405	383	1	"Flintstones, The (1994)"	Comedy	22	F	healthcare
+405	388	4	Beverly Hills Cop III (1994)	Comedy	22	F	healthcare
+405	1399	1	Stranger in the House (1997)	Thriller	22	F	healthcare
+405	798	1	Bad Company (1995)	Action	22	F	healthcare
+405	1408	1	Gordy (1995)	Comedy	22	F	healthcare
+405	52	1	"Madness of King George, The (1994)"	Drama	22	F	healthcare
+405	233	1	Under Siege (1992)	Action	22	F	healthcare
+405	1224	1	"Scout, The (1994)"	Drama	22	F	healthcare
+405	1359	1	Boys in Venice (1996)	Drama	22	F	healthcare
+405	584	1	"Secret Garden, The (1993)"	Children's	22	F	healthcare
+405	195	5	"Terminator, The (1984)"	Sci-Fi	22	F	healthcare
+405	234	5	Jaws (1975)	Action	22	F	healthcare
+405	219	5	"Nightmare on Elm Street, A (1984)"	Horror	22	F	healthcare
+405	661	3	High Noon (1952)	Western	22	F	healthcare
+405	549	1	Rob Roy (1995)	War	22	F	healthcare
+405	523	2	Cool Hand Luke (1967)	Comedy	22	F	healthcare
+405	585	1	Son in Law (1993)	Comedy	22	F	healthcare
+405	482	3	Some Like It Hot (1959)	Crime	22	F	healthcare
+405	347	4	Wag the Dog (1997)	Drama	22	F	healthcare
+405	58	1	Quiz Show (1994)	Drama	22	F	healthcare
+405	149	1	Jude (1996)	Drama	22	F	healthcare
+405	75	2	Brother Minister: The Assassination of Malcolm X (1994)	Documentary	22	F	healthcare
+405	356	5	"Client, The (1994)"	Drama	22	F	healthcare
+405	810	1	"Shadow, The (1994)"	Action	22	F	healthcare
+405	603	3	Rear Window (1954)	Mystery	22	F	healthcare
+405	1222	1	Judgment Night (1993)	Action	22	F	healthcare
+405	567	2	Wes Craven's New Nightmare (1994)	Horror	22	F	healthcare
+405	536	1	Ponette (1996)	Drama	22	F	healthcare
+405	57	1	Priest (1994)	Drama	22	F	healthcare
+405	379	1	Tales From the Crypt Presents: Demon Knight (1995)	Horror	22	F	healthcare
+405	1474	1	Nina Takes a Lover (1994)	Comedy	22	F	healthcare
+405	712	1	Tin Men (1987)	Drama	22	F	healthcare
+405	1225	1	Angus (1995)	Comedy	22	F	healthcare
+405	1583	1	"Invitation, The (Zaproszenie) (1986)"	Drama	22	F	healthcare
+405	577	3	Coneheads (1993)	Comedy	22	F	healthcare
+405	1053	5	Now and Then (1995)	Drama	22	F	healthcare
+405	55	1	"Professional, The (1994)"	Romance	22	F	healthcare
+405	1468	1	"Cure, The (1995)"	Drama	22	F	healthcare
+405	433	4	Heathers (1989)	Comedy	22	F	healthcare
+405	842	5	Pollyanna (1960)	Drama	22	F	healthcare
+405	1091	1	Pete's Dragon (1977)	Children's	22	F	healthcare
+405	83	1	Much Ado About Nothing (1993)	Romance	22	F	healthcare
+405	561	1	Mary Shelley's Frankenstein (1994)	Horror	22	F	healthcare
+405	48	1	Hoop Dreams (1994)	Documentary	22	F	healthcare
+405	694	1	Persuasion (1995)	Romance	22	F	healthcare
+405	1072	1	"Pyromaniac's Love Story, A (1995)"	Romance	22	F	healthcare
+405	1037	3	Grease 2 (1982)	Comedy	22	F	healthcare
+405	944	3	Renaissance Man (1994)	Comedy	22	F	healthcare
+405	204	5	Back to the Future (1985)	Sci-Fi	22	F	healthcare
+405	201	1	Evil Dead II (1987)	Adventure	22	F	healthcare
+405	1438	1	Panther (1995)	Drama	22	F	healthcare
+405	553	1	"Walk in the Clouds, A (1995)"	Drama	22	F	healthcare
+405	1030	1	"Beverly Hillbillies, The (1993)"	Comedy	22	F	healthcare
+405	558	1	Heavenly Creatures (1994)	Drama	22	F	healthcare
+405	1394	1	Swept from the Sea (1997)	Romance	22	F	healthcare
+405	516	1	Local Hero (1983)	Comedy	22	F	healthcare
+405	849	1	Days of Thunder (1990)	Romance	22	F	healthcare
+405	774	1	"Prophecy, The (1995)"	Horror	22	F	healthcare
+405	97	2	Dances with Wolves (1990)	Adventure	22	F	healthcare
+405	853	1	Braindead (1992)	Comedy	22	F	healthcare
+405	23	5	Taxi Driver (1976)	Thriller	22	F	healthcare
+405	1570	1	Quartier Mozart (1992)	Comedy	22	F	healthcare
+405	697	1	"Basketball Diaries, The (1995)"	Drama	22	F	healthcare
+405	808	1	"Program, The (1993)"	Drama	22	F	healthcare
+405	783	2	Milk Money (1994)	Comedy	22	F	healthcare
+405	1232	1	Madonna: Truth or Dare (1991)	Documentary	22	F	healthcare
+405	679	1	Conan the Barbarian (1981)	Adventure	22	F	healthcare
+405	642	1	"Grifters, The (1990)"	Drama	22	F	healthcare
+405	37	1	Nadja (1994)	Drama	22	F	healthcare
+405	843	2	"Shaggy Dog, The (1959)"	Children's	22	F	healthcare
+405	447	4	Carrie (1976)	Horror	22	F	healthcare
+405	666	1	Blood For Dracula (Andy Warhol's Dracula) (1974)	Horror	22	F	healthcare
+405	193	4	"Right Stuff, The (1983)"	Drama	22	F	healthcare
+405	8	4	Babe (1995)	Children's	22	F	healthcare
+405	1103	2	Trust (1990)	Drama	22	F	healthcare
+405	1070	1	Living in Oblivion (1995)	Comedy	22	F	healthcare
+405	684	3	In the Line of Fire (1993)	Thriller	22	F	healthcare
+405	1219	1	"Goofy Movie, A (1995)"	Children's	22	F	healthcare
+405	784	1	Beyond Bedlam (1993)	Horror	22	F	healthcare
+405	1044	4	"Paper, The (1994)"	Drama	22	F	healthcare
+405	480	4	North by Northwest (1959)	Thriller	22	F	healthcare
+405	12	5	"Usual Suspects, The (1995)"	Thriller	22	F	healthcare
+405	790	1	Tommy Boy (1995)	Comedy	22	F	healthcare
+405	101	1	Heavy Metal (1981)	Sci-Fi	22	F	healthcare
+405	448	4	"Omen, The (1976)"	Horror	22	F	healthcare
+405	1271	2	North (1994)	Comedy	22	F	healthcare
+405	143	5	"Sound of Music, The (1965)"	Musical	22	F	healthcare
+405	1036	1	Drop Dead Fred (1991)	Comedy	22	F	healthcare
+405	1415	1	"Next Karate Kid, The (1994)"	Action	22	F	healthcare
+405	1405	1	Boy's Life 2 (1997)	Drama	22	F	healthcare
+405	81	3	"Hudsucker Proxy, The (1994)"	Comedy	22	F	healthcare
+405	859	1	April Fool's Day (1986)	Horror	22	F	healthcare
+405	960	1	Naked (1993)	Drama	22	F	healthcare
+405	1407	1	"Specialist, The (1994)"	Action	22	F	healthcare
+405	736	5	Shadowlands (1993)	Drama	22	F	healthcare
+405	464	1	Vanya on 42nd Street (1994)	Drama	22	F	healthcare
+405	238	5	Raising Arizona (1987)	Comedy	22	F	healthcare
+405	1107	1	Beyond Rangoon (1995)	Drama	22	F	healthcare
+405	377	1	Heavyweights (1994)	Children's	22	F	healthcare
+405	1572	1	Wend Kuuni (God's Gift) (1982)	Drama	22	F	healthcare
+405	1218	5	Friday (1995)	Comedy	22	F	healthcare
+405	770	1	Devil in a Blue Dress (1995)	Crime	22	F	healthcare
+405	851	1	Two or Three Things I Know About Her (1966)	Drama	22	F	healthcare
+405	1441	1	Moonlight and Valentino (1995)	Romance	22	F	healthcare
+405	438	1	Amityville 3-D (1983)	Horror	22	F	healthcare
+405	659	4	Arsenic and Old Lace (1944)	Comedy	22	F	healthcare
+405	1147	2	My Family (1995)	Drama	22	F	healthcare
+405	745	1	"Ruling Class, The (1972)"	Comedy	22	F	healthcare
+405	45	1	Eat Drink Man Woman (1994)	Comedy	22	F	healthcare
+405	351	1	"Prophecy II, The (1998)"	Horror	22	F	healthcare
+405	794	5	It Could Happen to You (1994)	Romance	22	F	healthcare
+405	317	4	In the Name of the Father (1993)	Drama	22	F	healthcare
+405	563	1	Stephen King's The Langoliers (1995)	Horror	22	F	healthcare
+405	441	1	"Amityville Horror, The (1979)"	Horror	22	F	healthcare
+405	61	1	Three Colors: White (1994)	Drama	22	F	healthcare
+405	1548	1	The Courtyard (1995)	Thriller	22	F	healthcare
+405	439	1	Amityville: A New Generation (1993)	Horror	22	F	healthcare
+405	674	1	Cat People (1982)	Horror	22	F	healthcare
+405	91	2	"Nightmare Before Christmas, The (1993)"	Children's	22	F	healthcare
+405	1297	1	Love Affair (1994)	Drama	22	F	healthcare
+405	173	5	"Princess Bride, The (1987)"	Romance	22	F	healthcare
+405	420	5	Alice in Wonderland (1951)	Children's	22	F	healthcare
+405	1499	1	Grosse Fatigue (1994)	Comedy	22	F	healthcare
+405	955	1	Before Sunrise (1995)	Drama	22	F	healthcare
+405	1195	1	Strawberry and Chocolate (Fresa y chocolate) (1993)	Drama	22	F	healthcare
+405	367	1	Clueless (1995)	Comedy	22	F	healthcare
+405	564	1	Tales from the Hood (1995)	Comedy	22	F	healthcare
+405	402	3	Ghost (1990)	Thriller	22	F	healthcare
+405	566	1	Clear and Present Danger (1994)	Adventure	22	F	healthcare
+405	1229	1	Poison Ivy II (1995)	Thriller	22	F	healthcare
+405	218	5	Cape Fear (1991)	Thriller	22	F	healthcare
+405	1065	1	Koyaanisqatsi (1983)	War	22	F	healthcare
+405	816	1	Candyman: Farewell to the Flesh (1995)	Horror	22	F	healthcare
+405	1228	1	Under Siege 2: Dark Territory (1995)	Action	22	F	healthcare
+405	782	1	Little Odessa (1994)	Drama	22	F	healthcare
+405	139	3	"Love Bug, The (1969)"	Comedy	22	F	healthcare
+405	208	5	Young Frankenstein (1974)	Horror	22	F	healthcare
+405	434	3	Forbidden Planet (1956)	Sci-Fi	22	F	healthcare
+405	180	3	Apocalypse Now (1979)	Drama	22	F	healthcare
+405	80	1	Hot Shots! Part Deux (1993)	War	22	F	healthcare
+405	384	3	Naked Gun 33 1/3: The Final Insult (1994)	Comedy	22	F	healthcare
+405	64	5	"Shawshank Redemption, The (1994)"	Drama	22	F	healthcare
+405	715	1	To Die For (1995)	Comedy	22	F	healthcare
+405	675	1	"Nosferatu (Nosferatu, eine Symphonie des Grauens) (1922)"	Horror	22	F	healthcare
+405	921	1	Farewell My Concubine (1993)	Drama	22	F	healthcare
+405	42	1	Clerks (1994)	Comedy	22	F	healthcare
+405	231	3	Batman Returns (1992)	Action	22	F	healthcare
+405	728	4	Junior (1994)	Comedy	22	F	healthcare
+405	29	4	Batman Forever (1995)	Adventure	22	F	healthcare
+405	1021	1	8 1/2 (1963)	Drama	22	F	healthcare

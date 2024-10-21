@@ -1,0 +1,237 @@
+user_id	movie_id	rating	title	genre	age	gender	occupation
+13	526	3	Ben-Hur (1959)	Drama	47	M	educator
+13	836	2	Ninotchka (1939)	Romance	47	M	educator
+13	272	4	Good Will Hunting (1997)	Drama	47	M	educator
+13	98	4	"Silence of the Lambs, The (1991)"	Drama	47	M	educator
+13	360	4	Wonderland (1997)	Documentary	47	M	educator
+13	198	3	Nikita (La Femme Nikita) (1990)	Thriller	47	M	educator
+13	215	5	Field of Dreams (1989)	Drama	47	M	educator
+13	56	5	Pulp Fiction (1994)	Crime	47	M	educator
+13	344	2	"Apostle, The (1997)"	Drama	47	M	educator
+13	186	4	"Blues Brothers, The (1980)"	Comedy	47	M	educator
+13	498	4	"African Queen, The (1951)"	Adventure	47	M	educator
+13	892	3	Flubber (1997)	Comedy	47	M	educator
+13	229	4	Star Trek III: The Search for Spock (1984)	Sci-Fi	47	M	educator
+13	864	4	My Fellow Americans (1996)	Comedy	47	M	educator
+13	901	1	Mr. Magoo (1997)	Comedy	47	M	educator
+13	809	4	Rising Sun (1993)	Drama	47	M	educator
+13	823	5	Mulholland Falls (1996)	Film-Noir	47	M	educator
+13	780	1	Dumb & Dumber (1994)	Comedy	47	M	educator
+13	418	2	Cinderella (1950)	Animation	47	M	educator
+13	858	1	Amityville: Dollhouse (1996)	Horror	47	M	educator
+13	72	4	"Mask, The (1994)"	Crime	47	M	educator
+13	181	5	Return of the Jedi (1983)	Romance	47	M	educator
+13	147	3	"Long Kiss Goodnight, The (1996)"	Thriller	47	M	educator
+13	868	5	Hearts and Minds (1996)	Drama	47	M	educator
+13	195	3	"Terminator, The (1984)"	Sci-Fi	47	M	educator
+13	807	1	Poetic Justice (1993)	Drama	47	M	educator
+13	121	5	Independence Day (ID4) (1996)	Sci-Fi	47	M	educator
+13	308	3	FairyTale: A True Story (1997)	Drama	47	M	educator
+13	396	3	Serial Mom (1994)	Crime	47	M	educator
+13	66	3	While You Were Sleeping (1995)	Romance	47	M	educator
+13	59	4	Three Colors: Red (1994)	Drama	47	M	educator
+13	150	5	Swingers (1996)	Drama	47	M	educator
+13	354	2	"Wedding Singer, The (1998)"	Comedy	47	M	educator
+13	331	3	"Edge, The (1997)"	Thriller	47	M	educator
+13	766	4	Man of the Year (1995)	Documentary	47	M	educator
+13	14	4	"Postino, Il (1994)"	Drama	47	M	educator
+13	320	1	Paradise Lost: The Child Murders at Robin Hood Hills (1996)	Documentary	47	M	educator
+13	451	1	Grease (1978)	Comedy	47	M	educator
+13	493	5	"Thin Man, The (1934)"	Mystery	47	M	educator
+13	289	2	Evita (1996)	Drama	47	M	educator
+13	488	3	Sunset Blvd. (1950)	Film-Noir	47	M	educator
+13	848	5	"Murder, My Sweet (1944)"	Film-Noir	47	M	educator
+13	144	4	Die Hard (1988)	Action	47	M	educator
+13	476	2	"First Wives Club, The (1996)"	Comedy	47	M	educator
+13	97	4	Dances with Wolves (1990)	Adventure	47	M	educator
+13	781	3	French Kiss (1995)	Comedy	47	M	educator
+13	338	1	Bean (1997)	Comedy	47	M	educator
+13	167	4	Private Benjamin (1980)	Comedy	47	M	educator
+13	570	5	Wyatt Earp (1994)	Western	47	M	educator
+13	844	1	Freeway (1996)	Crime	47	M	educator
+13	685	5	Executive Decision (1996)	Thriller	47	M	educator
+13	567	1	Wes Craven's New Nightmare (1994)	Horror	47	M	educator
+13	877	2	Excess Baggage (1997)	Romance	47	M	educator
+13	480	3	North by Northwest (1959)	Thriller	47	M	educator
+13	314	1	3 Ninjas: High Noon At Mega Mountain (1998)	Children's	47	M	educator
+13	915	5	Primary Colors (1998)	Drama	47	M	educator
+13	226	4	Die Hard 2 (1990)	Thriller	47	M	educator
+13	548	3	"NeverEnding Story III, The (1994)"	Fantasy	47	M	educator
+13	305	4	"Ice Storm, The (1997)"	Drama	47	M	educator
+13	918	3	City of Angels (1998)	Romance	47	M	educator
+13	273	3	Heat (1995)	Crime	47	M	educator
+13	840	3	Last Man Standing (1996)	Action	47	M	educator
+13	178	4	12 Angry Men (1957)	Drama	47	M	educator
+13	42	4	Clerks (1994)	Comedy	47	M	educator
+13	94	3	Home Alone (1990)	Comedy	47	M	educator
+13	908	1	Half Baked (1998)	Comedy	47	M	educator
+13	300	1	Air Force One (1997)	Action	47	M	educator
+13	180	5	Apocalypse Now (1979)	Drama	47	M	educator
+13	29	2	Batman Forever (1995)	Adventure	47	M	educator
+13	508	3	"People vs. Larry Flynt, The (1996)"	Drama	47	M	educator
+13	45	3	Eat Drink Man Woman (1994)	Comedy	47	M	educator
+13	820	4	Space Jam (1996)	Children's	47	M	educator
+13	509	5	My Left Foot (1989)	Drama	47	M	educator
+13	755	3	Jumanji (1995)	Action	47	M	educator
+13	2	3	GoldenEye (1995)	Thriller	47	M	educator
+13	830	1	Power 98 (1995)	Mystery	47	M	educator
+13	64	5	"Shawshank Redemption, The (1994)"	Drama	47	M	educator
+13	859	1	April Fool's Day (1986)	Horror	47	M	educator
+13	625	2	"Sword in the Stone, The (1963)"	Children's	47	M	educator
+13	428	5	Harold and Maude (1971)	Comedy	47	M	educator
+13	913	1	Love and Death on Long Island (1997)	Comedy	47	M	educator
+13	212	5	"Unbearable Lightness of Being, The (1988)"	Drama	47	M	educator
+13	168	4	Monty Python and the Holy Grail (1974)	Comedy	47	M	educator
+13	856	5	Night on Earth (1991)	Drama	47	M	educator
+13	319	4	Everyone Says I Love You (1996)	Romance	47	M	educator
+13	312	1	Midnight in the Garden of Good and Evil (1997)	Drama	47	M	educator
+13	860	1	"Believers, The (1987)"	Thriller	47	M	educator
+13	540	3	Money Train (1995)	Action	47	M	educator
+13	614	4	Giant (1956)	Drama	47	M	educator
+13	876	2	Money Talks (1997)	Action	47	M	educator
+13	90	3	So I Married an Axe Murderer (1993)	Romance	47	M	educator
+13	263	5	Steel (1997)	Action	47	M	educator
+13	788	1	Relative Fear (1994)	Thriller	47	M	educator
+13	782	3	Little Odessa (1994)	Drama	47	M	educator
+13	440	1	Amityville II: The Possession (1982)	Horror	47	M	educator
+13	88	4	Sleepless in Seattle (1993)	Romance	47	M	educator
+13	831	3	Escape from L.A. (1996)	Adventure	47	M	educator
+13	315	5	Apt Pupil (1998)	Thriller	47	M	educator
+13	794	4	It Could Happen to You (1994)	Romance	47	M	educator
+13	302	5	L.A. Confidential (1997)	Mystery	47	M	educator
+13	208	5	Young Frankenstein (1974)	Horror	47	M	educator
+13	421	2	William Shakespeare's Romeo and Juliet (1996)	Romance	47	M	educator
+13	409	3	Jack (1996)	Drama	47	M	educator
+13	910	2	Nil By Mouth (1997)	Drama	47	M	educator
+13	318	3	Schindler's List (1993)	Drama	47	M	educator
+13	898	1	"Postman, The (1997)"	Drama	47	M	educator
+13	764	2	If Lucy Fell (1996)	Romance	47	M	educator
+13	814	5	"Great Day in Harlem, A (1994)"	Documentary	47	M	educator
+13	387	3	"Age of Innocence, The (1993)"	Drama	47	M	educator
+13	894	1	Home Alone 3 (1997)	Comedy	47	M	educator
+13	341	2	Critical Care (1997)	Comedy	47	M	educator
+13	452	3	Jaws 2 (1978)	Action	47	M	educator
+13	25	1	"Birdcage, The (1996)"	Comedy	47	M	educator
+13	632	3	Sophie's Choice (1982)	Drama	47	M	educator
+13	416	3	Old Yeller (1957)	Drama	47	M	educator
+13	502	5	Bananas (1971)	Comedy	47	M	educator
+13	161	5	Top Gun (1986)	Action	47	M	educator
+13	303	4	Ulee's Gold (1997)	Drama	47	M	educator
+13	437	1	Amityville 1992: It's About Time (1992)	Horror	47	M	educator
+13	786	3	"Perez Family, The (1995)"	Comedy	47	M	educator
+13	612	4	Lost Horizon (1937)	Drama	47	M	educator
+13	334	1	U Turn (1997)	Action	47	M	educator
+13	353	4	Deep Rising (1998)	Sci-Fi	47	M	educator
+13	759	2	Fair Game (1995)	Action	47	M	educator
+13	190	4	Henry V (1989)	War	47	M	educator
+13	137	5	Big Night (1996)	Drama	47	M	educator
+13	517	5	Manhattan (1979)	Comedy	47	M	educator
+13	888	2	One Night Stand (1997)	Drama	47	M	educator
+13	384	2	Naked Gun 33 1/3: The Final Insult (1994)	Comedy	47	M	educator
+13	243	3	Jungle2Jungle (1997)	Comedy	47	M	educator
+13	776	2	Three Wishes (1995)	Drama	47	M	educator
+13	530	5	"Man Who Would Be King, The (1975)"	Adventure	47	M	educator
+13	907	1	Vermin (1998)	Comedy	47	M	educator
+13	232	3	Young Guns (1988)	Comedy	47	M	educator
+13	861	3	Nosferatu a Venezia (1986)	Horror	47	M	educator
+13	48	5	Hoop Dreams (1994)	Documentary	47	M	educator
+13	505	3	Dial M for Murder (1954)	Thriller	47	M	educator
+13	21	3	Muppet Treasure Island (1996)	Comedy	47	M	educator
+13	869	3	Fools Rush In (1997)	Comedy	47	M	educator
+13	61	4	Three Colors: White (1994)	Drama	47	M	educator
+13	784	1	Beyond Bedlam (1993)	Horror	47	M	educator
+13	457	1	Free Willy 3: The Rescue (1997)	Children's	47	M	educator
+13	40	2	"To Wong Foo, Thanks for Everything! Julie Newmar (1995)"	Comedy	47	M	educator
+13	351	1	"Prophecy II, The (1998)"	Horror	47	M	educator
+13	73	3	Maverick (1994)	Comedy	47	M	educator
+13	467	5	"Bronx Tale, A (1993)"	Drama	47	M	educator
+13	443	4	"Birds, The (1963)"	Horror	47	M	educator
+13	118	4	Twister (1996)	Thriller	47	M	educator
+13	539	1	Mouse Hunt (1997)	Children's	47	M	educator
+13	265	4	"Hunt for Red October, The (1990)"	Thriller	47	M	educator
+13	854	1	Bad Taste (1987)	Comedy	47	M	educator
+13	514	5	Annie Hall (1977)	Romance	47	M	educator
+13	752	1	"Replacement Killers, The (1998)"	Thriller	47	M	educator
+13	857	3	Paris Was a Woman (1995)	Documentary	47	M	educator
+13	615	4	"39 Steps, The (1935)"	Thriller	47	M	educator
+13	720	4	First Knight (1995)	Drama	47	M	educator
+13	887	5	Eve's Bayou (1997)	Drama	47	M	educator
+13	683	1	Rocket Man (1997)	Comedy	47	M	educator
+13	269	2	"Full Monty, The (1997)"	Comedy	47	M	educator
+13	124	5	Lone Star (1996)	Mystery	47	M	educator
+13	802	2	Hard Target (1993)	Action	47	M	educator
+13	890	1	Mortal Kombat: Annihilation (1997)	Action	47	M	educator
+13	153	4	"Fish Called Wanda, A (1988)"	Comedy	47	M	educator
+13	343	1	Alien: Resurrection (1997)	Horror	47	M	educator
+13	301	1	In & Out (1997)	Comedy	47	M	educator
+13	597	3	Eraser (1996)	Action	47	M	educator
+13	154	5	Monty Python's Life of Brian (1979)	Comedy	47	M	educator
+13	601	4	For Whom the Bell Tolls (1943)	Adventure	47	M	educator
+13	808	2	"Program, The (1993)"	Drama	47	M	educator
+13	705	5	Singin' in the Rain (1952)	Romance	47	M	educator
+13	100	5	Fargo (1996)	Thriller	47	M	educator
+13	71	4	"Lion King, The (1994)"	Children's	47	M	educator
+13	363	3	Sudden Death (1995)	Action	47	M	educator
+13	391	3	Last Action Hero (1993)	Comedy	47	M	educator
+13	906	3	Oscar & Lucinda (1997)	Romance	47	M	educator
+13	230	3	Star Trek IV: The Voyage Home (1986)	Sci-Fi	47	M	educator
+13	665	2	Alien 3 (1992)	Action	47	M	educator
+13	345	4	Deconstructing Harry (1997)	Drama	47	M	educator
+13	261	1	Air Bud (1997)	Children's	47	M	educator
+13	816	1	Candyman: Farewell to the Flesh (1995)	Horror	47	M	educator
+13	501	5	Dumbo (1941)	Animation	47	M	educator
+13	219	1	"Nightmare on Elm Street, A (1984)"	Horror	47	M	educator
+13	716	4	Home for the Holidays (1995)	Drama	47	M	educator
+13	317	5	In the Name of the Father (1993)	Drama	47	M	educator
+13	617	3	"Blue Angel, The (Blaue Engel, Der) (1930)"	Drama	47	M	educator
+13	546	3	Broken Arrow (1996)	Thriller	47	M	educator
+13	436	2	"American Werewolf in London, An (1981)"	Horror	47	M	educator
+13	290	4	Fierce Creatures (1997)	Comedy	47	M	educator
+13	281	3	"River Wild, The (1994)"	Action	47	M	educator
+13	447	2	Carrie (1976)	Horror	47	M	educator
+13	694	4	Persuasion (1995)	Romance	47	M	educator
+13	624	5	"Three Caballeros, The (1945)"	Animation	47	M	educator
+13	885	1	Phantoms (1998)	Horror	47	M	educator
+13	270	4	Gattaca (1997)	Drama	47	M	educator
+13	866	3	Michael (1996)	Romance	47	M	educator
+13	196	4	Dead Poets Society (1989)	Drama	47	M	educator
+13	271	1	Starship Troopers (1997)	Adventure	47	M	educator
+13	405	2	Mission: Impossible (1996)	Adventure	47	M	educator
+13	472	5	Dragonheart (1996)	Adventure	47	M	educator
+13	610	2	Gigi (1958)	Musical	47	M	educator
+13	847	4	Looking for Richard (1996)	Drama	47	M	educator
+13	652	5	Rosencrantz and Guildenstern Are Dead (1990)	Drama	47	M	educator
+13	294	2	Liar Liar (1997)	Comedy	47	M	educator
+13	588	4	Beauty and the Beast (1991)	Musical	47	M	educator
+13	276	5	Leaving Las Vegas (1995)	Drama	47	M	educator
+13	520	4	"Great Escape, The (1963)"	Adventure	47	M	educator
+13	659	3	Arsenic and Old Lace (1944)	Comedy	47	M	educator
+13	173	2	"Princess Bride, The (1987)"	Romance	47	M	educator
+13	735	3	Philadelphia (1993)	Drama	47	M	educator
+13	483	5	Casablanca (1942)	Drama	47	M	educator
+13	423	5	E.T. the Extra-Terrestrial (1982)	Children's	47	M	educator
+13	482	5	Some Like It Hot (1959)	Crime	47	M	educator
+13	268	4	Chasing Amy (1997)	Romance	47	M	educator
+13	402	4	Ghost (1990)	Thriller	47	M	educator
+13	420	4	Alice in Wonderland (1951)	Children's	47	M	educator
+13	805	4	Manhattan Murder Mystery (1993)	Mystery	47	M	educator
+13	414	5	My Favorite Year (1982)	Comedy	47	M	educator
+13	772	1	Kids (1995)	Drama	47	M	educator
+13	812	2	Andre (1994)	Adventure	47	M	educator
+13	564	1	Tales from the Hood (1995)	Comedy	47	M	educator
+13	519	5	"Treasure of the Sierra Madre, The (1948)"	Adventure	47	M	educator
+13	875	1	She's So Lovely (1997)	Drama	47	M	educator
+13	377	1	Heavyweights (1994)	Children's	47	M	educator
+13	340	2	Boogie Nights (1997)	Drama	47	M	educator
+13	185	3	Psycho (1960)	Thriller	47	M	educator
+13	217	1	Bram Stoker's Dracula (1992)	Horror	47	M	educator
+13	651	5	Glory (1989)	Drama	47	M	educator
+13	24	1	Rumble in the Bronx (1995)	Action	47	M	educator
+13	673	3	Cape Fear (1962)	Thriller	47	M	educator
+13	287	1	Marvin's Room (1996)	Drama	47	M	educator
+13	27	3	Bad Boys (1995)	Action	47	M	educator
+13	912	2	U.S. Marshalls (1998)	Thriller	47	M	educator
+13	201	1	Evil Dead II (1987)	Adventure	47	M	educator
+13	385	3	True Lies (1994)	Adventure	47	M	educator
+13	852	1	"Bloody Child, The (1996)"	Thriller	47	M	educator
+13	238	3	Raising Arizona (1987)	Comedy	47	M	educator
