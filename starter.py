@@ -1,3 +1,6 @@
+import numpy as np
+
+dist = 0
 # returns Euclidean distance between vectors and b
 def euclidean(a,b):
     
@@ -5,7 +8,11 @@ def euclidean(a,b):
         
 # returns Cosine Similarity between vectors and b
 def cosim(a,b):
-    
+    #Generalize to higher dimensions
+    dist = np.dot(a, b) / np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
+
+    print(dist)
+
     return(dist)
 
 # returns a list of labels for the query dataset based upon labeled observations in the train dataset.
@@ -53,7 +60,10 @@ def show(file_name,mode):
         print(' ')
             
 def main():
-    show('valid.csv','pixels')
+    #show('valid.csv','pixels')
+    a = np.array([1,2])
+    b = np.array([3,4])
+    cosim(a, b)
     
 if __name__ == "__main__":
     main()
