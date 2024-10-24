@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+
 
 dist = 0
 # returns Euclidean distance between vectors and b
@@ -15,6 +17,29 @@ def cosim(a,b):
 
     return(dist)
 
+def reduce(examples, k):
+    # Step 1: Center the data (subtract the mean)
+    X_centered = examples - np.mean(examples, axis=0)
+
+    # Step 2: Compute the covariance matrix
+    cov_matrix = np.cov(X_centered, rowvar=False)
+
+    # Step 3: Get eigenvalues and eigenvectors
+    eigenvalues, eigenvectors = np.linalg.eigh(cov_matrix)
+
+    # Step 4: Sort the eigenvalues and eigenvectors in descending order
+    sorted_indices = np.argsort(eigenvalues)[::-1]
+    eigenvectors = eigenvectors[:, sorted_indices]
+    eigenvalues = eigenvalues[sorted_indices]
+
+    # Step 5: Select the top k eigenvectors
+    # Number of components to retain
+    top_eigenvectors = eigenvectors[:, :k]
+
+    # Step 6: Project the data onto the top k eigenvectors
+    X_reduced = np.dot(X_centered, top_eigenvectors)
+    
+    return X_reduced
 # returns a list of labels for the query dataset based upon labeled observations in the train dataset.
 # metric is a string specifying either "euclidean" or "cosim".  
 # All hyper-parameters should be hard-coded in the algorithm.
@@ -61,9 +86,29 @@ def show(file_name,mode):
             
 def main():
     #show('valid.csv','pixels')
+    k = 250
+    
+    #Testing distance metrics
     a = np.array([1,2])
     b = np.array([3,4])
     cosim(a, b)
+    
+    data = pd.read_csv("mnist_train.csv")
+    
+    X = data.drop(data.columns[0], axis=1)
+    y = data[data.columns[0]] #labels
+    
+    print("Shape of original X: ", X.shape)
+    print("Shape of original y: ", y.shape)
+    
+    X_reduced = reduce(X, k)
+
+    print("X Reduced shape:", X_reduced.shape)
+
+    
+    
+    
+    
     
 if __name__ == "__main__":
     main()
