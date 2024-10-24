@@ -1,11 +1,32 @@
 import numpy as np
+import math
 
 dist = 0
-# returns Euclidean distance between vectors and b
+
+# Returns Euclidean distance between vectors and b
 def euclidean(a,b):
     
     return(dist)
-        
+
+def pearson_corelation(a,b,list):
+    '''
+    input: a(Point1), b(Point2), List of pair of (x,y) points
+    output: pearson corellation coefficient [1 or -1], The stronger the linear relationship.
+            Direction of relationship: Positive indicate that as one variable increases, 
+            the other tends to increase and vice-versa.
+    '''
+
+    sumX,sumY = 0, 0
+    for item in list:
+        sumX += item[0]
+        sumY += item[1]
+    meanX = sumX/len(list)
+    meanY = sumY/len(list)
+    Num = (a[0]-meanX)*(a[1]-meanY) + (b[0]-meanX)*(b[1]-meanY)
+    Denm = math.sqrt( (a[0]-meanX)**2 + (b[0]-meanX)**2 ) * math.sqrt( (a[1]-meanY)**2 + (b[1]-meanY)**2 )
+    r_xy = Num / Denm   
+    return(r_xy)
+
 # returns Cosine Similarity between vectors and b
 def cosim(a,b):
     #Generalize to higher dimensions
@@ -64,6 +85,11 @@ def main():
     a = np.array([1,2])
     b = np.array([3,4])
     cosim(a, b)
+
+    list = [(1,2), (2,3), (3,4)]
+    a = (1,2)
+    b = (2,3)
+    r = pearson_corelation(a=a,b=b,list=list)
     
 if __name__ == "__main__":
     main()
