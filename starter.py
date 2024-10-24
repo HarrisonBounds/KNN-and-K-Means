@@ -17,7 +17,7 @@ def cosim(a,b):
 
     return(dist)
 
-def reduce(examples, k):
+def reduce(examples, r):
     # Step 1: Center the data (subtract the mean)
     X_centered = examples - np.mean(examples, axis=0)
 
@@ -32,14 +32,25 @@ def reduce(examples, k):
     eigenvectors = eigenvectors[:, sorted_indices]
     eigenvalues = eigenvalues[sorted_indices]
 
-    # Step 5: Select the top k eigenvectors
+    # Step 5: Select the top r eigenvectors
     # Number of components to retain
-    top_eigenvectors = eigenvectors[:, :k]
+    top_eigenvectors = eigenvectors[:, :r]
 
     # Step 6: Project the data onto the top k eigenvectors
     X_reduced = np.dot(X_centered, top_eigenvectors)
     
     return X_reduced
+
+def initialize_clusters(example, k):
+    min = np.min(example)
+    max = np.max(example)
+    
+    clusters = []
+    
+    for _ in range(k):
+        rand = np.random.randint(min, max)
+        clusters.append(rand)
+            
 # returns a list of labels for the query dataset based upon labeled observations in the train dataset.
 # metric is a string specifying either "euclidean" or "cosim".  
 # All hyper-parameters should be hard-coded in the algorithm.
