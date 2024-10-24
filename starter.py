@@ -36,13 +36,7 @@ def hamming(a: np.ndarray, b: np.ndarray) -> int:
             f"{np.shape(a)} != {np.shape(b)}"
         )
         raise ValueError("Hamming requires 2 identically-shaped vectors")
-    edits = 0
-    rows, cols = np.shape(a)
-    for r in rows:
-        for c in cols:
-            if a[r][c] != b[r][c]:
-                edits += 1
-    return edits
+    return np.count_nonzero(a != b)
 
 
 # returns Euclidean distance between vectors and b
