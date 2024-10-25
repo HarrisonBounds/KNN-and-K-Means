@@ -3,6 +3,8 @@ import pandas as pd
 
 
 dist = 0
+MIN = 0
+MAX = 28
 # returns Euclidean distance between vectors and b
 def euclidean(a,b):
     
@@ -10,10 +12,11 @@ def euclidean(a,b):
         
 # returns Cosine Similarity between vectors and b
 def cosim(a,b):
+    #Change to vectors
+    a = np.array(a)
+    b = np.array(b)
     #Generalize to higher dimensions
     dist = np.dot(a, b) / np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
-
-    print(dist)
 
     return(dist)
 
@@ -41,19 +44,19 @@ def reduce(examples, r):
     
     return X_reduced
 
-def initialize_clusters(example, k):
-    min = 0
-    max = 28
+def initialize_centroids(k):
     
     clusters = []
     
     for i in range(k):
-        randx = np.random.randint(min, max)
-        randy = np.random.randint(min, max)
+        randx = np.random.randint(MIN, MAX)
+        randy = np.random.randint(MIN, MAX)
         clusters.append((randx, randy))
         
     return clusters
-        
+
+def update_centroids():
+    pass
             
 # returns a list of labels for the query dataset based upon labeled observations in the train dataset.
 # metric is a string specifying either "euclidean" or "cosim".  
@@ -66,7 +69,40 @@ def knn(train,query,metric):
 # metric is a string specifying either "euclidean" or "cosim".  
 # All hyper-parameters should be hard-coded in the algorithm.
 def kmeans(train,query,metric):
-    return(labels)
+    k = 5
+    centroids = initialize_centroids(k)
+    
+    cluster_assignments = {}
+    
+    for iter, example in enumerate(train):
+        print("Iteration ", iter)
+        assigned_centroid = None
+        
+        for i in range(len(example)):
+            pixel_x = i % MAX
+            pixel_y = np.floor(i / 28)
+            pixel_coords = (pixel_x, pixel_y)
+            
+            min_dist = float('inf')
+            
+            for centroid in centroids:
+                dist = cosim(pixel_coords, centroid)
+                if dist < min_dist:
+                    min_dist = dist
+                    assigned_centroid = centroid
+                    
+            if assigned_centroid != None:       
+                if assigned_centroid not in cluster_assignments:
+                    cluster_assignments[assigned_centroid] = [pixel_coords]
+                else:
+                    cluster_assignments[assigned_centroid].append(pixel_coords)
+                
+        #Return after first example to test
+        print("Intialized Centroids: ", centroids)
+        print("Cluster assignments for first example (not reduced): ", cluster_assignments)
+        print("Number of keys in cluster assignments: ", len(cluster_assignments.keys()))
+        return cluster_assignments
+    #return(labels)
 
 def read_data(file_name):
     
@@ -113,7 +149,8 @@ def main():
     
     print("Shape of data: ", data.shape)
     
-    X = data.drop(data.columns[0], axis=1)
+    X = data.drop(data.columns[0], axis=1) #first column is class
+    X = data.drop(data.columns[-1], axis=1) #last column is nan?
     y = data[data.columns[0]] #labels
     
     X = np.array(X)
@@ -121,10 +158,12 @@ def main():
     print("Shape of original X: ", X.shape)
     print("Shape of original y: ", y.shape)
     
+    cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
     
-    clusters = initialize_clusters(X[0], 5)
     
-    print("Clusters: ", clusters)
+    
+    
+
     
     # X_reduced = reduce(X, r)
 
