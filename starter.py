@@ -42,14 +42,18 @@ def reduce(examples, r):
     return X_reduced
 
 def initialize_clusters(example, k):
-    min = np.min(example)
-    max = np.max(example)
+    min = 0
+    max = 28
     
     clusters = []
     
-    for _ in range(k):
-        rand = np.random.randint(min, max)
-        clusters.append(rand)
+    for i in range(k):
+        randx = np.random.randint(min, max)
+        randy = np.random.randint(min, max)
+        clusters.append((randx, randy))
+        
+    return clusters
+        
             
 # returns a list of labels for the query dataset based upon labeled observations in the train dataset.
 # metric is a string specifying either "euclidean" or "cosim".  
@@ -97,7 +101,8 @@ def show(file_name,mode):
             
 def main():
     #show('valid.csv','pixels')
-    k = 250
+    r = 250
+    k = 5
     
     #Testing distance metrics
     a = np.array([1,2])
@@ -106,19 +111,24 @@ def main():
     
     data = pd.read_csv("mnist_train.csv")
     
+    print("Shape of data: ", data.shape)
+    
     X = data.drop(data.columns[0], axis=1)
     y = data[data.columns[0]] #labels
+    
+    X = np.array(X)
     
     print("Shape of original X: ", X.shape)
     print("Shape of original y: ", y.shape)
     
-    X_reduced = reduce(X, k)
+    
+    clusters = initialize_clusters(X[0], 5)
+    
+    print("Clusters: ", clusters)
+    
+    # X_reduced = reduce(X, r)
 
-    print("X Reduced shape:", X_reduced.shape)
-
-    
-    
-    
+    # print("X Reduced shape:", X_reduced.shape)
     
     
 if __name__ == "__main__":
