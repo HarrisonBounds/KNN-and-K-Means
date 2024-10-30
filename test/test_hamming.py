@@ -1,18 +1,11 @@
 
 
-import sys
-import os
-import pytest
+from starter import in_same_dimension, hamming
 import numpy as np
 import sklearn
 import sklearn.metrics
-from starter import in_same_dimension, hamming
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Now you can import modules from the parent directory
 
 
-@pytest.mark.hamming
 def test_hamming():
     a = [1, 0, 1, 0]
     b = [0, 1, 0, 1]
@@ -28,14 +21,12 @@ def test_hamming():
     assert hamming(a, b) == 0
 
 
-@pytest.mark.hamming_vs_np
 def test_hamming_vs_np():
     a = [1, 0, 1, 0]
     b = [0, 1, 0, 1]
     assert hamming(a, b) == np.count_nonzero(np.array(a) != np.array(b))
 
 
-@pytest.mark.hamming_vs_sklearn
 def test_hamming_vs_sklearn():
     a = [1, 0, 1, 0]
     b = [0, 1, 0, 1]
