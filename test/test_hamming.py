@@ -1,8 +1,15 @@
+
+
+import sys
+import os
 import pytest
 import numpy as np
 import sklearn
 import sklearn.metrics
-from starter import hamming
+from starter import in_same_dimension, hamming
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Now you can import modules from the parent directory
 
 
 @pytest.mark.hamming
