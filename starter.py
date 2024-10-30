@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from sklearn.cluster import KMeans
 
 
 dist = 0
@@ -79,8 +80,8 @@ def kmeans(train,query,metric):
         assigned_centroid = None
         
         for i in range(len(example)):
-            pixel_x = i % MAX
-            pixel_y = np.floor(i / 28)
+            pixel_x = int(i % MAX)
+            pixel_y = int(np.floor(i / 28))
             pixel_coords = (pixel_x, pixel_y)
             
             min_dist = float('inf')
@@ -158,11 +159,18 @@ def main():
     print("Shape of original X: ", X.shape)
     print("Shape of original y: ", y.shape)
     
-    cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
-    
-    
-    
-    
+    X_array = []
+    for iter, example in enumerate(X):
+        for i in range(len(example)):
+            pixel_x = int(i % MAX)
+            pixel_y = int(np.floor(i / 28))
+            pixel_coords = (pixel_x, pixel_y)
+            X_array.append(pixel_coords)
+         
+    kmeans = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
+
+    print("Kmeans labels: ", kmeans.labels_)
+    #cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
 
     
     # X_reduced = reduce(X, r)
