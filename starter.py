@@ -4,18 +4,28 @@ from sklearn.cluster import KMeans
 
 
 dist = 0
-MIN = 0
-MAX = 28
+IMAGE_WIDTH = 28
+IMAGE_HEIGHT = 28
 # returns Euclidean distance between vectors and b
 def euclidean(a,b):
-    
-    return(dist)
+    dist = np.sqrt((a[1] - b[1])**2 + (a[0] - b[0])**2)
+    return dist
         
-# returns Cosine Similarity between vectors and b
+# returns Cosine Similarity between vectors a and b
 def cosim(a,b):
     #Change to vectors
     a = np.array(a)
     b = np.array(b)
+    
+    print("a: ", a)
+    print("b: ", b)
+    print("np.dot(a, b): ", np.dot(a, b))
+    
+    numerator = np.dot(a, b)
+    denominator = np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
+    
+    if numerator == 0 or denominator == 0:
+        return 0
     #Generalize to higher dimensions
     dist = np.dot(a, b) / np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
 
@@ -49,9 +59,9 @@ def initialize_centroids(k):
     
     clusters = []
     
-    for i in range(k):
-        randx = np.random.randint(MIN, MAX)
-        randy = np.random.randint(MIN, MAX)
+    for _ in range(k):
+        randx = np.random.randint(0, IMAGE_WIDTH)
+        randy = np.random.randint(0, IMAGE_WIDTH)
         clusters.append((randx, randy))
         
     return clusters
@@ -71,38 +81,36 @@ def knn(train,query,metric):
 # All hyper-parameters should be hard-coded in the algorithm.
 def kmeans(train,query,metric):
     k = 5
+    labels = []
     centroids = initialize_centroids(k)
     
     cluster_assignments = {}
     
-    for iter, example in enumerate(train):
-        print("Iteration ", iter)
-        assigned_centroid = None
-        
+    print("Centroids: ", centroids)
+
+    
+    for example in train:
+        # print("Example :", example)
+        # print("Example[0]: ", example[0])
         for i in range(len(example)):
-            pixel_x = int(i % MAX)
-            pixel_y = int(np.floor(i / 28))
-            pixel_coords = (pixel_x, pixel_y)
+            min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
             
-            min_dist = float('inf')
-            
-            for centroid in centroids:
-                dist = cosim(pixel_coords, centroid)
+            for j, centroid in enumerate(centroids):
+                # print("Example[i]: ", example[i])
+                # print("centroid: ", centroid)
+                dist = euclidean(example[i], centroid)
+                # print("Dist: ", dist)
                 if dist < min_dist:
                     min_dist = dist
-                    assigned_centroid = centroid
-                    
-            if assigned_centroid != None:       
-                if assigned_centroid not in cluster_assignments:
-                    cluster_assignments[assigned_centroid] = [pixel_coords]
-                else:
-                    cluster_assignments[assigned_centroid].append(pixel_coords)
+                    assigned_centroid = j
+                   
+            labels.append(assigned_centroid)
                 
         #Return after first example to test
-        print("Intialized Centroids: ", centroids)
-        print("Cluster assignments for first example (not reduced): ", cluster_assignments)
-        print("Number of keys in cluster assignments: ", len(cluster_assignments.keys()))
-        return cluster_assignments
+        # print("Intialized Centroids: ", centroids)
+        # print("Cluster assignments for first example (not reduced): ", cluster_assignments)
+        # print("Number of keys in cluster assignments: ", len(cluster_assignments.keys()))
+    return labels
     #return(labels)
 
 def read_data(file_name):
@@ -160,16 +168,23 @@ def main():
     print("Shape of original y: ", y.shape)
     
     X_array = []
-    for iter, example in enumerate(X):
-        for i in range(len(example)):
-            pixel_x = int(i % MAX)
-            pixel_y = int(np.floor(i / 28))
-            pixel_coords = (pixel_x, pixel_y)
-            X_array.append(pixel_coords)
-         
-    kmeans = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
 
-    print("Kmeans labels: ", kmeans.labels_)
+    # Convert each pixel index to (x, y) coordinates for each image
+    for example in X:
+        pixel_coords = []
+        for i in range(len(example)):
+            pixel_x = i % IMAGE_WIDTH
+            pixel_y = np.floor(i / IMAGE_HEIGHT)
+            pixel_coords.append((int(pixel_x), int(pixel_y)))
+        X_array.append(pixel_coords)
+            
+    labels = kmeans(X_array, 0, "None")
+    
+    print("Kmeans labels: ", labels)
+         
+    #kmeans_sklearn = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
+
+    #print("Kmeans labels: ", kmeans_sklearn.labels_)
     #cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
 
     
