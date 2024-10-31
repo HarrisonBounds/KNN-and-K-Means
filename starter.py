@@ -121,37 +121,66 @@ def knn(train, query, metric):
 # All hyper-parameters should be hard-coded in the algorithm.
 def kmeans(train,query,metric):
     k = 5
+    max_iters = 100
     labels = []
     centroids = initialize_centroids(k)
+    x_sum = 0
+    y_sum = 0
+    num_pixels = 0
     
     cluster_assignments = {}
     
     print("Centroids: ", centroids)
 
     
-    for example in train:
-        # print("Example :", example)
-        # print("Example[0]: ", example[0])
-        for i in range(len(example)):
-            min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
-            
-            for j, centroid in enumerate(centroids):
-                # print("Example[i]: ", example[i])
-                # print("centroid: ", centroid)
-                dist = euclidean(example[i], centroid)
-                # print("Dist: ", dist)
-                if dist < min_dist:
-                    min_dist = dist
-                    assigned_centroid = j
-                   
-            labels.append(assigned_centroid)
+    for _ in range(max_iters):
+        total_error = 0
+        for example in train:
+            # print("Example :", example)
+            # print("Example[0]: ", example[0])
+            for i in range(len(example)):
+                min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
                 
-        #Return after first example to test
-        # print("Intialized Centroids: ", centroids)
-        # print("Cluster assignments for first example (not reduced): ", cluster_assignments)
-        # print("Number of keys in cluster assignments: ", len(cluster_assignments.keys()))
+                for j, centroid in enumerate(centroids):
+                    # print("Example[i]: ", example[i])
+                    # print("centroid: ", centroid)
+                    dist = euclidean(example[i], centroid)
+                    # print("Dist: ", dist)
+                    if dist < min_dist:
+                        min_dist = dist
+                        assigned_centroid = j
+                        
+                if assigned_centroid in cluster_assignments.keys():
+                    cluster_assignments[assigned_centroid].append(example[i])
+                else:
+                    cluster_assignments[assigned_centroid] = [example[i]]
+                    
+                    
+        #Update centroids
+        new_centroids = []
+        for j in range(len(centroids)):
+            #print("Centroid: ", centroid)
+            for pixel in cluster_assignments[j]:
+                #print("pixel: ", pixel)
+                x_sum += pixel[0]
+                y_sum += pixel[1]
+                num_pixels += 1
+                new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
+            new_centroids.append(new_centroid)
+            
+        #Calculate error
+        for j in range(len(centroids)):
+            dist = euclidean(centroids[j], new_centroids[j])
+            total_error += dist
+            
+        print("Total error: ", total_error)
+            
+        if total_error < 0.01:
+            break
+            
+        centroids = new_centroids
+        
     return labels
-    #return(labels)
 
 def read_data(file_name):
 
@@ -222,7 +251,7 @@ def main():
             
     labels = kmeans(X_array, 0, "None")
     
-    print("Kmeans labels: ", labels)
+    #print("Kmeans labels: ", labels)
          
     #kmeans_sklearn = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
 
