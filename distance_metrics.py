@@ -2,8 +2,20 @@ import numpy as np
 
 
 def euclidean(a, b):
-    """Returns the Euclidean distance between vectors a and b"""
-    dist = np.sqrt((a[1] - b[1])**2 + (a[0] - b[0])**2)
+    """
+    Returns the Euclidean distance between vectors a and b.
+
+    Args:
+        a (np.ndarray): A vector of any dimension
+        b (np.ndarray): A vector of any dimension
+
+    Returns:
+        float: The Euclidean distance between the two vectors
+    """
+    dist = 0
+    for ai, bi in zip(a, b):
+        dist += (ai - bi)**2
+    # dist = np.sqrt((a[1] - b[1])**2 + (a[0] - b[0])**2)
     return dist
 
 # returns Cosine Similarity between vectors a and b
