@@ -277,17 +277,4 @@ def main():
             
     labels = kmeans(X_array, 0, "None")
     
-    #print("Kmeans labels: ", labels)
-         
-    #kmeans_sklearn = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
-
-    #print("Kmeans labels: ", kmeans_sklearn.labels_)
-    #cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
-
-    
-    # X_reduced = reduce(X, r)
-
-    # print("X Reduced shape:", X_reduced.shape)
-    
-    
     main()
