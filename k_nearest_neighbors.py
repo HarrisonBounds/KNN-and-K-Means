@@ -31,36 +31,15 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
             [t for t in train], key=lambda x: f_d(x[1], q)
         )[:k]
         # Find the most common label among the k closest neighbors
-        labels = [t[0] for t in nearest_neighbors]
+        labels_for_neighbor = [t[0] for t in nearest_neighbors]
         # Find the most common label among the k closest neighbors
         # and assign it to the query
-        most_common_label = np.argmax(np.bincount(labels))
+        most_common_label = np.argmax(np.bincount(labels_for_neighbor))
         print(
             f'Query {q}\n' +
             f'Nearest neighbors: {nearest_neighbors}\n' +
-            f'Labels: {labels}\n' +
+            f'Labels for neighbors: {labels_for_neighbor}\n' +
             f'Most common label: {most_common_label}'
         )
         labels.append(most_common_label)
-        print(f'Label[{i}]: {labels[i]}')
     return labels
-
-
-if __name__ == '__main__':
-    train = [
-        [1, [1, 0, 1, 0]],
-        [0, [0, 1, 0, 1]],
-        [1, [1, 1, 1, 1]],
-        [0, [1, 0, 0, 1]],
-        [0, [1, 0, 1, 1]],
-        [0, [0, 1, 1, 0]],
-        [1, [1, 0, 0, 0]],
-        [1, [1, 0, 1, 1]],
-        [0, [1, 1, 0, 1]],
-        [1, [0, 1, 1, 1]],
-        [1, [1, 0, 1, 0]],
-        [0, [0, 1, 1, 0]],
-    ]
-    query = [[1, 0, 1, 0], [1, 1, 1, 1], [0, 0, 0, 1]]
-    labels = knn(train=train, query=query, metric='euclidean', k=3)
-    print(f'KNN Output: {labels}')
