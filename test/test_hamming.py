@@ -1,5 +1,5 @@
 import scipy.spatial
-from starter import in_same_dimension, hamming
+from distance_metrics import hamming
 import sklearn.metrics
 import scipy
 

@@ -29,4 +29,4 @@ def knn(train: list, query: list, metric: str):
     # and assign it to the query
     most_common_label = max(set(labels), key=labels.count)
     labels.append(most_common_label)
-    return (labels)
+    return labels

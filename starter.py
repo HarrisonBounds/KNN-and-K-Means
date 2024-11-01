@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-
+from distance_metrics import euclidean, cosim, hamming
 
 dist = 0
 IMAGE_WIDTH = 28
@@ -116,7 +116,7 @@ def kmeans(train, query, metric):
     return labels
 
 
-def read_data(file_name):
+def read_data(file_name: str) -> list:
 
     data_set = []
     with open(file_name, 'rt') as f:
