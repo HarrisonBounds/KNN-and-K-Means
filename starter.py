@@ -10,7 +10,7 @@ IMAGE_HEIGHT = 28
 
 
 def euclidean(a, b):
-    dist = np.sqrt((a[1] - b[1])**2 + (a[0] - b[0])**2)
+    dist = np.sqrt(np.sum(np.subtract(a, b)**2))
     return dist
 
 # returns Cosine Similarity between vectors a and b
