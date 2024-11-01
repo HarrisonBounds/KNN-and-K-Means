@@ -1,127 +1,11 @@
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-
+from distance_metrics import euclidean, cosim, hamming
 
 dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
-
-
-# returns Euclidean distance between vectors and b
-def euclidean(a, b):
-    """ Returns the euclidean distance between vectors a and b
-
-    Args:
-        a (np.ndarray): A vector of any dimension
-        b (np.ndarray): A vector of any dimension
-
-    Returns:
-        float: The euclidean distance between the two vectors
-
-    Raises:
-        ValueError: If the given vectors are different dimensions
-    """
-    dist = np.sqrt(np.sum(np.subtract(a, b)**2))
-    return dist
-
-
-# returns Cosine Similarity between vectors a and b
-def cosim(a, b):
-    """ Returns the cosine similarity between vectors a and b
-
-    Args:
-        a (np.ndarray): A vector of any dimension
-        b (np.ndarray): A vector of any dimension
-
-    Returns:
-        float: The cosine similarity between the two vectors
-
-    Raises:
-        ValueError: If the given vectors are different dimensions
-    """
-    # Change to vectors
-    a = np.array(a)
-    b = np.array(b)
-
-    numerator = np.dot(a, b)
-    denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
-
-    if numerator == 0 or denominator == 0:
-        return 0
-
-    dist = numerator / denominator
-
-    return (dist)
-
-
-# returns Pearson Correlation between vectors a and b
-def pearson(a: np.ndarray, b: np.ndarray):
-    """ Returns the pearson correlation between vectors a and b
-
-    Args:
-        a (np.ndarray): A vector of any dimension
-        b (np.ndarray): A vector of any dimension
-
-    Returns:
-        float: The pearson correlation between the two vectors
-
-    Raises:
-        ValueError: If the given vectors are different dimensions
-    """
-    a_bar = np.sum(a)/len(a)
-    b_bar = np.sum(b)/len(b)
-
-    numerator = np.sum((a - a_bar)*(b - b_bar))
-    denominator = np.sqrt(np.sum((a - a_bar)**2)) * \
-        np.sqrt(np.sum((b - b_bar)**2))
-
-    if numerator == 0 or denominator == 0:
-        return 0
-
-    r = numerator / denominator
-
-    return r
-
-
-def hamming(a: np.ndarray, b: np.ndarray) -> int:
-    """ Returns the Hamming distance between vectors a and b
-
-    Args:
-        a (np.ndarray): A vector of any dimension
-        b (np.ndarray): A vector of any dimension
-
-    Returns:
-        int: The Hamming distance between the two vectors
-
-    Raises:
-        ValueError: If the given vectors are different dimensions
-    """
-    # Ensure that the two vectors occupy the same dimension
-    if not in_same_dimension(a, b):
-        print(
-            f"Given vectors have different shapes: " +
-            f"{np.shape(a)} != {np.shape(b)}"
-        )
-        raise ValueError("Hamming requires 2 identically-shaped vectors")
-    # Create a vector
-    comparison_vector = np.array([ai != bi for ai, bi in zip(a, b)])
-    return comparison_vector.sum()
-
-
-def in_same_dimension(a: np.ndarray, b: np.ndarray) -> bool:
-    """ Determines if the two given vectors are in the 
-        same dimension or not
-
-    Args:
-        a (np.ndarray): The first vector of any dimension
-        b (np.ndarray): The second vector of any dimension
-
-    Returns:
-        bool: Whether the 2 vectors are the same dimension or not
-    """
-    return np.shape(a) == np.shape(b)
-
 
 def reduce(examples, r):
     # Step 1: Center the data (subtract the mean)
@@ -162,14 +46,6 @@ def initialize_centroids(k):
 
 def update_centroids():
     pass
-
-# returns a list of labels for the query dataset based upon labeled observations in the train dataset.
-# metric is a string specifying either "euclidean" or "cosim".
-# All hyper-parameters should be hard-coded in the algorithm.
-
-
-def knn(train, query, metric):
-    return (labels)
 
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
@@ -239,7 +115,7 @@ def kmeans(train, query, metric):
     return labels
 
 
-def read_data(file_name):
+def read_data(file_name: str) -> list:
 
     data_set = []
     with open(file_name, 'rt') as f:
@@ -276,6 +152,16 @@ def main():
     # show('valid.csv','pixels')
     r = 250
     k = 5
+
+    mnist_training_data = read_data("mnist_train.csv")
+    mnist_testing_data = read_data("mnist_test.csv")
+    mnist_validation_data = read_data("mnist_valid.csv")
+    print(
+        f"Training data: {len(mnist_training_data)} Testing data: {len(
+            mnist_testing_data)} Validation data: {len(mnist_validation_data)}"
+    )
+    # Training data is a list of lists
+    # [[label, [pixels]]
 
     # Testing distance metrics
     a = np.array([1, 2])
@@ -315,8 +201,10 @@ def main():
     # print("Kmeans labels: ", kmeans_sklearn.labels_)
     # cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
 
+    # Only the first 500 examples
+    # cluster_assignments_1 = kmeans(X[:500], None, None)
+
     # X_reduced = reduce(X, r)
-
     # print("X Reduced shape:", X_reduced.shape)
-
+if __name__ == "__main__":
     main()
