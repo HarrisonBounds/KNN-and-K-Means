@@ -127,6 +127,7 @@ def kmeans(train,query,metric):
     x_sum = 0
     y_sum = 0
     num_pixels = 0
+    labels = []
     
     cluster_assignments = {}
     
@@ -135,17 +136,18 @@ def kmeans(train,query,metric):
     
     for _ in range(max_iters):
         total_error = 0
+        
+        #Assign Points
         for example in train:
-            # print("Example :", example)
-            # print("Example[0]: ", example[0])
             for i in range(len(example)):
                 min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
                 
                 for j, centroid in enumerate(centroids):
-                    # print("Example[i]: ", example[i])
-                    # print("centroid: ", centroid)
-                    dist = euclidean(example[i], centroid)
-                    # print("Dist: ", dist)
+                    if metric == "euclidean":
+                        dist = euclidean(example[i], centroid)
+                    elif metric == "cosim":
+                        dist = cosim(example[i], centroid)
+
                     if dist < min_dist:
                         min_dist = dist
                         assigned_centroid = j
@@ -159,18 +161,21 @@ def kmeans(train,query,metric):
         #Update centroids
         new_centroids = []
         for j in range(len(centroids)):
-            #print("Centroid: ", centroid)
             for pixel in cluster_assignments[j]:
-                #print("pixel: ", pixel)
                 x_sum += pixel[0]
                 y_sum += pixel[1]
                 num_pixels += 1
                 new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
+                centroids[j], new_centroids[j]
             new_centroids.append(new_centroid)
             
         #Calculate error
         for j in range(len(centroids)):
-            dist = euclidean(centroids[j], new_centroids[j])
+            if metric == "euclidean":
+                dist = euclidean(centroids[j], new_centroids[j])
+            elif metric == "cosim":
+                cosim(centroids[j], new_centroids[j])
+                
             total_error += dist
             
         print("Total error: ", total_error)
@@ -179,6 +184,27 @@ def kmeans(train,query,metric):
             break
             
         centroids = new_centroids
+        
+        
+    #Run the query set
+    for example in query:
+        for i in range(len(example)):
+                min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
+                
+                for j, centroid in enumerate(centroids):
+                    if metric == "euclidean":
+                        dist = euclidean(example[i], centroid)
+                    elif metric == "cosim":
+                        dist = cosim(example[i], centroid)
+
+                    if dist < min_dist:
+                        min_dist = dist
+                        assigned_centroid = j
+                        
+                if assigned_centroid in cluster_assignments.keys():
+                    cluster_assignments[assigned_centroid].append(example[i])
+                else:
+                    cluster_assignments[assigned_centroid] = [example[i]]
         
     return labels
 
