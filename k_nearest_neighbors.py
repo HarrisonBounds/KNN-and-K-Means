@@ -8,6 +8,25 @@ import numpy as np
 
 
 def knn(train: list, query: list, metric: str, k: int = 5) -> list:
+    """
+    Returns a list of labels for the query dataset based upon observations in the train dataset.
+
+    Note that the length of the labels returned is the same as the length of the query dataset
+    since each query is assigned a label.
+
+    Args:
+        train (list): The training dataset or examples that KNN will utilize to calculate distance and assign labels
+        query (list): The dataset of queries that KNN will assign labels to [list(pixels)]
+        metric (str): The distance metric to use for KNN. Either 'euclidean' or 'cosim'
+        k (int, optional): The number of neighbors to consider. Defaults to 5.
+
+    Raises:
+        ValueError: If the distance metric is not 'euclidean' or 'cosim'
+        ValueError: If the query data is not the same size as the data in the training set.
+
+    Returns:
+        list: The labels assigned to each query in the query dataset
+    """
     # For the given query, find the closest k examples in the training set
     # Assign the most common label among those collected to that given query
     # Do this for all queries
@@ -19,6 +38,8 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         f_d = euclidean
     elif metric == 'cosim':
         f_d = cosim
+    else:
+        raise ValueError('Invalid distance metric given')
     print(
         f'K-Nearest Neighbors using {metric} distance metric and k={k}\n' +
         f'{len(train)} training examples and {len(query)} queries'
@@ -53,7 +74,7 @@ def run_knn():
     print(
         f'Training Data Size: {len(mnist_training_data)}\n' +
         f'Testing Data Size: {len(mnist_testing_data)}\n' +
-        f'Validation Data Size: {len(mnist_validation_data)}\n'
+        f'Validation Data Size: {len(mnist_validation_data)}'
     )
     # Run training data through KNN and receive the labels for each query
     # May have to modify KNN so the query is [label, list(pixels)] instead of just list(pixels)
