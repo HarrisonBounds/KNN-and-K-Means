@@ -22,25 +22,45 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         f'K-Nearest Neighbors using {metric} distance metric and k={k}\n' +
         f'{len(train)} training examples and {len(query)} queries'
     )
-    ls = []
+    labels = []
     for i, q in enumerate(query):
         if len(q) != len(train[i][1]):
             raise ValueError('Invalid query length')
+        # Sort neighbors using distance metric
         nearest_neighbors = sorted(
             [t for t in train], key=lambda x: f_d(x[1], q)
         )[:k]
         # Find the most common label among the k closest neighbors
-        ls = [t[0] for t in nearest_neighbors]
+        labels = [t[0] for t in nearest_neighbors]
         # Find the most common label among the k closest neighbors
         # and assign it to the query
-        most_common_label = np.argmax(np.bincount(ls))
+        most_common_label = np.argmax(np.bincount(labels))
         print(
             f'Query {q}\n' +
             f'Nearest neighbors: {nearest_neighbors}\n' +
-            f'Labels: {ls}\n' +
+            f'Labels: {labels}\n' +
             f'Most common label: {most_common_label}'
         )
-        ls.append(most_common_label)
-        print(f'Label[{i}]: {ls[i]}')
-    print(f'Return: {ls}')
-    return ls
+        labels.append(most_common_label)
+        print(f'Label[{i}]: {labels[i]}')
+    return labels
+
+
+if __name__ == '__main__':
+    train = [
+        [1, [1, 0, 1, 0]],
+        [0, [0, 1, 0, 1]],
+        [1, [1, 1, 1, 1]],
+        [0, [1, 0, 0, 1]],
+        [0, [1, 0, 1, 1]],
+        [0, [0, 1, 1, 0]],
+        [1, [1, 0, 0, 0]],
+        [1, [1, 0, 1, 1]],
+        [0, [1, 1, 0, 1]],
+        [1, [0, 1, 1, 1]],
+        [1, [1, 0, 1, 0]],
+        [0, [0, 1, 1, 0]],
+    ]
+    query = [[1, 0, 1, 0], [1, 1, 1, 1], [0, 0, 0, 1]]
+    labels = knn(train=train, query=query, metric='euclidean', k=3)
+    print(f'KNN Output: {labels}')
