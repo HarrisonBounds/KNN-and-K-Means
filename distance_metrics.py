@@ -9,14 +9,10 @@ def euclidean(a, b):
 # returns Cosine Similarity between vectors a and b
 
 
-def cosim(a, b):
+def cosim(a, b) -> float:
     # Change to vectors
     a = np.array(a)
     b = np.array(b)
-
-    print("a: ", a)
-    print("b: ", b)
-    print("np.dot(a, b): ", np.dot(a, b))
 
     numerator = np.dot(a, b)
     denominator = np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
@@ -24,9 +20,7 @@ def cosim(a, b):
     if numerator == 0 or denominator == 0:
         return 0
     # Generalize to higher dimensions
-    dist = np.dot(a, b) / np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
-
-    return (dist)
+    return numerator / denominator
 
 
 def in_same_dimension(a: np.ndarray, b: np.ndarray) -> bool:

@@ -6,13 +6,12 @@ from distance_metrics import euclidean, cosim
 # All hyper-parameters should be hard-coded in the algorithm.
 
 
-def knn(train: list, query: list, metric: str):
+def knn(train: list, query: list, metric: str, k: int = 5) -> list:
     # For the given query, find the closest k examples in the training set
     # Assign the most common label among those collected to that given query
     # Do this for all queries
     # query is list(pixels) 1-D array of length 784 (img_size)
     # train is list[label, list(pixels)]
-    k = 5
     labels = []
     # Find k closest neighbors by sorting
     f_d = None
@@ -20,13 +19,26 @@ def knn(train: list, query: list, metric: str):
         f_d = euclidean
     elif metric == 'cosim':
         f_d = cosim
-    # Find the k closest neighbors ()
-    nearest_neighbors = sorted(
-        [t for t in train], key=lambda x: f_d(x[1], query))[:k]
-    # Find the most common label among the k closest neighbors
-    labels = [t[0] for t in nearest_neighbors]
-    # Find the most common label among the k closest neighbors
-    # and assign it to the query
-    most_common_label = max(set(labels), key=labels.count)
-    labels.append(most_common_label)
+    print(
+        f'K-Nearest Neighbors using {metric} distance metric and k={k}\n' +
+        f'{len(train)} training examples and {len(query)} queries'
+    )
+    for i, q in enumerate(query):
+        if len(q) != len(train[i][1]):
+            raise ValueError('Invalid query length')
+        nearest_neighbors = sorted(
+            [t for t in train], key=lambda x: f_d(x[1], q)
+        )[:k]
+        # Find the most common label among the k closest neighbors
+        labels = [t[0] for t in nearest_neighbors]
+        # Find the most common label among the k closest neighbors
+        # and assign it to the query
+        most_common_label = max(set(labels), key=labels.count)
+        print(
+            f'Query {q}\n' +
+            f'Nearest neighbors: {nearest_neighbors}\n' +
+            f'Labels: {labels}\n' +
+            f'Most common label: {most_common_label}'
+        )
+        labels.append(most_common_label)
     return labels

@@ -13,7 +13,20 @@ def format_data():
 
 
 def test_knn(format_data):
-    train = [[1, [1, 0, 1, 0]], [0, [0, 1, 0, 1]]]
-    query = [1, 0, 1, 0]
-    labels = knn(train, query, metric='euclidean')
-    assert labels == [1]
+    train = [
+        [1, [1, 0, 1, 0]],
+        [0, [0, 1, 0, 1]],
+        [1, [1, 1, 1, 1]],
+        [0, [1, 0, 0, 1]],
+        [0, [1, 0, 1, 1]],
+        [0, [0, 1, 1, 0]],
+        [1, [1, 0, 0, 0]],
+        [1, [1, 0, 1, 1]],
+        [0, [1, 1, 0, 1]],
+        [1, [0, 1, 1, 1]],
+        [1, [1, 0, 1, 0]],
+        [0, [0, 1, 1, 0]],
+    ]
+    query = [[1, 0, 1, 0], [1, 1, 1, 1], [0, 0, 0, 1]]
+    labels = knn(train, query, metric='cosim', k=3)
+    assert labels == [1, 0, 1, 1]
