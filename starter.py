@@ -193,7 +193,7 @@ def main():
             pixel_coords.append((int(pixel_x), int(pixel_y)))
         X_array.append(pixel_coords)
 
-    # labels = kmeans(X_array, 0, "None")
+    labels = kmeans(X_array, 0, "None")
 
     # print("Kmeans labels: ", labels)
 

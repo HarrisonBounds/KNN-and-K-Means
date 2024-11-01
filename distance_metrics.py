@@ -21,18 +21,24 @@ def euclidean(a, b):
 # returns Cosine Similarity between vectors a and b
 
 
-def cosim(a, b) -> float:
+def cosim(a, b):
     # Change to vectors
     a = np.array(a)
     b = np.array(b)
 
+    # print("a: ", a)
+    # print("b: ", b)
+    # print("np.dot(a, b): ", np.dot(a, b))
+
     numerator = np.dot(a, b)
-    denominator = np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
+    denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
 
     if numerator == 0 or denominator == 0:
         return 0
     # Generalize to higher dimensions
-    return numerator / denominator
+    dist = numerator / denominator
+
+    return (dist)
 
 
 def in_same_dimension(a: np.ndarray, b: np.ndarray) -> bool:
