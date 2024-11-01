@@ -6,73 +6,6 @@ from sklearn.cluster import KMeans
 dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
-# returns Euclidean distance between vectors and b
-
-
-def euclidean(a, b):
-    dist = np.sqrt((a[1] - b[1])**2 + (a[0] - b[0])**2)
-    return dist
-
-# returns Cosine Similarity between vectors a and b
-
-
-def cosim(a, b):
-    # Change to vectors
-    a = np.array(a)
-    b = np.array(b)
-
-    print("a: ", a)
-    print("b: ", b)
-    print("np.dot(a, b): ", np.dot(a, b))
-
-    numerator = np.dot(a, b)
-    denominator = np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
-
-    if numerator == 0 or denominator == 0:
-        return 0
-    # Generalize to higher dimensions
-    dist = np.dot(a, b) / np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
-
-    return (dist)
-
-
-def in_same_dimension(a: np.ndarray, b: np.ndarray) -> bool:
-    """ Determines if the two given vectors are in the 
-        same dimension or not
-
-    Args:
-        a (np.ndarray): The first vector of any dimension
-        b (np.ndarray): The second vector of any dimension
-
-    Returns:
-        bool: Whether the 2 vectors are the same dimension or not
-    """
-    return np.shape(a) == np.shape(b)
-
-
-def hamming(a: np.ndarray, b: np.ndarray) -> int:
-    """ Returns the Hamming distance between vectors a and b
-
-    Args:
-        a (np.ndarray): A vector of any dimension
-        b (np.ndarray): A vector of any dimension
-
-    Returns:
-        int: The Hamming distance between the two vectors
-
-    Raises:
-        ValueError: If the given vectors are different dimensions
-    """
-    # Ensure that the two vectors occupy the same dimension
-    if not in_same_dimension(a, b):
-        print(
-            f"Given vectors have different shapes: " +
-            f"{np.shape(a)} != {np.shape(b)}"
-        )
-        raise ValueError("Hamming requires 2 identically-shaped vectors")
-    # Create a vector
-    comparison_vector = np.array([ai != bi for ai, bi in zip(a, b)])
-    return comparison_vector.sum()
 
 
 def reduce(examples, r):
@@ -114,37 +47,6 @@ def initialize_centroids(k):
 
 def update_centroids():
     pass
-
-# returns a list of labels for the query dataset based upon observations in the train dataset.
-# labels should be ignored in the training set
-# metric is a string specifying either "euclidean" or "cosim".
-# All hyper-parameters should be hard-coded in the algorithm.
-
-
-def knn(train: list, query: list, metric: str):
-    # For the given query, find the closest k examples in the training set
-    # Assign the most common label among those collected to that given query
-    # Do this for all queries
-    # query is list(pixels) 1-D array of length 784 (img_size)
-    # train is list[label, list(pixels)]
-    k = 5
-    labels = []
-    # Find k closest neighbors by sorting
-    f_d = None
-    if metric == 'euclidean':
-        f_d = euclidean
-    elif metric == 'cosim':
-        f_d = cosim
-    # Find the k closest neighbors ()
-    nearest_neighbors = sorted(
-        [t for t in train], key=lambda x: f_d(x[1], query))[:k]
-    # Find the most common label among the k closest neighbors
-    labels = [t[0] for t in nearest_neighbors]
-    # Find the most common label among the k closest neighbors
-    # and assign it to the query
-    most_common_label = max(set(labels), key=labels.count)
-    labels.append(most_common_label)
-    return (labels)
 
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
