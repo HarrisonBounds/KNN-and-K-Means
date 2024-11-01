@@ -1,28 +1,78 @@
 import numpy as np
 import pandas as pd
+from sklearn.cluster import KMeans
 
 
 dist = 0
-MIN = 0
-MAX = 28
+IMAGE_WIDTH = 28
+IMAGE_HEIGHT = 28
 # returns Euclidean distance between vectors and b
 
 
 def euclidean(a, b):
+    dist = np.sqrt((a[1] - b[1])**2 + (a[0] - b[0])**2)
+    return dist
 
-    return (dist)
-
-# returns Cosine Similarity between vectors and b
+# returns Cosine Similarity between vectors a and b
 
 
 def cosim(a, b):
     # Change to vectors
     a = np.array(a)
     b = np.array(b)
+
+    print("a: ", a)
+    print("b: ", b)
+    print("np.dot(a, b): ", np.dot(a, b))
+
+    numerator = np.dot(a, b)
+    denominator = np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
+
+    if numerator == 0 or denominator == 0:
+        return 0
     # Generalize to higher dimensions
     dist = np.dot(a, b) / np.sqrt(np.sum(a**2)) / np.sqrt(np.sum(b**2))
 
     return (dist)
+
+
+def in_same_dimension(a: np.ndarray, b: np.ndarray) -> bool:
+    """ Determines if the two given vectors are in the 
+        same dimension or not
+
+    Args:
+        a (np.ndarray): The first vector of any dimension
+        b (np.ndarray): The second vector of any dimension
+
+    Returns:
+        bool: Whether the 2 vectors are the same dimension or not
+    """
+    return np.shape(a) == np.shape(b)
+
+
+def hamming(a: np.ndarray, b: np.ndarray) -> int:
+    """ Returns the Hamming distance between vectors a and b
+
+    Args:
+        a (np.ndarray): A vector of any dimension
+        b (np.ndarray): A vector of any dimension
+
+    Returns:
+        int: The Hamming distance between the two vectors
+
+    Raises:
+        ValueError: If the given vectors are different dimensions
+    """
+    # Ensure that the two vectors occupy the same dimension
+    if not in_same_dimension(a, b):
+        print(
+            f"Given vectors have different shapes: " +
+            f"{np.shape(a)} != {np.shape(b)}"
+        )
+        raise ValueError("Hamming requires 2 identically-shaped vectors")
+    # Create a vector
+    comparison_vector = np.array([ai != bi for ai, bi in zip(a, b)])
+    return comparison_vector.sum()
 
 
 def reduce(examples, r):
@@ -54,9 +104,9 @@ def initialize_centroids(k):
 
     clusters = []
 
-    for i in range(k):
-        randx = np.random.randint(MIN, MAX)
-        randy = np.random.randint(MIN, MAX)
+    for _ in range(k):
+        randx = np.random.randint(0, IMAGE_WIDTH)
+        randy = np.random.randint(0, IMAGE_WIDTH)
         clusters.append((randx, randy))
 
     return clusters
@@ -65,7 +115,8 @@ def initialize_centroids(k):
 def update_centroids():
     pass
 
-# returns a list of labels for the query dataset based upon labeled observations in the train dataset.
+# returns a list of labels for the query dataset based upon observations in the train dataset.
+# labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
 
@@ -103,41 +154,64 @@ def knn(train: list, query: list, metric: str):
 
 def kmeans(train, query, metric):
     k = 5
+    max_iters = 100
+    labels = []
     centroids = initialize_centroids(k)
+    x_sum = 0
+    y_sum = 0
+    num_pixels = 0
 
     cluster_assignments = {}
 
-    for iter, example in enumerate(train):
-        print("Iteration ", iter)
-        assigned_centroid = None
+    print("Centroids: ", centroids)
 
-        for i in range(len(example)):
-            pixel_x = i % MAX
-            pixel_y = np.floor(i / 28)
-            pixel_coords = (pixel_x, pixel_y)
+    for _ in range(max_iters):
+        total_error = 0
+        for example in train:
+            # print("Example :", example)
+            # print("Example[0]: ", example[0])
+            for i in range(len(example)):
+                min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
 
-            min_dist = float('inf')
+                for j, centroid in enumerate(centroids):
+                    # print("Example[i]: ", example[i])
+                    # print("centroid: ", centroid)
+                    dist = euclidean(example[i], centroid)
+                    # print("Dist: ", dist)
+                    if dist < min_dist:
+                        min_dist = dist
+                        assigned_centroid = j
 
-            for centroid in centroids:
-                dist = cosim(pixel_coords, centroid)
-                if dist < min_dist:
-                    min_dist = dist
-                    assigned_centroid = centroid
-
-            if assigned_centroid != None:
-                if assigned_centroid not in cluster_assignments:
-                    cluster_assignments[assigned_centroid] = [pixel_coords]
+                if assigned_centroid in cluster_assignments.keys():
+                    cluster_assignments[assigned_centroid].append(example[i])
                 else:
-                    cluster_assignments[assigned_centroid].append(pixel_coords)
+                    cluster_assignments[assigned_centroid] = [example[i]]
 
-        # Return after first example to test
-        print("Intialized Centroids: ", centroids)
-        print("Cluster assignments for first example (not reduced): ",
-              cluster_assignments)
-        print("Number of keys in cluster assignments: ",
-              len(cluster_assignments.keys()))
-        return cluster_assignments
-    # return(labels)
+        # Update centroids
+        new_centroids = []
+        for j in range(len(centroids)):
+            # print("Centroid: ", centroid)
+            for pixel in cluster_assignments[j]:
+                # print("pixel: ", pixel)
+                x_sum += pixel[0]
+                y_sum += pixel[1]
+                num_pixels += 1
+                new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
+            new_centroids.append(new_centroid)
+
+        # Calculate error
+        for j in range(len(centroids)):
+            dist = euclidean(centroids[j], new_centroids[j])
+            total_error += dist
+
+        print("Total error: ", total_error)
+
+        if total_error < 0.01:
+            break
+
+        centroids = new_centroids
+
+    return labels
 
 
 def read_data(file_name):
@@ -206,9 +280,28 @@ def main():
     print("Shape of original X: ", X.shape)
     print("Shape of original y: ", y.shape)
 
+    X_array = []
+
+    # Convert each pixel index to (x, y) coordinates for each image
+    for example in X:
+        pixel_coords = []
+        for i in range(len(example)):
+            pixel_x = i % IMAGE_WIDTH
+            pixel_y = np.floor(i / IMAGE_HEIGHT)
+            pixel_coords.append((int(pixel_x), int(pixel_y)))
+        X_array.append(pixel_coords)
+
+    labels = kmeans(X_array, 0, "None")
+
+    # print("Kmeans labels: ", labels)
+
+    # kmeans_sklearn = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
+
+    # print("Kmeans labels: ", kmeans_sklearn.labels_)
+    # cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
+
     # Only the first 500 examples
     # cluster_assignments_1 = kmeans(X[:500], None, None)
-
 
     # X_reduced = reduce(X, r)
     # print("X Reduced shape:", X_reduced.shape)
