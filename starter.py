@@ -7,7 +7,6 @@ dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
 
-
 def reduce(examples, r):
     # Step 1: Center the data (subtract the mean)
     X_centered = examples - np.mean(examples, axis=0)
