@@ -1,12 +1,32 @@
 from distance_metrics import euclidean, cosim
+from starter import read_data
 import numpy as np
+
+
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-
-
 def knn(train: list, query: list, metric: str, k: int = 5) -> list:
+    """
+    Returns a list of labels for the query dataset based upon observations in the train dataset.
+
+    Note that the length of the labels returned is the same as the length of the query dataset
+    since each query is assigned a label.
+
+    Args:
+        train (list): The training dataset or examples that KNN will utilize to calculate distance and assign labels
+        query (list): The dataset of queries that KNN will assign labels to [list(pixels)]
+        metric (str): The distance metric to use for KNN. Either 'euclidean' or 'cosim'
+        k (int, optional): The number of neighbors to consider. Defaults to 5.
+
+    Raises:
+        ValueError: If the distance metric is not 'euclidean' or 'cosim'
+        ValueError: If the query data is not the same size as the data in the training set.
+
+    Returns:
+        list: The labels assigned to each query in the query dataset
+    """
     # For the given query, find the closest k examples in the training set
     # Assign the most common label among those collected to that given query
     # Do this for all queries
@@ -18,6 +38,8 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         f_d = euclidean
     elif metric == 'cosim':
         f_d = cosim
+    else:
+        raise ValueError('Invalid distance metric given')
     print(
         f'K-Nearest Neighbors using {metric} distance metric and k={k}\n' +
         f'{len(train)} training examples and {len(query)} queries'
@@ -43,3 +65,32 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         )
         labels.append(most_common_label)
     return labels
+
+
+def run_knn():
+    mnist_training_data = read_data("mnist_train.csv")
+    mnist_testing_data = read_data("mnist_test.csv")
+    mnist_validation_data = read_data("mnist_valid.csv")
+    print(
+        f'Training Data Size: {len(mnist_training_data)}\n' +
+        f'Testing Data Size: {len(mnist_testing_data)}\n' +
+        f'Validation Data Size: {len(mnist_validation_data)}'
+    )
+    # For examples of running KNN, see test/test_knn.py where some
+    # hardcoded training and query data was used to test the function
+
+    # Before using training data, we may need to run dimensionality reduction on it
+    # to reduce the number of features. We should try reduce() that we wrote
+    # but we should try other methods that the assignment reccomends as well:
+    # grayscale to binary, dimension scaling, etc.
+
+    # Run training data through KNN and receive the labels for each query
+    # We might have to modify KNN so the query is [label, list(pixels)] instead of just list(pixels)
+    # so that we can compare the assigned label to the actual label
+    # Not actually sure if this is how we do this
+
+    # Create a confusion matrix which shows the number of correct and incorrect labels
+    # True positive, true negative, false positive, false negative
+    # We need to do so for each label so we should have a 10x10 matrix
+    # Use the confusion matrix to calculate:
+    # Accuracy, Precision, Recall, F1 Score
