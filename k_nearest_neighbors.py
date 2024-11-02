@@ -66,6 +66,48 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         labels.append(most_common_label)
     return labels
 
+def acuracy_calculation(labels:list, query: list):
+    # For 100% accuracy, diagonal elements of confusino matrix need to be non-zero and rest all needs to be 0.
+    # expected_result =  first row of query (basically the label values)
+    expected_result = []
+    confusion_matrix = generate_confision_matrix(labels, expected_result)
+    # generate 10 binary classification matrix
+    # calculate metrics for each 10 and consider their mean as the system metric.
+    accuracy,precision,recall,f1_score  = 0.0
+    display(confusion_matrix)
+    print(f"Accuracy of knn: {accuracy}")
+    print(f"Precision of knn: {precision}")
+    print(f"Recall of knn: {recall}")
+    print(f"F1 Score of knn: {f1_score}")
+
+def generate_confision_matrix(labels:list, expected_result: list):
+    # confusion matrix: is a square (n*n) matrix, with n = number of label options, as a result of knn and actual label of the querry set.
+    # In this case, if the input data is sufficiently large: CM -> 10*10 
+    pass
+
+def display():
+    # To display the matirx, needs to be called for each dist metric.
+    pass
+
+def test_knn():
+    print("test function printing")
+    train = [
+        [1, [1, 0, 1, 0]],
+        [0, [0, 1, 0, 1]],
+        [1, [1, 1, 1, 1]],
+        [0, [1, 0, 0, 1]],
+        [0, [1, 0, 1, 1]],
+        [0, [0, 1, 1, 0]],
+        [1, [1, 0, 0, 0]],
+        [1, [1, 0, 1, 1]],
+        [0, [1, 1, 0, 1]],
+        [1, [0, 1, 1, 1]],
+        [1, [1, 0, 1, 0]],
+        [0, [0, 1, 1, 0]],
+    ]
+    query = [[1, 0, 1, 0], [1, 1, 1, 1], [0, 0, 0, 1]]
+    assert knn(train=train, query=query, metric='euclidean', k=3) == [1, 1, 0]
+
 
 def run_knn():
     mnist_training_data = read_data("mnist_train.csv")
