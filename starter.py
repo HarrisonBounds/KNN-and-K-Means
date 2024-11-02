@@ -24,7 +24,7 @@ def reduce_data(data_set):
     data_cp = deepcopy(data_set)
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
-    threshold = 0.1
+    threshold = 0.01
     global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
@@ -146,15 +146,6 @@ def kmeans(train, query, metric, k=10):
 
     for c in classes:
         labels.append(int(c))
-
-        if dist < min_dist:
-            min_dist = dist
-            assigned_centroid = j
-
-        if assigned_centroid in cluster_assignments.keys():
-            cluster_assignments[assigned_centroid].append(query_reduced[i][0])
-        else:
-            cluster_assignments[assigned_centroid] = [query_reduced[i][0]]
 
     return labels
 
