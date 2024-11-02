@@ -1,6 +1,4 @@
 import numpy as np
-import pandas as pd
-from sklearn.cluster import KMeans
 from distance_metrics import euclidean, cosim, pearson, hamming
 from copy import deepcopy
 
@@ -24,17 +22,17 @@ def reduce_data(data_set):
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
     threshold = 0.01
+    global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
 
-    for ind in sorted(removed_features, reverse=True):
-        for entry in data_cp:
-            del entry[1][ind]
+    for entry in data_cp:
+        entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
 
     return data_cp
 
 
-def reduce_query(image):
+def reduce_query(data_set):
     """ Returns the reduced query point
 
     Args:
@@ -44,23 +42,37 @@ def reduce_query(image):
         (int, ndarray): Reduced image
 
     """
-    image_cp = deepcopy(image)
-    for ind in sorted(removed_features, reverse=True):
-        del image[1][ind]
+    print(removed_features)
+    query_cp = deepcopy(data_set)
+    for entry in query_cp:
+        entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
 
-    return image_cp
+    return query_cp
 
 
-def initialize_centroids(k):
+def initialize_centroids(k, data):
+    centroids = []
 
-    clusters = []
+    ind = np.random.randint(0, len(data))
+    centroids.append(data[ind][1])
 
-    for _ in range(k):
-        randx = np.random.randint(0, IMAGE_WIDTH)
-        randy = np.random.randint(0, IMAGE_WIDTH)
-        clusters.append((randx, randy))
+    for i in range(1, k):
+        distances = []
+        for x in data:
+            to_centroid = []
+            for c in centroids[:i]:
+                to_centroid.append(euclidean(x[1], c))
+            distances.append(np.min(to_centroid))
 
-    return clusters
+        distances = np.array(distances)
+
+        probabilities = distances**2
+        probabilities /= np.sum(probabilities)
+
+        next_centroid = np.random.choice(len(data), p=probabilities)
+        centroids.append(data[next_centroid][1])
+
+    return np.array(centroids)
 
 
 def update_centroids():
@@ -75,62 +87,141 @@ def kmeans(train, query, metric):
     k = 5
     max_iters = 100
     labels = []
-    centroids = initialize_centroids(k)
-    x_sum = 0
-    y_sum = 0
-    num_pixels = 0
-
+    train_reduced = reduce_data(train)
+    centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
 
     print("Centroids: ", centroids)
 
     for _ in range(max_iters):
-        total_error = 0
-        for example in train:
-            # print("Example :", example)
-            # print("Example[0]: ", example[0])
-            for i in range(len(example)):
-                min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
+        distances = []
+        for c in centroids:
+            centroid_dist = []
+            for x in train_reduced:
+                if metric == "euclidean":
+                    centroid_dist.append(euclidean(c, x[1]))
+                elif metric == "cosim":
+                    centroid_dist.append(cosim(c, x[1]))
+            distances.append(np.array(centroid_dist))
+        distances = np.array(distances)
 
-                for j, centroid in enumerate(centroids):
-                    # print("Example[i]: ", example[i])
-                    # print("centroid: ", centroid)
-                    dist = euclidean(example[i], centroid)
-                    # print("Dist: ", dist)
-                    if dist < min_dist:
-                        min_dist = dist
-                        assigned_centroid = j
+        # Assign clusters based on minimum distance to centroids
+        clusters = np.argmin(distances, axis=0)
 
-                if assigned_centroid in cluster_assignments.keys():
-                    cluster_assignments[assigned_centroid].append(example[i])
-                else:
-                    cluster_assignments[assigned_centroid] = [example[i]]
-
-        # Update centroids
         new_centroids = []
-        for j in range(len(centroids)):
-            # print("Centroid: ", centroid)
-            for pixel in cluster_assignments[j]:
-                # print("pixel: ", pixel)
-                x_sum += pixel[0]
-                y_sum += pixel[1]
-                num_pixels += 1
-                new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
-            new_centroids.append(new_centroid)
+        for i in range(k):
+            cluster_group = []
+            for j in range(len(train_reduced)):
+                if clusters[j] == i:
+                    cluster_group.append(train_reduced[j][1])
 
-        # Calculate error
-        for j in range(len(centroids)):
-            dist = euclidean(centroids[j], new_centroids[j])
-            total_error += dist
+            cluster_group = np.array(cluster_group)
 
-        print("Total error: ", total_error)
+            if len(cluster_group) > 0:
+                centroid = cluster_group.mean(axis=0)
+            else:
+                centroid = np.zeros(len(train_reduced[0][1]))
 
-        if total_error < 0.01:
+            new_centroids.append(centroid)
+
+        new_centroids = np.array(new_centroids)
+
+        if np.all(new_centroids == centroids):
             break
+        else:
+            centroids = new_centroids
 
-        centroids = new_centroids
+    query_reduced = reduce_query(query)
+
+    query_distances = []
+    for c in centroids:
+        centroid_dist = []
+        for q in query_reduced:
+            if metric == "euclidean":
+                centroid_dist.append(euclidean(q[1], c))
+            elif metric == "cosim":
+                centroid_dist.append(cosim(q[1], c))
+        query_distances.append(np.array(centroid_dist))
+    query_distances = np.array(query_distances)
+    print(query_distances.shape)
+
+    classes = np.argmin(query_distances, axis=0)
+
+    for c in classes:
+        labels.append(int(c))
 
     return labels
+
+    # # Harrison code
+    # for _ in range(max_iters):
+    #     total_error = 0
+    #     # Assign Points
+    #     for example in train:
+    #         for i in range(len(example)):
+
+    #             for j, centroid in enumerate(centroids):
+    #                 if metric == "euclidean":
+    #                     dist = euclidean(example[i], centroid)
+    #                 elif metric == "cosim":
+    #                     dist = cosim(example[i], centroid)
+
+    #                 if dist < min_dist:
+    #                     min_dist = dist
+    #                     assigned_centroid = j
+
+    #             if assigned_centroid in cluster_assignments.keys():
+    #                 cluster_assignments[assigned_centroid].append(example[i])
+    #             else:
+    #                 cluster_assignments[assigned_centroid] = [example[i]]
+
+    #     # Update centroids
+    #     new_centroids = []
+    #     for j in range(len(centroids)):
+    #         for pixel in cluster_assignments[j]:
+    #             x_sum += pixel[0]
+    #             y_sum += pixel[1]
+    #             num_pixels += 1
+    #             new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
+    #             centroids[j], new_centroids[j]
+    #         new_centroids.append(new_centroid)
+
+    #     # Calculate error
+    #     for j in range(len(centroids)):
+    #         if metric == "euclidean":
+    #             dist = euclidean(centroids[j], new_centroids[j])
+    #         elif metric == "cosim":
+    #             cosim(centroids[j], new_centroids[j])
+
+    #         total_error += dist
+
+    #     print("Total error: ", total_error)
+
+    #     if total_error < 0.01:
+    #         break
+
+    #     centroids = new_centroids
+
+    # # Run the query set
+    # for example in query:
+    #     for i in range(len(example)):
+    #         min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
+
+    #         for j, centroid in enumerate(centroids):
+    #             if metric == "euclidean":
+    #                 dist = euclidean(example[i], centroid)
+    #             elif metric == "cosim":
+    #                 dist = cosim(example[i], centroid)
+
+    #             if dist < min_dist:
+    #                 min_dist = dist
+    #                 assigned_centroid = j
+
+    #         if assigned_centroid in cluster_assignments.keys():
+    #             cluster_assignments[assigned_centroid].append(example[i])
+    #         else:
+    #             cluster_assignments[assigned_centroid] = [example[i]]
+
+    # return labels
 
 
 def read_data(file_name: str) -> list:
@@ -144,7 +235,7 @@ def read_data(file_name: str) -> list:
             attribs = []
             for i in range(784):
                 attribs.append(tokens[i+1])
-            data_set.append([label, attribs])
+            data_set.append([label, np.array(attribs, dtype=float)])
     return (data_set)
 
 
@@ -174,56 +265,9 @@ def main():
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
-    print(
-        f"Training data: {len(mnist_training_data)} Testing data: {len(
-            mnist_testing_data)} Validation data: {len(mnist_validation_data)}"
-    )
-    # Training data is a list of lists
-    # [[label, [pixels]]
 
-    # Testing distance metrics
-    a = np.array([1, 2])
-    b = np.array([3, 4])
-    cosim(a, b)
+    labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
+    print(labels)
 
-    data = pd.read_csv("mnist_train.csv")
-
-    print("Shape of data: ", data.shape)
-
-    X = data.drop(data.columns[0], axis=1)  # first column is class
-    X = data.drop(data.columns[-1], axis=1)  # last column is nan?
-    y = data[data.columns[0]]  # labels
-
-    X = np.array(X)
-
-    print("Shape of original X: ", X.shape)
-    print("Shape of original y: ", y.shape)
-
-    X_array = []
-
-    # Convert each pixel index to (x, y) coordinates for each image
-    for example in X:
-        pixel_coords = []
-        for i in range(len(example)):
-            pixel_x = i % IMAGE_WIDTH
-            pixel_y = np.floor(i / IMAGE_HEIGHT)
-            pixel_coords.append((int(pixel_x), int(pixel_y)))
-        X_array.append(pixel_coords)
-
-    labels = kmeans(X_array, 0, "None")
-
-    # print("Kmeans labels: ", labels)
-
-    # kmeans_sklearn = KMeans(n_clusters=5, random_state=0, n_init='auto').fit(X_array)
-
-    # print("Kmeans labels: ", kmeans_sklearn.labels_)
-    # cluster_assignments_1 = kmeans(X[:500], None, None) #Only the first 500 examples
-
-    # Only the first 500 examples
-    # cluster_assignments_1 = kmeans(X[:500], None, None)
-
-    # X_reduced = reduce(X, r)
-    # print("X Reduced shape:", X_reduced.shape)
-    
 if __name__ == "__main__":
     main()
