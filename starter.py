@@ -1,35 +1,38 @@
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-from distance_metrics import euclidean, cosim, hamming
+from distance_metrics import euclidean, cosim, pearson, hamming
+from copy import deepcopy
 
 dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
 
-def reduce(examples, r):
-    # Step 1: Center the data (subtract the mean)
-    X_centered = examples - np.mean(examples, axis=0)
+removed_features = []
 
-    # Step 2: Compute the covariance matrix
-    cov_matrix = np.cov(X_centered, rowvar=False)
 
-    # Step 3: Get eigenvalues and eigenvectors
-    eigenvalues, eigenvectors = np.linalg.eigh(cov_matrix)
+def reduce(data_set):
+    """ Returns the reduced dataset using variance thresholding
 
-    # Step 4: Sort the eigenvalues and eigenvectors in descending order
-    sorted_indices = np.argsort(eigenvalues)[::-1]
-    eigenvectors = eigenvectors[:, sorted_indices]
-    eigenvalues = eigenvalues[sorted_indices]
+    Args:
+        data_set (ndarray(int, ndarray)): processed data
 
-    # Step 5: Select the top r eigenvectors
-    # Number of components to retain
-    top_eigenvectors = eigenvectors[:, :r]
+    Returns:
+        ndarray(int, ndarray): Reduced dataset
 
-    # Step 6: Project the data onto the top k eigenvectors
-    X_reduced = np.dot(X_centered, top_eigenvectors)
+    """
+    data_cp = deepcopy(data_set)
+    features = np.array([feature[1] for feature in data_cp])
+    variances = np.var(features, axis=0)
+    threshold = 0.01
+    removed_features = [index for index, variance in enumerate(
+        variances) if variance < threshold]
 
-    return X_reduced
+    for ind in sorted(removed_features, reverse=True):
+        for entry in data_cp:
+            del entry[1][ind]
+
+    return data_cp
 
 
 def initialize_centroids(k):
@@ -47,12 +50,11 @@ def initialize_centroids(k):
 def update_centroids():
     pass
 
+
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-
-
 def kmeans(train, query, metric):
     k = 5
     max_iters = 100
@@ -203,6 +205,7 @@ def main():
 
     # Only the first 500 examples
     # cluster_assignments_1 = kmeans(X[:500], None, None)
+
 
     # X_reduced = reduce(X, r)
     # print("X Reduced shape:", X_reduced.shape)

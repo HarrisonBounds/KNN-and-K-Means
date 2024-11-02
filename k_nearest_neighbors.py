@@ -1,12 +1,12 @@
 from distance_metrics import euclidean, cosim
 from starter import read_data
 import numpy as np
+
+
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-
-
 def knn(train: list, query: list, metric: str, k: int = 5) -> list:
     """
     Returns a list of labels for the query dataset based upon observations in the train dataset.
