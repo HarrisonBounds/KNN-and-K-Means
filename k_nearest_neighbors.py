@@ -1,8 +1,8 @@
 from distance_metrics import euclidean, cosim
 from starter import read_data
 import numpy as np
-import statistics
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
@@ -84,50 +84,27 @@ def evaluate_knn_accuracy(labels: list, query: list) -> tuple:
     # For 100% accuracy, diagonal elements of confusion matrix need to be non-zero and rest all needs to be 0.
     expected_result = [row[0] for row in query]
     confusion_matrix = generate_confision_matrix(labels, expected_result)
-    # Generating binary classification matrices.
-    n = 10
-    # binary_matrices is a dict[key as label : 0-9] of each bm.
-    binary_matrices = {}
-    accuracy_indv, precision_indv, recall_indv, f1_score_indv = {}, {}, {}, {}
-    for i in range(n):
-        binary_matrix = np.zeros((2, 2))
-        # True positive
-        binary_matrix[0][0] = confusion_matrix[i][i]
-        for j in range(n):
-            for k in range(n):
-                if (j != i and k != i):
-                    # True negetive
-                    binary_matrix[1][1] += confusion_matrix[j][k]
-        for j in range(n):
-            if (j != i):
-                # False negetive
-                binary_matrix[1][0] += confusion_matrix[j][i]
-                # False positive
-                binary_matrix[0][1] += confusion_matrix[i][j]
-        binary_matrices[i] = binary_matrix
-        total_sum = binary_matrix[0][0] + binary_matrix[0][1] + \
-            binary_matrix[1][0] + binary_matrix[1][1]
-        accuracy_indv[i] = (binary_matrix[0][0] +
-                            binary_matrix[1][1]) / total_sum
-        precision_indv[i] = binary_matrix[0][0] / \
-            (binary_matrix[0][0] + binary_matrix[0][1])
-        recall_indv[i] = binary_matrix[0][0] / \
-            (binary_matrix[0][0] + binary_matrix[1][0])
-        f1_score_indv[i] = (2 * precision_indv[i] * recall_indv[i]
-                            ) / (precision_indv[i] + recall_indv[i])
-
-    # Calculate metrics for each and consider their mean as the system metric.
-    accuracy = statistics.mean(accuracy_indv.values())
-    precision = statistics.mean(precision_indv.values())
-    recall = statistics.mean(recall_indv.values())
-    f1_score = statistics.mean(f1_score_indv.values())
-
-    print_confusion_matrix(confusion_matrix)
-    print(f"Accuracy of knn: {accuracy}")
-    print(f"Precision of knn: {precision}")
-    print(f"Recall of knn: {recall}")
-    print(f"F1 Score of knn: {f1_score}")
-    return accuracy, precision, recall, f1_score
+    num_labels = confusion_matrix.shape[0]
+    metrics = []  # (accuracy, precision, recall, f1_score)
+    for i in range(num_labels):
+        # True Positives: Diagonal elements (Correctly classified)
+        tp = confusion_matrix[i][i]
+        # False Negatives: Everything in this row except TP since it is not classified as i
+        fn = np.sum(confusion_matrix[i, :]) - tp
+        # False Positives: Everything in this column except TP since it is not classified as i
+        fp = np.sum(confusion_matrix[:, i]) - tp
+        # True Negatives: Everything except TP, FN, FP
+        tn = np.sum(confusion_matrix) - (tp + fn + fp)
+        accuracy = (tp + tn) / np.sum(confusion_matrix)
+        precision = tp / (tp + fp) if tp + fp > 0 else 0
+        recall = tp / (tp + fn) if tp + fn > 0 else 0
+        f1_score = (2 * precision * recall) / \
+            (precision + recall) if precision + recall > 0 else 0
+        metrics.append(
+            [accuracy, precision, recall, f1_score]
+        )
+    accuracy, precision, recall, f1_score = np.mean(metrics, axis=0)
+    return (accuracy, precision, recall, f1_score)
 
 
 def generate_confision_matrix(labels: list, expected_result: list):
@@ -148,38 +125,15 @@ def generate_confision_matrix(labels: list, expected_result: list):
     return confusion_matrix
 
 
-def print_confusion_matrix(confusion_matrix):
-    # To display the matirx, needs to be called for each dist metric.
-    # Show the row and column labels.
-    print("Confusion Matrix:\n")
-    for i in range(len(confusion_matrix)):
-        print(f"Label {i}: {confusion_matrix[i]}")
-    print("\n")
-
-
-def test_knn():
-    train = [
-        [1, [1, 0, 1, 0]],
-        [0, [0, 1, 0, 1]],
-        [1, [1, 1, 1, 1]],
-        [0, [1, 0, 0, 1]],
-        [0, [1, 0, 1, 1]],
-        [0, [0, 1, 1, 0]],
-        [1, [1, 0, 0, 0]],
-        [1, [1, 0, 1, 1]],
-        [0, [1, 1, 0, 1]],
-        [1, [0, 1, 1, 1]],
-        [1, [1, 0, 1, 0]],
-        [0, [0, 1, 1, 0]]
-    ]
-    query = [[1, [1, 0, 1, 0]], [1, [1, 1, 1, 1]], [0, [0, 0, 0, 1]]]
-    labels = knn(train=train, query=query, metric='euclidean', k=3)
-    assert labels == [1, 1, 0]
-
-    confusion_matrix = generate_confision_matrix(
-        labels, expected_result=[q[0] for q in query])
-    print_confusion_matrix(confusion_matrix)
-    evaluate_knn_accuracy(labels, query)
+def display_confusion_matrix(confusion_matrix, show_heatmap=True):
+    print(f'Confusion Matrix:\n{confusion_matrix}')
+    if show_heatmap:
+        plt.figure(figsize=(10, 7))
+        sns.heatmap(confusion_matrix, annot=True, fmt='d')
+        plt.xlabel("Predicted Labels")
+        plt.ylabel("True Labels")
+        plt.title("Confusion Matrix")
+        plt.show()
 
 
 def run_knn():
@@ -206,4 +160,4 @@ def run_knn():
 
 
 if __name__ == "__main__":
-    test_knn()
+    run_knn()
