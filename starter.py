@@ -2,6 +2,8 @@ import numpy as np
 from distance_metrics import euclidean, cosim, pearson, hamming
 from copy import deepcopy
 
+
+np.random.seed(30)
 dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
@@ -22,13 +24,13 @@ def reduce_data(data_set):
     data_cp = deepcopy(data_set)
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
-    threshold = 0.001
+    threshold = 0.01
     global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
 
     for entry in data_cp:
-        entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
+        entry[1] = np.delete(entry[1], removed_features)
 
     return data_cp
 
@@ -45,7 +47,7 @@ def reduce_query(data_set):
     """
     query_cp = deepcopy(data_set)
     for entry in query_cp:
-        entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
+        entry[1] = np.delete(entry[1], removed_features)
 
     return query_cp
 
@@ -79,8 +81,7 @@ def initialize_centroids(k, data):
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-def kmeans(train, query, metric):
-    k = 10
+def kmeans(train, query, metric, k=10):
     max_iters = 100
     labels = []
     train_reduced = reduce_data(train)
@@ -126,6 +127,8 @@ def kmeans(train, query, metric):
         else:
             centroids = new_centroids
 
+    print(centroids)
+
     query_reduced = reduce_query(query)
 
     query_distances = []
@@ -149,9 +152,16 @@ def kmeans(train, query, metric):
 
 def accuracy(labels, test_data):
     correct = 0
+    true_labels = []
+    for x in test_data:
+        true_labels.append(int(x[0]))
+    true_labels = sorted(true_labels)
+    labels = sorted(labels)
+    print(true_labels)
+    print(labels)
     for i in range(len(labels)):
-        print(f"Label: {int(test_data[i][0])}, Predicted: {labels[i]}")
-        if int(test_data[i][0]) == labels[i]:
+        print(f"Label: {true_labels[i]}, Predicted: {labels[i]}")
+        if true_labels[i] == labels[i]:
             correct += 1
 
     return correct / len(labels)
@@ -199,7 +209,7 @@ def main():
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
 
-    labels = kmeans(mnist_training_data, mnist_testing_data, "cosim")
+    labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
     print(accuracy(labels, mnist_testing_data))
 
 

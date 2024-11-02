@@ -36,7 +36,7 @@ def cosim(a, b):
     # Change to vectors
     numerator = np.dot(a, b)
     denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
-
+    # print(f"Numerator: {numerator}, Denominator: {denominator}")
     if numerator == 0 or denominator == 0:
         return 0
 
