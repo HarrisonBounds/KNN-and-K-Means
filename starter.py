@@ -43,7 +43,6 @@ def reduce_query(data_set):
         (int, ndarray): Reduced image
 
     """
-    print(removed_features)
     query_cp = deepcopy(data_set)
     for entry in query_cp:
         entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
@@ -76,23 +75,17 @@ def initialize_centroids(k, data):
     return np.array(centroids)
 
 
-def update_centroids():
-    pass
-
-
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
 def kmeans(train, query, metric):
-    k = 5
+    k = 10
     max_iters = 100
     labels = []
     train_reduced = reduce_data(train)
     centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
-
-    print("Centroids: ", centroids)
 
     for _ in range(max_iters):
         distances = []
@@ -144,7 +137,6 @@ def kmeans(train, query, metric):
                 centroid_dist.append(cosim(q[1], c))
         query_distances.append(np.array(centroid_dist))
     query_distances = np.array(query_distances)
-    print(query_distances.shape)
 
     classes = np.argmin(query_distances, axis=0)
 
@@ -225,6 +217,15 @@ def kmeans(train, query, metric):
     # return labels
 
 
+def accuracy(labels, test_data):
+    correct = 0
+    for i in range(len(labels)):
+        if int(test_data[i][0]) == labels[i]:
+            correct += 1
+
+    return correct / len(labels)
+
+
 def read_data(file_name: str) -> list:
 
     data_set = []
@@ -268,7 +269,7 @@ def main():
     mnist_validation_data = read_data("mnist_valid.csv")
 
     labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
-    print(labels)
+    print(accuracy(labels, mnist_testing_data))
 
 
 if __name__ == "__main__":
