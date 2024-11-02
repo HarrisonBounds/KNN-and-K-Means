@@ -45,7 +45,7 @@ def cosim(a, b):
 
     dist = numerator / denominator
 
-    return (dist)
+    return dist
 
 
 # returns Pearson Correlation between vectors a and b
