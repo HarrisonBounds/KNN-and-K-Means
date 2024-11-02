@@ -10,26 +10,6 @@ IMAGE_HEIGHT = 28
 
 removed_features = []
 
-# check if needed here...
-# def pearson_corelation(a,b,list):
-#     '''
-#     input: a(Point1), b(Point2), List of pair of (x,y) points
-#     output: pearson corellation coefficient [1 or -1], The stronger the linear relationship.
-#             Direction of relationship: Positive indicate that as one variable increases, 
-#             the other tends to increase and vice-versa.
-#     '''
-
-#     sumX,sumY = 0, 0
-#     for item in list:
-#         sumX += item[0]
-#         sumY += item[1]
-#     meanX = sumX/len(list)
-#     meanY = sumY/len(list)
-#     Num = (a[0]-meanX)*(a[1]-meanY) + (b[0]-meanX)*(b[1]-meanY)
-#     Denm = math.sqrt( (a[0]-meanX)**2 + (b[0]-meanX)**2 ) * math.sqrt( (a[1]-meanY)**2 + (b[1]-meanY)**2 )
-#     r_xy = Num / Denm   
-#     return(r_xy)
-
 def reduce_data(data_set):
     """ Returns the reduced dataset using variance thresholding
 
@@ -206,12 +186,6 @@ def main():
     b = np.array([3, 4])
     cosim(a, b)
 
-#    remove if not needed
-    # list = [(1,2), (2,3), (3,4)]
-    # a = (1,2)
-    # b = (2,3)
-    # r = pearson_corelation(a=a,b=b,list=list)
-
     data = pd.read_csv("mnist_train.csv")
 
     print("Shape of data: ", data.shape)
@@ -250,5 +224,6 @@ def main():
 
     # X_reduced = reduce(X, r)
     # print("X Reduced shape:", X_reduced.shape)
+    
 if __name__ == "__main__":
     main()
