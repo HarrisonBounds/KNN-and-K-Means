@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 from starter import cosim
 
+users = ["A", "B", "C"]
+user_ids = [405, 655, 13]
+
 user_a_train = pd.read_csv("train_a.txt", delimiter='\t')
 user_b_train = pd.read_csv("train_b.txt", delimiter='\t')
 user_c_train = pd.read_csv("train_c.txt", delimiter='\t')
@@ -30,6 +33,21 @@ for movie1 in user_item_matrix.columns:
             similairty_row.append((movie2, similarity_score))
             
     similarity_results[movie1] = similairty_row
+    
+    
+    
+#Recommend movies to users - need to generalize 
+for i in len(users):
+    user_id = user_ids[i]
+    
+    user_ratings = user_item_matrix.loc[user_id]
+    
+    for user_movie in user_item_matrix.columns:
+        if user_ratings[user_movie] > 0: #Only look at movies that this user hasn't rated
+            continue
+        
+     #Calculate the similarity between the movies this user hasnt seen and the other users movies   
+    
     
 
         
