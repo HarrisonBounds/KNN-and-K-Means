@@ -68,12 +68,31 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
 
 def acuracy_calculation(labels:list, query: list):
     # For 100% accuracy, diagonal elements of confusino matrix need to be non-zero and rest all needs to be 0.
-    # expected_result =  first row of query (basically the label values)
-    expected_result = []
+    expected_result = [row[0] for row in query]
     confusion_matrix = generate_confision_matrix(labels, expected_result)
-    # generate 10 binary classification matrix
+    # Generating binary classification matrices.
+    n = 10
+    # binary_matrices is a dict[key as label : 0-9] of each bm. 
+    binary_matrices = {}
+    for i in range(n):
+        binary_matrix = np.zeros((2,2))
+        # True positive
+        binary_matrix[0][0] = confusion_matrix[i][i]
+        for j in range(n):
+            for k in range(n):
+                if (j != i and k != i):
+                    # True negetive
+                    binary_matrix[1][1] += confusion_matrix[j][k]        
+        for j in range(n):
+            if (j!= i):
+                # False negetive
+                binary_matrix[1][0] += confusion_matrix[j][i]        
+                # False positive
+                binary_matrix[0][1] += confusion_matrix[i][j]
+        binary_matrices[i] = binary_matrix
+        
     # calculate metrics for each 10 and consider their mean as the system metric.
-    accuracy,precision,recall,f1_score  = 0.0
+    accuracy,precision,recall,f1_score  = 0.0, 0,0,0
     display(confusion_matrix)
     print(f"Accuracy of knn: {accuracy}")
     print(f"Precision of knn: {precision}")
@@ -81,11 +100,17 @@ def acuracy_calculation(labels:list, query: list):
     print(f"F1 Score of knn: {f1_score}")
 
 def generate_confision_matrix(labels:list, expected_result: list):
-    # confusion matrix: is a square (n*n) matrix, with n = number of label options, as a result of knn and actual label of the querry set.
+    # Confusion matrix: is a square (n*n) matrix, with n = number of label options, as a result of knn and actual label of the querry set.
     # In this case, if the input data is sufficiently large: CM -> 10*10 
-    pass
+    # to generalise: Replace 10 with n.
+    confusion_matrix = np.zeros((10,10))
+    for i in range(len(labels)):
+        confusion_matrix[expected_result[i]][labels[i]] += 1
+    return confusion_matrix
 
-def display():
+
+
+def display(confusion_matrix):
     # To display the matirx, needs to be called for each dist metric.
     pass
 
@@ -107,6 +132,11 @@ def test_knn():
     ]
     query = [[1, 0, 1, 0], [1, 1, 1, 1], [0, 0, 0, 1]]
     assert knn(train=train, query=query, metric='euclidean', k=3) == [1, 1, 0]
+
+    labels = knn(train=train, query=query, metric='euclidean', k=3)
+    acuracy_calculation(labels, query)
+
+
 
 
 def run_knn():
@@ -136,3 +166,5 @@ def run_knn():
     # We need to do so for each label so we should have a 10x10 matrix
     # Use the confusion matrix to calculate:
     # Accuracy, Precision, Recall, F1 Score
+
+test_knn()
