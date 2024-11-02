@@ -67,7 +67,17 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
     return labels
 
 def acuracy_calculation(labels:list, query: list):
-    # For 100% accuracy, diagonal elements of confusino matrix need to be non-zero and rest all needs to be 0.
+    """
+    Calculates and prints metrics, i.e. Accuracy, Precision, Recall and F1 Score for a trained KNN model.
+
+    Args:
+        labels (list): The labels assigned to each query in the query dataset by the KNN model, whose accuracy is being measured.
+        query (list): The dataset of queries that KNN will assign labels.
+
+    Returns: None
+        
+    """
+    # For 100% accuracy, diagonal elements of confusion matrix need to be non-zero and rest all needs to be 0.
     expected_result = [row[0] for row in query]
     confusion_matrix = generate_confision_matrix(labels, expected_result)
     # Generating binary classification matrices.
@@ -110,8 +120,16 @@ def acuracy_calculation(labels:list, query: list):
     print(f"F1 Score of knn: {f1_score}")
 
 def generate_confision_matrix(labels:list, expected_result: list):
-    # Confusion matrix: is a square (n*n) matrix, with n = number of label options, as a result of knn and actual label of the querry set.
-    # In this case, if the input data is sufficiently large: CM -> 10*10 
+    """
+    Returns the confusion matrix with the input of label and expected result.
+
+    Args:
+        labels (list): The labels assigned to each query in the query dataset by the KNN model, whose accuracy is being measured.
+        expected_result (list): The correct label values of the query dataset.
+
+    Returns: Confusion matrix (a 2D array): is a square (n*n) matrix, with n = number of label options, as the union of knn and actual label of the querry set.
+             In this case, if the input data is sufficiently large: CM -> 10*10               
+    """
     # To generalise: Replace 10 with n.
     confusion_matrix = np.zeros((10,10))
     for i in range(len(labels)):
