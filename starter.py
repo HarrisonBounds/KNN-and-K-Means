@@ -11,7 +11,7 @@ IMAGE_HEIGHT = 28
 removed_features = []
 
 
-def reduce(data_set):
+def reduce_data(data_set):
     """ Returns the reduced dataset using variance thresholding
 
     Args:
@@ -33,6 +33,23 @@ def reduce(data_set):
             del entry[1][ind]
 
     return data_cp
+
+
+def reduce_query(image):
+    """ Returns the reduced query point
+
+    Args:
+        (int, ndarray): image
+
+    Returns:
+        (int, ndarray): Reduced image
+
+    """
+    image_cp = deepcopy(image)
+    for ind in sorted(removed_features, reverse=True):
+        del image[1][ind]
+
+    return image_cp
 
 
 def initialize_centroids(k):
@@ -205,7 +222,6 @@ def main():
 
     # Only the first 500 examples
     # cluster_assignments_1 = kmeans(X[:500], None, None)
-
 
     # X_reduced = reduce(X, r)
     # print("X Reduced shape:", X_reduced.shape)
