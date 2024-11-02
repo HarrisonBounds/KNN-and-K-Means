@@ -147,33 +147,39 @@ def kmeans(train, query, metric, k=10):
     for c in classes:
         labels.append(int(c))
 
-        if dist < min_dist:
-            min_dist = dist
-            assigned_centroid = j
-                
-        if assigned_centroid in cluster_assignments.keys():
-            cluster_assignments[assigned_centroid].append(example[i])
-        else:
-            cluster_assignments[assigned_centroid] = [example[i]]
-        
     return labels
 
 
-def accuracy(labels, test_data):
+def accuracy(labels, test_data, k=10):
+    label_mapping = {}
     correct = 0
     true_labels = []
     for x in test_data:
         true_labels.append(int(x[0]))
-    true_labels = sorted(true_labels)
-    labels = sorted(labels)
-    print(true_labels)
-    print(labels)
-    for i in range(len(labels)):
-        print(f"Label: {true_labels[i]}, Predicted: {labels[i]}")
-        if true_labels[i] == labels[i]:
+
+    for c in range(k):
+        indices = []
+        for i, x in enumerate(labels):
+            if x == c:
+                indices.append(i)
+        cluster_labels = []
+        for x in indices:
+            cluster_labels.append(true_labels[x])
+        if len(cluster_labels) > 0:
+            vals, count = np.unique(
+                np.array(cluster_labels), return_counts=True)
+            common = vals[np.argmax(count)]
+            label_mapping[c] = common
+
+    assigned = []
+    for label in labels:
+        assigned.append(int(label_mapping[label]))
+
+    for i in range(len(true_labels)):
+        if true_labels[i] == assigned[i]:
             correct += 1
 
-    return correct / len(labels)
+    return correct / len(true_labels)
 
 
 def read_data(file_name: str) -> list:
