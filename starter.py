@@ -10,6 +10,7 @@ IMAGE_HEIGHT = 28
 
 removed_features = []
 
+
 def reduce_data(data_set):
     """ Returns the reduced dataset using variance thresholding
 
@@ -193,7 +194,7 @@ def read_data(file_name: str) -> list:
             for i in range(784):
                 attribs.append(tokens[i+1])
             data_set.append([label, np.array(attribs, dtype=float)])
-    return (data_set)
+    return data_set
 
 
 def show(file_name, mode):
@@ -225,6 +226,7 @@ def main():
 
     labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
     print(accuracy(labels, mnist_testing_data))
+
 
 if __name__ == "__main__":
     main()

@@ -41,7 +41,6 @@ def cosim(a, b):
         raise ValueError(
             "Cosine Similarity requires 2 identically-shaped vectors"
         )
-    # Change to vectors
     numerator = np.dot(a, b)
     denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
 
