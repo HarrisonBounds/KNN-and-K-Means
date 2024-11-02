@@ -24,7 +24,7 @@ def reduce_data(data_set):
     data_cp = deepcopy(data_set)
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
-    threshold = 0.01
+    threshold = 0.1
     global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
@@ -175,10 +175,11 @@ def accuracy(labels, test_data, k=10):
     for label in labels:
         assigned.append(int(label_mapping[label]))
 
-    print(assigned)
-    print(true_labels)
+    for i in range(len(true_labels)):
+        if true_labels[i] == assigned[i]:
+            correct += 1
 
-    return assigned
+    return correct / len(true_labels)
 
 
 def read_data(file_name: str) -> list:
@@ -224,7 +225,7 @@ def main():
     mnist_validation_data = read_data("mnist_valid.csv")
 
     labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
-    accuracy(labels, mnist_testing_data)
+    print(accuracy(labels, mnist_testing_data))
 
 
 if __name__ == "__main__":
