@@ -1,7 +1,7 @@
 from distance_metrics import euclidean, cosim
 from starter import read_data
 import numpy as np
-
+import statistics
 
 # returns a list of labels for the query dataset based upon observations in the train dataset.
 # labels should be ignored in the training set
@@ -74,6 +74,7 @@ def acuracy_calculation(labels:list, query: list):
     n = 10
     # binary_matrices is a dict[key as label : 0-9] of each bm. 
     binary_matrices = {}
+    accuracy_indv, precision_indv, recall_indv, f1_score_indv = {}, {}, {}, {}
     for i in range(n):
         binary_matrix = np.zeros((2,2))
         # True positive
@@ -90,9 +91,18 @@ def acuracy_calculation(labels:list, query: list):
                 # False positive
                 binary_matrix[0][1] += confusion_matrix[i][j]
         binary_matrices[i] = binary_matrix
+        total_sum = binary_matrix[0][0] + binary_matrix[0][1] +binary_matrix[1][0] + binary_matrix[1][1] 
+        accuracy_indv[i] = (binary_matrix[0][0] + binary_matrix[1][1]) / total_sum
+        precision_indv[i] = binary_matrix[0][0] / (binary_matrix[0][0] + binary_matrix[0][1])
+        recall_indv[i] = binary_matrix[0][0] / (binary_matrix[0][0] + binary_matrix[1][0])
+        f1_score_indv[i] = (2 * precision_indv[i] * recall_indv[i])  / (precision_indv[i] + recall_indv[i])
         
-    # calculate metrics for each 10 and consider their mean as the system metric.
-    accuracy,precision,recall,f1_score  = 0.0, 0,0,0
+    # Calculate metrics for each and consider their mean as the system metric.   
+    accuracy = statistics.mean(accuracy_indv.values()) 
+    precision = statistics.mean(precision_indv.values()) 
+    recall = statistics.mean(recall_indv.values()) 
+    f1_score = statistics.mean(f1_score_indv.values()) 
+
     display(confusion_matrix)
     print(f"Accuracy of knn: {accuracy}")
     print(f"Precision of knn: {precision}")
@@ -102,13 +112,11 @@ def acuracy_calculation(labels:list, query: list):
 def generate_confision_matrix(labels:list, expected_result: list):
     # Confusion matrix: is a square (n*n) matrix, with n = number of label options, as a result of knn and actual label of the querry set.
     # In this case, if the input data is sufficiently large: CM -> 10*10 
-    # to generalise: Replace 10 with n.
+    # To generalise: Replace 10 with n.
     confusion_matrix = np.zeros((10,10))
     for i in range(len(labels)):
         confusion_matrix[expected_result[i]][labels[i]] += 1
     return confusion_matrix
-
-
 
 def display(confusion_matrix):
     # To display the matirx, needs to be called for each dist metric.
@@ -136,9 +144,6 @@ def test_knn():
     labels = knn(train=train, query=query, metric='euclidean', k=3)
     acuracy_calculation(labels, query)
 
-
-
-
 def run_knn():
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
@@ -161,10 +166,5 @@ def run_knn():
     # so that we can compare the assigned label to the actual label
     # Not actually sure if this is how we do this
 
-    # Create a confusion matrix which shows the number of correct and incorrect labels
-    # True positive, true negative, false positive, false negative
-    # We need to do so for each label so we should have a 10x10 matrix
-    # Use the confusion matrix to calculate:
-    # Accuracy, Precision, Recall, F1 Score
 
 test_knn()
