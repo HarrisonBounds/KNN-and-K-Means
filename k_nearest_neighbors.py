@@ -76,8 +76,16 @@ def run_knn():
         f'Testing Data Size: {len(mnist_testing_data)}\n' +
         f'Validation Data Size: {len(mnist_validation_data)}'
     )
+    # For examples of running KNN, see test/test_knn.py where some
+    # hardcoded training and query data was used to test the function
+
+    # Before using training data, we may need to run dimensionality reduction on it
+    # to reduce the number of features. We should try reduce() that we wrote
+    # but we should try other methods that the assignment reccomends as well:
+    # grayscale to binary, dimension scaling, etc.
+
     # Run training data through KNN and receive the labels for each query
-    # May have to modify KNN so the query is [label, list(pixels)] instead of just list(pixels)
+    # We might have to modify KNN so the query is [label, list(pixels)] instead of just list(pixels)
     # so that we can compare the assigned label to the actual label
     # Not actually sure if this is how we do this
 
