@@ -43,6 +43,6 @@ def test_kmeans():
     labels = kmeans(train=train_set, query=test_set, metric='euclidean', k=3)
     print(labels)
     assert len(labels) == len(test_set)
-    for i in range(len(labels)):
-        print(f"Label: {int(test_set[i][0])}, Predicted: {labels[i]}")
-        assert labels[i] == int(test_set[i][0])
+
+    acc = accuracy(labels, test_set, k=10)
+    assert acc == 1.0
