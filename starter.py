@@ -22,7 +22,7 @@ def reduce_data(data_set):
     data_cp = deepcopy(data_set)
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
-    threshold = 0.01
+    threshold = 0.001
     global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
@@ -87,7 +87,7 @@ def kmeans(train, query, metric):
     centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
 
-    for _ in range(max_iters):
+    for it in range(max_iters):
         distances = []
         for c in centroids:
             centroid_dist = []
@@ -121,6 +121,7 @@ def kmeans(train, query, metric):
         new_centroids = np.array(new_centroids)
 
         if np.all(new_centroids == centroids):
+            print(f"Exited at {it}")
             break
         else:
             centroids = new_centroids
@@ -145,81 +146,11 @@ def kmeans(train, query, metric):
 
     return labels
 
-    # # Harrison code
-    # for _ in range(max_iters):
-    #     total_error = 0
-    #     # Assign Points
-    #     for example in train:
-    #         for i in range(len(example)):
-
-    #             for j, centroid in enumerate(centroids):
-    #                 if metric == "euclidean":
-    #                     dist = euclidean(example[i], centroid)
-    #                 elif metric == "cosim":
-    #                     dist = cosim(example[i], centroid)
-
-    #                 if dist < min_dist:
-    #                     min_dist = dist
-    #                     assigned_centroid = j
-
-    #             if assigned_centroid in cluster_assignments.keys():
-    #                 cluster_assignments[assigned_centroid].append(example[i])
-    #             else:
-    #                 cluster_assignments[assigned_centroid] = [example[i]]
-
-    #     # Update centroids
-    #     new_centroids = []
-    #     for j in range(len(centroids)):
-    #         for pixel in cluster_assignments[j]:
-    #             x_sum += pixel[0]
-    #             y_sum += pixel[1]
-    #             num_pixels += 1
-    #             new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
-    #             centroids[j], new_centroids[j]
-    #         new_centroids.append(new_centroid)
-
-    #     # Calculate error
-    #     for j in range(len(centroids)):
-    #         if metric == "euclidean":
-    #             dist = euclidean(centroids[j], new_centroids[j])
-    #         elif metric == "cosim":
-    #             cosim(centroids[j], new_centroids[j])
-
-    #         total_error += dist
-
-    #     print("Total error: ", total_error)
-
-    #     if total_error < 0.01:
-    #         break
-
-    #     centroids = new_centroids
-
-    # # Run the query set
-    # for example in query:
-    #     for i in range(len(example)):
-    #         min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
-
-    #         for j, centroid in enumerate(centroids):
-    #             if metric == "euclidean":
-    #                 dist = euclidean(example[i], centroid)
-    #             elif metric == "cosim":
-    #                 dist = cosim(example[i], centroid)
-
-    #             if dist < min_dist:
-    #                 min_dist = dist
-    #                 assigned_centroid = j
-
-    #         if assigned_centroid in cluster_assignments.keys():
-    #             cluster_assignments[assigned_centroid].append(example[i])
-    #         else:
-    #             cluster_assignments[assigned_centroid] = [example[i]]
-
-    # return labels
-
 
 def accuracy(labels, test_data):
     correct = 0
     for i in range(len(labels)):
+        print(f"Label: {int(test_data[i][0])}, Predicted: {labels[i]}")
         if int(test_data[i][0]) == labels[i]:
             correct += 1
 
@@ -268,7 +199,7 @@ def main():
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
 
-    labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
+    labels = kmeans(mnist_training_data, mnist_testing_data, "cosim")
     print(accuracy(labels, mnist_testing_data))
 
 

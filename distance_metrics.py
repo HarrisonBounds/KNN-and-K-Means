@@ -34,9 +34,6 @@ def cosim(a, b):
         ValueError: If the given vectors are different dimensions
     """
     # Change to vectors
-    a = np.array(a)
-    b = np.array(b)
-
     numerator = np.dot(a, b)
     denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
 
