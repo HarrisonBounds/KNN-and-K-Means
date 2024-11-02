@@ -2,6 +2,8 @@ import numpy as np
 from distance_metrics import euclidean, cosim, pearson, hamming
 from copy import deepcopy
 
+
+np.random.seed(30)
 dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
@@ -27,7 +29,7 @@ def reduce_data(data_set):
         variances) if variance < threshold]
 
     for entry in data_cp:
-        entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
+        entry[1] = np.delete(entry[1], removed_features)
 
     return data_cp
 
@@ -44,7 +46,7 @@ def reduce_query(data_set):
     """
     query_cp = deepcopy(data_set)
     for entry in query_cp:
-        entry[1] = np.delete(entry[1], sorted(removed_features, reverse=True))
+        entry[1] = np.delete(entry[1], removed_features)
 
     return query_cp
 
@@ -78,15 +80,14 @@ def initialize_centroids(k, data):
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-def kmeans(train, query, metric):
-    k = 10
+def kmeans(train, query, metric, k=10):
     max_iters = 100
     labels = []
     train_reduced = reduce_data(train)
     centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
 
-    for _ in range(max_iters):
+    for it in range(max_iters):
         distances = []
         for c in centroids:
             centroid_dist = []
@@ -120,9 +121,12 @@ def kmeans(train, query, metric):
         new_centroids = np.array(new_centroids)
 
         if np.all(new_centroids == centroids):
+            print(f"Exited at {it}")
             break
         else:
             centroids = new_centroids
+
+    print(centroids)
 
     query_reduced = reduce_query(query)
 
@@ -144,85 +148,37 @@ def kmeans(train, query, metric):
 
     return labels
 
-    # # Harrison code
-    # for _ in range(max_iters):
-    #     total_error = 0
-    #     # Assign Points
-    #     for example in train:
-    #         for i in range(len(example)):
 
-    #             for j, centroid in enumerate(centroids):
-    #                 if metric == "euclidean":
-    #                     dist = euclidean(example[i], centroid)
-    #                 elif metric == "cosim":
-    #                     dist = cosim(example[i], centroid)
-
-    #                 if dist < min_dist:
-    #                     min_dist = dist
-    #                     assigned_centroid = j
-
-    #             if assigned_centroid in cluster_assignments.keys():
-    #                 cluster_assignments[assigned_centroid].append(example[i])
-    #             else:
-    #                 cluster_assignments[assigned_centroid] = [example[i]]
-
-    #     # Update centroids
-    #     new_centroids = []
-    #     for j in range(len(centroids)):
-    #         for pixel in cluster_assignments[j]:
-    #             x_sum += pixel[0]
-    #             y_sum += pixel[1]
-    #             num_pixels += 1
-    #             new_centroid = (x_sum / num_pixels, y_sum / num_pixels)
-    #             centroids[j], new_centroids[j]
-    #         new_centroids.append(new_centroid)
-
-    #     # Calculate error
-    #     for j in range(len(centroids)):
-    #         if metric == "euclidean":
-    #             dist = euclidean(centroids[j], new_centroids[j])
-    #         elif metric == "cosim":
-    #             cosim(centroids[j], new_centroids[j])
-
-    #         total_error += dist
-
-    #     print("Total error: ", total_error)
-
-    #     if total_error < 0.01:
-    #         break
-
-    #     centroids = new_centroids
-
-    # # Run the query set
-    # for example in query:
-    #     for i in range(len(example)):
-    #         min_dist = IMAGE_HEIGHT * IMAGE_WIDTH
-
-    #         for j, centroid in enumerate(centroids):
-    #             if metric == "euclidean":
-    #                 dist = euclidean(example[i], centroid)
-    #             elif metric == "cosim":
-    #                 dist = cosim(example[i], centroid)
-
-    #             if dist < min_dist:
-    #                 min_dist = dist
-    #                 assigned_centroid = j
-
-    #         if assigned_centroid in cluster_assignments.keys():
-    #             cluster_assignments[assigned_centroid].append(example[i])
-    #         else:
-    #             cluster_assignments[assigned_centroid] = [example[i]]
-
-    # return labels
-
-
-def accuracy(labels, test_data):
+def accuracy(labels, test_data, k=10):
+    label_mapping = {}
     correct = 0
-    for i in range(len(labels)):
-        if int(test_data[i][0]) == labels[i]:
+    true_labels = []
+    for x in test_data:
+        true_labels.append(int(x[0]))
+
+    for c in range(k):
+        indices = []
+        for i, x in enumerate(labels):
+            if x == c:
+                indices.append(i)
+        cluster_labels = []
+        for x in indices:
+            cluster_labels.append(true_labels[x])
+        if len(cluster_labels) > 0:
+            vals, count = np.unique(
+                np.array(cluster_labels), return_counts=True)
+            common = vals[np.argmax(count)]
+            label_mapping[c] = common
+
+    assigned = []
+    for label in labels:
+        assigned.append(int(label_mapping[label]))
+
+    for i in range(len(true_labels)):
+        if true_labels[i] == assigned[i]:
             correct += 1
 
-    return correct / len(labels)
+    return correct / len(true_labels)
 
 
 def read_data(file_name: str) -> list:
