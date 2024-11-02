@@ -33,16 +33,25 @@ def cosim(a, b):
     Raises:
         ValueError: If the given vectors are different dimensions
     """
+    if not in_same_dimension(a, b):
+        print(
+            f"Given vectors have different shapes: " +
+            f"{np.shape(a)} != {np.shape(b)}"
+        )
+        raise ValueError(
+            "Cosine Similarity requires 2 identically-shaped vectors"
+        )
     # Change to vectors
     numerator = np.dot(a, b)
     denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
-    # print(f"Numerator: {numerator}, Denominator: {denominator}")
-    if numerator == 0 or denominator == 0:
-        return 0
+
+    # If denominator is 0, cosim is undefined not 0
+    if denominator == 0:
+        return np.nan
 
     dist = numerator / denominator
 
-    return (dist)
+    return dist
 
 
 # returns Pearson Correlation between vectors a and b
