@@ -46,7 +46,8 @@ for i in len(users):
         if user_ratings[user_movie] > 0: #Only look at movies that this user hasn't rated
             continue
         
-     #Calculate the similarity between the movies this user hasnt seen and the other users movies   
+        #Calculate the similarity between the movies this user hasnt seen and the other users movies
+        
     
     
 
