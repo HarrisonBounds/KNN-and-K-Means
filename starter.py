@@ -147,6 +147,15 @@ def kmeans(train, query, metric, k=10):
     for c in classes:
         labels.append(int(c))
 
+        if dist < min_dist:
+            min_dist = dist
+            assigned_centroid = j
+                
+        if assigned_centroid in cluster_assignments.keys():
+            cluster_assignments[assigned_centroid].append(example[i])
+        else:
+            cluster_assignments[assigned_centroid] = [example[i]]
+        
     return labels
 
 
