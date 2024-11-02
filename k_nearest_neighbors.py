@@ -104,6 +104,10 @@ def evaluate_knn_accuracy(labels: list, query: list) -> tuple:
             [accuracy, precision, recall, f1_score]
         )
     accuracy, precision, recall, f1_score = np.mean(metrics, axis=0)
+    print(f"Accuracy: {accuracy}")
+    print(f"Precision: {precision}")
+    print(f"Recall: {recall}")
+    print(f"F1_score: {f1_score}")
     return (accuracy, precision, recall, f1_score)
 
 
@@ -121,7 +125,7 @@ def generate_confision_matrix(labels: list, expected_result: list):
     n = len(set(expected_result))
     confusion_matrix = np.zeros((n, n), dtype=int)
     for expected_label, predicted_label in zip(expected_result, labels):
-        confusion_matrix[expected_label][predicted_label] += 1
+        confusion_matrix[int(expected_label)][int(predicted_label)] += 1
     return confusion_matrix
 
 
