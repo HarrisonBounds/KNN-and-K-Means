@@ -1,0 +1,39 @@
+Answers:
+
+Part I:
+
+2A. Please describe all of your design choices and hyper-parameter selections in a paragraph.
+
+We got satfactory results with K as 5, and distance metric as euclidean, even without dimentionality reduction.
+
+2B. Once you are satisfied with the performance on the validation set, run your classifier on the test set 
+and summarize results in a 10x10 confusion matrix for each distance metric. Analyze your results in another paragraph.
+
+The results observed for the mnist testing dataset(mnist_test.csv) upon KNN classification :
+Accuracy: 0.9800000000000001
+Precision: 0.9025205627705628
+Recall: 0.8905366767735188
+F1_score: 0.8900603439819568
+
+# Add SS of confusion matrix for each of the 10 label.
+# Add the heatmap.
+
+3A. Present a quantitative metric to measure how well your clusters align with the
+labels in mnist_test.csv. 
+
+3B. Describe your design choices and analyze your results in about
+one paragraph each.
+
+
+Part II:
+
+4A. Please describe how your collaborative filter works.
+
+4B. List the hyper-parameters and describe their role. 
+
+4C. Report precision, recall, and the F1-score on the validation and test sets for users a, b, and c. Discuss how M impacts your results.
+
+5A. Report precision, recall, and the F1-score on the validation and test sets for users a, b, and c. Discuss your
+approach and whether or not considering additional features improved the performance of your collaborative filter.
+
+
