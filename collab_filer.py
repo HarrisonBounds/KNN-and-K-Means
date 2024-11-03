@@ -38,7 +38,7 @@ print(user_item_matrix)
 # Can be generalised by using input as str array of the metrics.
 def normalise_metric_similarity(user_id_first:int, user_id_second:int):
     max_age_difference = max(user_age.values()) - min(user_age.values())
-    age_similarity = 1 - (user_age[user_id_first] - user_age[user_id_second]) / max_age_difference
+    age_similarity = 1 - abs(user_age[user_id_first] - user_age[user_id_second]) / max_age_difference
     return age_similarity
 
 #Calculate similarity between users
