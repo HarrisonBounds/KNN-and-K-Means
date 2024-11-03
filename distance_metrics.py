@@ -44,10 +44,7 @@ def cosim(a, b):
         )
     # Change to vectors
     numerator = np.dot(a, b)
-    print(numerator)
     denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
-
-    print(denominator)
 
     # If denominator is 0, cosim is undefined not 0
     if denominator == 0:
