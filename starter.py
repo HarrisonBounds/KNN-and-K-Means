@@ -8,8 +8,6 @@ dist = 0
 IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
 
-removed_features = []
-
 
 def reduce_data(data_set):
     """ Returns the reduced dataset using variance thresholding
@@ -25,17 +23,16 @@ def reduce_data(data_set):
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
     threshold = 0.01
-    global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
 
     for entry in data_cp:
         entry[1] = np.delete(entry[1], removed_features)
 
-    return data_cp
+    return data_cp, removed_features
 
 
-def reduce_query(data_set):
+def reduce_query(data_set, removed_features):
     """ Returns the reduced query point
 
     Args:
@@ -84,7 +81,7 @@ def initialize_centroids(k, data):
 def kmeans(train, query, metric, k=10):
     max_iters = 100
     labels = []
-    train_reduced = reduce_data(train)
+    train_reduced, reduced_features = reduce_data(train)
     centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
 
@@ -129,7 +126,7 @@ def kmeans(train, query, metric, k=10):
 
     print(centroids)
 
-    query_reduced = reduce_query(query)
+    query_reduced = reduce_query(query, reduced_features)
 
     query_distances = []
     for c in centroids:

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # All hyper-parameters should be hard-coded in the algorithm.
 
 
-def knn(train: list, query: list, metric: str, k: int = 5, reduce: bool = True) -> list:
+def knn(train: list, query: list, metric: str, k: int = 5) -> list:
     """
     Returns a list of labels for the query dataset based upon observations in the train dataset.
 
@@ -22,7 +22,6 @@ def knn(train: list, query: list, metric: str, k: int = 5, reduce: bool = True) 
         query (list): The dataset of queries that KNN will assign labels to [query_label, [list(pixels)]]
         metric (str): The distance metric to use for KNN. Either 'euclidean' or 'cosim'
         k (int, optional): The number of neighbors to consider. Defaults to 5.
-        reduce (bool, optional): Whether to reduce the dimensionality of the data. Defaults to True.
 
     Raises:
         ValueError: If the distance metric is not 'euclidean' or 'cosim'
@@ -42,9 +41,6 @@ def knn(train: list, query: list, metric: str, k: int = 5, reduce: bool = True) 
     #     f'K-Nearest Neighbors using {metric} distance metric and k={k}, ' +
     #     f'{len(train)} training examples and {len(query)} queries:'
     # )
-    if reduce:
-        train = reduce_data(train)
-        query = reduce_query(query)
     labels = []
     for q_label, q in query:
         # Sort neighbors using distance metric
@@ -123,15 +119,19 @@ def generate_confision_matrix(labels: list, expected_result: list):
     return confusion_matrix
 
 
-def display_confusion_matrix(confusion_matrix, show_heatmap=True):
-    print(f'Confusion Matrix:\n{confusion_matrix}')
-    if show_heatmap:
-        plt.figure(figsize=(10, 7))
-        sns.heatmap(confusion_matrix, annot=True, fmt='d')
-        plt.xlabel("Predicted Labels")
-        plt.ylabel("True Labels")
-        plt.title("Confusion Matrix")
-        plt.show()
+def display_confusion_matrices(train_matrix, validation_matrix, metric):
+    fig, axs = plt.subplots(1, 2, figsize=(10, 10))
+    axes = axs.flatten()
+    sns.heatmap(train_matrix, annot=True, fmt='d', ax=axes[0])
+    axes[0].set_xlabel("Predicted Labels")
+    axes[0].set_ylabel("True Labels")
+    axes[0].set_title(f"Training Set Confusion Matrix ({metric})")
+    sns.heatmap(validation_matrix, annot=True, fmt='d', ax=axes[1])
+    axes[1].set_xlabel("Predicted Labels")
+    axes[1].set_ylabel("True Labels")
+    axes[1].set_title(f"Validation Set Confusion Matrix ({metric})")
+    plt.tight_layout()
+    plt.show()
 
 
 def run_knn():
@@ -150,9 +150,13 @@ def run_knn():
     # to reduce the number of features. We should try reduce() that we wrote
     # but we should try other methods that the assignment reccomends as well:
     # grayscale to binary, dimension scaling, etc.
-    reduced_training_data = reduce_data(mnist_training_data)
-    reduced_testing_data = reduce_data(mnist_testing_data)
-    reduced_validation_data = reduce_data(mnist_validation_data)
+    reduced_training_data, train_features = reduce_data(mnist_training_data)
+    reduced_testing_data, test_features = reduce_data(mnist_testing_data)
+    reduced_validation_data, valid_features = reduce_data(
+        mnist_validation_data)
+
+    test_query = reduce_query(mnist_testing_data, train_features)
+    valid_query = reduce_query(mnist_validation_data, train_features)
 
     # Run training data through KNN and receive the labels for each query
     # We might have to modify KNN so the query is [label, list(pixels)] instead of just list(pixels)
@@ -162,8 +166,11 @@ def run_knn():
         train=mnist_training_data,
         query=mnist_testing_data,
         metric='euclidean',
-        k=5,
-        reduce=False
+        k=5
+    )
+
+    training_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_testing_data]
     )
 
     (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
@@ -172,11 +179,74 @@ def run_knn():
     )
 
     print(
+        f'Test Data Metrics (euclidean):\n' +
         f'Accuracy: {accuracy}\n' +
         f'Precision: {precision}\n' +
         f'Recall: {recall}\n' +
         f'F1 Score: {f1_score}'
     )
+
+    validation_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_validation_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=mnist_validation_data
+    )
+
+    print(
+        f'Validation Data Metrics (euclidean):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    display_confusion_matrices(training_matrix, validation_matrix, 'euclidean')
+
+    predicted_labels = knn(
+        train=reduced_training_data,
+        query=test_query,
+        metric='cosim',
+        k=5
+    )
+
+    training_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_testing_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=reduced_testing_data
+    )
+
+    print(
+        f'Test Data Metrics (cosim):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    validation_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_validation_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=reduced_validation_data
+    )
+
+    print(
+        f'Validation Data Metrics (cosim):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    display_confusion_matrices(training_matrix, validation_matrix, 'cosim')
 
 
 if __name__ == "__main__":
