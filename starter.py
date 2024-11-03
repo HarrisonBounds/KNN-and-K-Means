@@ -10,7 +10,8 @@ IMAGE_HEIGHT = 28
 
 removed_features = []
 
-def reduce_data(data_set):
+
+def reduce_data(data_set, threshold=0.01):
     """ Returns the reduced dataset using variance thresholding
 
     Args:
@@ -23,7 +24,6 @@ def reduce_data(data_set):
     data_cp = deepcopy(data_set)
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
-    threshold = 0.01
     global removed_features
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
@@ -80,10 +80,10 @@ def initialize_centroids(k, data):
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-def kmeans(train, query, metric, k=10):
+def kmeans(train, query, metric, k=10, threshold=0.01):
     max_iters = 100
     labels = []
-    train_reduced = reduce_data(train)
+    train_reduced = reduce_data(train, threshold=threshold)
     centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
 
@@ -126,8 +126,6 @@ def kmeans(train, query, metric, k=10):
         else:
             centroids = new_centroids
 
-    print(centroids)
-
     query_reduced = reduce_query(query)
 
     query_distances = []
@@ -168,15 +166,15 @@ def accuracy(labels, test_data, k=10):
             vals, count = np.unique(
                 np.array(cluster_labels), return_counts=True)
             common = vals[np.argmax(count)]
-            label_mapping[c] = common
+            label_mapping[c] = [common, cluster_labels]
 
-    assigned = []
-    for label in labels:
-        assigned.append(int(label_mapping[label]))
-
-    for i in range(len(true_labels)):
-        if true_labels[i] == assigned[i]:
-            correct += 1
+    for key in label_mapping.keys():
+        print(label_mapping[key])
+        id = label_mapping[key][0]
+        values = label_mapping[key][1]
+        for val in values:
+            if int(id) == val:
+                correct += 1
 
     return correct / len(true_labels)
 
@@ -216,15 +214,15 @@ def show(file_name, mode):
 
 def main():
     # show('valid.csv','pixels')
-    r = 250
-    k = 5
 
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
 
-    labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
-    print(accuracy(labels, mnist_testing_data))
+    labels = kmeans(mnist_training_data,
+                    mnist_testing_data, "euclidean", k=36, threshold=3.0)
+    print(accuracy(labels, mnist_testing_data, k=36))
+
 
 if __name__ == "__main__":
     main()
