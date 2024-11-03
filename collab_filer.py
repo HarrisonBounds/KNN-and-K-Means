@@ -4,13 +4,18 @@ from starter import cosim
 
 users = ["A", "B", "C"]
 user_ids = [405, 655, 13]
-
+user_age = {}
 K = 2
 M = 5
 
 user_a_train = pd.read_csv("train_a.txt", delimiter='\t')
+# Can similarly be used for other metrics also.
+user_age[user_a_train['user_id'].values[0]] = user_a_train['age'].values[0]
 user_b_train = pd.read_csv("train_b.txt", delimiter='\t')
+user_age[user_b_train['user_id'].values[0]] = user_b_train['age'].values[0]
 user_c_train = pd.read_csv("train_c.txt", delimiter='\t')
+user_age[user_c_train['user_id'].values[0]] = user_c_train['age'].values[0]
+
 
 combined_data = pd.concat([user_a_train, user_b_train, user_c_train])
 
@@ -49,6 +54,7 @@ for user_id in user_ids:
     print(f"Top {K} Similar Users to User {user_id}: {top_k_users.index}")
     
     for i, sim_user_id in enumerate(top_k_users.index):
+        # sim_user_ratings: series of movie ratings by the user who is in top K most similar to the user who we are going to recommend.
         sim_user_ratings = user_item_matrix.loc[sim_user_id]
         similarity_score = top_k_users[sim_user_id]
         
@@ -61,6 +67,7 @@ for user_id in user_ids:
             rating = sim_user_ratings[movie_id]
             
             if target_user_ratings[movie_id] == 0.0 and rating > 0: #Target user hasnt rated the movie but similar user has
+                # this loop can be replaced by initialing before.
                 if movie_id not in weighted_ratings:
                     weighted_ratings[movie_id] = 0
                     
@@ -68,7 +75,7 @@ for user_id in user_ids:
                 
     best_movies = sorted(weighted_ratings, key=weighted_ratings.get, reverse=True)[:M]
     
-    print(f"The best movies for user {user_id} based off of {K} similar users: {best_movies}")
+    print(f"The best movies for user {user_id} based off of {K} similar users, decided on metric of movie ratings: {best_movies}")
                 
             
         
