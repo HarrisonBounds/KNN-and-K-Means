@@ -1,5 +1,5 @@
 from distance_metrics import euclidean, cosim
-from starter import read_data
+from starter import read_data, reduce_data, reduce_query
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -30,12 +30,6 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
     Returns:
         list: The labels assigned to each query in the query dataset
     """
-    # For the given query, find the closest k examples in the training set
-    # Assign the most common label among those collected to that given query
-    # Do this for all queries
-    # query is list(pixels) 1-D array of length 784 (img_size)
-    # train is list[label, list(pixels)]
-    # Find k closest neighbors by sorting
     f_d = None
     if metric == 'euclidean':
         f_d = euclidean
@@ -43,10 +37,10 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         f_d = cosim
     else:
         raise ValueError('Invalid distance metric given')
-    print(
-        f'K-Nearest Neighbors using {metric} distance metric and k={k}, ' +
-        f'{len(train)} training examples and {len(query)} queries:'
-    )
+    # print(
+    #     f'K-Nearest Neighbors using {metric} distance metric and k={k}, ' +
+    #     f'{len(train)} training examples and {len(query)} queries:'
+    # )
     labels = []
     for q_label, q in query:
         # Sort neighbors using distance metric
@@ -58,13 +52,13 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         # Find the most common label among the k closest neighbors
         # and assign it to the query
         most_common_label = np.argmax(np.bincount(labels_for_neighbor))
-        print(
-            f'Query {q}\n' +
-            f'Nearest neighbors: {nearest_neighbors}\n' +
-            f'Labels for neighbors: {labels_for_neighbor}\n' +
-            f'Most common label: {most_common_label}\n' +
-            f'Expected label: {q_label}'
-        )
+        # print(
+        #     f'Query {q}\n' +
+        #     f'Nearest neighbors: {nearest_neighbors}\n' +
+        #     f'Labels for neighbors: {labels_for_neighbor}\n' +
+        #     f'Most common label: {most_common_label}\n' +
+        #     f'Expected label: {q_label}'
+        # )
         labels.append(most_common_label)
     return labels
 
@@ -129,38 +123,134 @@ def generate_confision_matrix(labels: list, expected_result: list):
     return confusion_matrix
 
 
-def display_confusion_matrix(confusion_matrix, show_heatmap=True):
-    print(f'Confusion Matrix:\n{confusion_matrix}')
-    if show_heatmap:
-        plt.figure(figsize=(10, 7))
-        sns.heatmap(confusion_matrix, annot=True, fmt='d')
-        plt.xlabel("Predicted Labels")
-        plt.ylabel("True Labels")
-        plt.title("Confusion Matrix")
-        plt.show()
+def display_confusion_matrices(train_matrix, validation_matrix, metric):
+    fig, axs = plt.subplots(1, 2, figsize=(10, 10))
+    axes = axs.flatten()
+    sns.heatmap(train_matrix, annot=True, fmt='d', ax=axes[0])
+    axes[0].set_xlabel("Predicted Labels")
+    axes[0].set_ylabel("True Labels")
+    axes[0].set_title(f"Training Set Confusion Matrix ({metric})")
+    sns.heatmap(validation_matrix, annot=True, fmt='d', ax=axes[1])
+    axes[1].set_xlabel("Predicted Labels")
+    axes[1].set_ylabel("True Labels")
+    axes[1].set_title(f"Validation Set Confusion Matrix ({metric})")
+    plt.tight_layout()
+    plt.show()
 
 
 def run_knn():
+    # Parse the MNIST dataset
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
+
     print(
         f'Training Data Size: {len(mnist_training_data)}\n' +
         f'Testing Data Size: {len(mnist_testing_data)}\n' +
         f'Validation Data Size: {len(mnist_validation_data)}'
     )
-    # For examples of running KNN, see test/test_knn.py where some
-    # hardcoded training and query data was used to test the function
 
     # Before using training data, we may need to run dimensionality reduction on it
     # to reduce the number of features. We should try reduce() that we wrote
     # but we should try other methods that the assignment reccomends as well:
     # grayscale to binary, dimension scaling, etc.
+    reduced_training_data, train_features = reduce_data(mnist_training_data)
+    reduced_testing_data, test_features = reduce_data(mnist_testing_data)
+    reduced_validation_data, valid_features = reduce_data(
+        mnist_validation_data)
+
+    test_query = reduce_query(mnist_testing_data, train_features)
+    valid_query = reduce_query(mnist_validation_data, train_features)
 
     # Run training data through KNN and receive the labels for each query
     # We might have to modify KNN so the query is [label, list(pixels)] instead of just list(pixels)
     # so that we can compare the assigned label to the actual label
     # Not actually sure if this is how we do this
+    predicted_labels = knn(
+        train=mnist_training_data,
+        query=mnist_testing_data,
+        metric='euclidean',
+        k=5
+    )
+
+    training_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_testing_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=mnist_testing_data
+    )
+
+    print(
+        f'Test Data Metrics (euclidean):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    validation_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_validation_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=mnist_validation_data
+    )
+
+    print(
+        f'Validation Data Metrics (euclidean):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    display_confusion_matrices(training_matrix, validation_matrix, 'euclidean')
+
+    predicted_labels = knn(
+        train=reduced_training_data,
+        query=test_query,
+        metric='cosim',
+        k=5
+    )
+
+    training_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_testing_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=reduced_testing_data
+    )
+
+    print(
+        f'Test Data Metrics (cosim):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    validation_matrix = generate_confision_matrix(
+        predicted_labels, [q[0] for q in mnist_validation_data]
+    )
+
+    (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
+        labels=predicted_labels,
+        query=reduced_validation_data
+    )
+
+    print(
+        f'Validation Data Metrics (cosim):\n' +
+        f'Accuracy: {accuracy}\n' +
+        f'Precision: {precision}\n' +
+        f'Recall: {recall}\n' +
+        f'F1 Score: {f1_score}'
+    )
+
+    display_confusion_matrices(training_matrix, validation_matrix, 'cosim')
 
 
 if __name__ == "__main__":
