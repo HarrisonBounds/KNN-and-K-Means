@@ -2,6 +2,16 @@ import numpy as np
 import pandas as pd
 from starter import cosim
 
+
+
+# Hyper-parameters
+K = 2
+M = 5
+rating_weight = 3
+age_weight = 3
+
+
+# Initialisations
 users = ["A", "B", "C"]
 user_ids = [405, 655, 13]
 user_age = {}
@@ -9,6 +19,7 @@ K = 2
 M = 5
 
 user_a_train = pd.read_csv("train_a.txt", delimiter='\t')
+
 # Can similarly be used for other metrics also.
 user_age[user_a_train['user_id'].values[0]] = user_a_train['age'].values[0]
 user_b_train = pd.read_csv("train_b.txt", delimiter='\t')
@@ -18,13 +29,17 @@ user_age[user_c_train['user_id'].values[0]] = user_c_train['age'].values[0]
 
 
 combined_data = pd.concat([user_a_train, user_b_train, user_c_train])
-
 user_item_matrix = combined_data.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
+user_similarity = pd.DataFrame(index=user_ids, columns=user_ids)
 
 print("\nUser-Item Matrix:")
 print(user_item_matrix)
 
-user_similarity = pd.DataFrame(index=user_ids, columns=user_ids)
+# Can be generalised by using input as str array of the metrics.
+def normalise_metric_similarity(user_id_first:int, user_id_second:int):
+    max_age_difference = max(user_age.values()) - min(user_age.values())
+    age_similarity = 1 - (user_age[user_id_first] - user_age[user_id_second]) / max_age_difference
+    return age_similarity
 
 #Calculate similarity between users
 for id1 in user_ids:
@@ -33,15 +48,18 @@ for id1 in user_ids:
         if id1 == id2:
             continue
         ratings_vector2 = user_item_matrix.loc[id2]
-        print(f"Comparing User {id1} and User {id2}")
-        
-        user_sim = cosim(ratings_vector1, ratings_vector2)
+        # print(f"Comparing User {id1} and User {id2}")
+
+        # CAlculating similaity between different metrics.
+        rating_sim = cosim(ratings_vector1, ratings_vector2)
+        age_sim = normalise_metric_similarity(id1,id2)
+
+        user_sim = rating_sim * rating_weight + age_sim * age_weight 
         user_similarity.loc[id1, id2] = user_sim
         
         print(f"Distance between users {user_sim}")
         
-print("User similarity: ", user_similarity)
-        
+print("User similarity: ", user_similarity)        
 
 for user_id in user_ids:
     weighted_ratings = {}
