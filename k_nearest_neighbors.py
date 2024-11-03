@@ -98,6 +98,10 @@ def evaluate_knn_accuracy(labels: list, query: list) -> tuple:
             [accuracy, precision, recall, f1_score]
         )
     accuracy, precision, recall, f1_score = np.mean(metrics, axis=0)
+    print(f"Accuracy: {accuracy}")
+    print(f"Precision: {precision}")
+    print(f"Recall: {recall}")
+    print(f"F1_score: {f1_score}")
     return (accuracy, precision, recall, f1_score)
 
 

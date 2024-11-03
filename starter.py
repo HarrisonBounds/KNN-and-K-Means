@@ -78,7 +78,7 @@ def initialize_centroids(k, data):
 # labels should be ignored in the training set
 # metric is a string specifying either "euclidean" or "cosim".
 # All hyper-parameters should be hard-coded in the algorithm.
-def kmeans(train, query, metric, k=10):
+def kmeans(train, query, metric, k=10, threshold=0.01):
     max_iters = 100
     labels = []
     train_reduced, reduced_features = reduce_data(train)
@@ -166,15 +166,15 @@ def accuracy(labels, test_data, k=10):
             vals, count = np.unique(
                 np.array(cluster_labels), return_counts=True)
             common = vals[np.argmax(count)]
-            label_mapping[c] = common
+            label_mapping[c] = [common, cluster_labels]
 
-    assigned = []
-    for label in labels:
-        assigned.append(int(label_mapping[label]))
-
-    for i in range(len(true_labels)):
-        if true_labels[i] == assigned[i]:
-            correct += 1
+    for key in label_mapping.keys():
+        print(label_mapping[key])
+        id = label_mapping[key][0]
+        values = label_mapping[key][1]
+        for val in values:
+            if int(id) == val:
+                correct += 1
 
     return correct / len(true_labels)
 
@@ -214,8 +214,6 @@ def show(file_name, mode):
 
 def main():
     # show('valid.csv','pixels')
-    r = 250
-    k = 5
 
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
