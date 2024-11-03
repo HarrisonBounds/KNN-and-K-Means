@@ -33,6 +33,7 @@ def cosim(a, b):
     Raises:
         ValueError: If the given vectors are different dimensions
     """
+
     if not in_same_dimension(a, b):
         print(
             f"Given vectors have different shapes: " +

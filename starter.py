@@ -98,7 +98,10 @@ def kmeans(train, query, metric, k=10, threshold=0.01):
         distances = np.array(distances)
 
         # Assign clusters based on minimum distance to centroids
-        clusters = np.argmin(distances, axis=0)
+        if metric == "euclidean":
+            clusters = np.argmin(distances, axis=0)
+        elif metric == "cosim":
+            clusters = np.argmax(distances, axis=0)
 
         new_centroids = []
         for i in range(k):
@@ -139,7 +142,10 @@ def kmeans(train, query, metric, k=10, threshold=0.01):
         query_distances.append(np.array(centroid_dist))
     query_distances = np.array(query_distances)
 
-    classes = np.argmin(query_distances, axis=0)
+    if metric == "euclidean":
+        classes = np.argmin(query_distances, axis=0)
+    elif metric == "cosim":
+        classes = np.argmax(query_distances, axis=0)
 
     for c in classes:
         labels.append(int(c))
@@ -169,14 +175,15 @@ def accuracy(labels, test_data, k=10):
             label_mapping[c] = [common, cluster_labels]
 
     for key in label_mapping.keys():
-        print(label_mapping[key])
         id = label_mapping[key][0]
         values = label_mapping[key][1]
         for val in values:
             if int(id) == val:
                 correct += 1
 
-    return correct / len(true_labels)
+    acc = correct / len(true_labels)
+    print(f"Accuracy: {acc}")
+    return acc
 
 
 def read_data(file_name: str) -> list:
@@ -213,14 +220,13 @@ def show(file_name, mode):
 
 
 def main():
-    # show('valid.csv','pixels')
-
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
 
-    labels = kmeans(mnist_training_data, mnist_testing_data, "euclidean")
-    print(accuracy(labels, mnist_testing_data))
+    labels = kmeans(mnist_training_data,
+                    mnist_testing_data, "euclidean", k=36, threshold=3.0)
+    accuracy(labels, mnist_testing_data, k=36)
 
 
 if __name__ == "__main__":
