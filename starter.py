@@ -169,14 +169,15 @@ def accuracy(labels, test_data, k=10):
             label_mapping[c] = [common, cluster_labels]
 
     for key in label_mapping.keys():
-        print(label_mapping[key])
         id = label_mapping[key][0]
         values = label_mapping[key][1]
         for val in values:
             if int(id) == val:
                 correct += 1
 
-    return correct / len(true_labels)
+    acc = correct / len(true_labels)
+    print(f"Accuracy: {acc}")
+    return acc
 
 
 def read_data(file_name: str) -> list:
@@ -213,15 +214,13 @@ def show(file_name, mode):
 
 
 def main():
-    # show('valid.csv','pixels')
-
     mnist_training_data = read_data("mnist_train.csv")
     mnist_testing_data = read_data("mnist_test.csv")
     mnist_validation_data = read_data("mnist_valid.csv")
 
     labels = kmeans(mnist_training_data,
-                    mnist_testing_data, "euclidean", k=36, threshold=3.0)
-    print(accuracy(labels, mnist_testing_data, k=36))
+                    mnist_testing_data, "cosim", k=120, threshold=3.0)
+    accuracy(labels, mnist_testing_data, k=120)
 
 
 if __name__ == "__main__":

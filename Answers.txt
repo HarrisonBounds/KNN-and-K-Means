@@ -18,11 +18,26 @@ F1_score: 0.8900603439819568
 # Add SS of confusion matrix for each of the 10 label.
 # Add the heatmap.
 
-3A. Present a quantitative metric to measure how well your clusters align with the
-labels in mnist_test.csv. 
+3. Present a quantitative metric to measure how well your clusters align with the
+labels in mnist_test.csv. Describe your design choices and analyze your results in about one paragraph each.
 
-3B. Describe your design choices and analyze your results in about
-one paragraph each.
+In order to determine how well our clusters aligned with the labels in mnist_test.csv, we created a metric that calculates
+the total accuracy of the clusters based on how many points are correctly labeled. We do this by looping through the K clusters
+and assigning each cluster a label based on the mode of the true labels in the cluster. Then we calculate how many points
+are correctly classified based on the assigned cluster label. Ideally, each cluster would only contain points of the same label
+when run on the mnist_test set. We tried this for different K values and found different accuracies.
+
+Accuracy(K=10, Euclidean): 0.625
+Accuracy(K=36, Euclidean): 0.775
+
+When K was increased, the overall accuracy was improved. This could be attributed to the points in mnist forming clusters 
+that aren't fully representative of the 10 labels, but rather there are multiple clusters embedded in each label, resulting
+in better accuracy with a higher K. Euclidean distance was the preferred metric when using kmeans as cosine similarity
+performed poorly, especially after dimensionality reduction. Some unique design choices we made include using variance 
+thresholding for dimensionality reduction and a random sampling technique for initializing centroids which caluclates
+probabilities based on distances from the currently initialized centroids. This prevents centroids from being initialized 
+very close to one another which breaks the algorithm.
+
 
 
 Part II:

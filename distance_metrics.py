@@ -33,6 +33,7 @@ def cosim(a, b):
     Raises:
         ValueError: If the given vectors are different dimensions
     """
+
     if not in_same_dimension(a, b):
         print(
             f"Given vectors have different shapes: " +
@@ -43,7 +44,10 @@ def cosim(a, b):
         )
     # Change to vectors
     numerator = np.dot(a, b)
+    print(numerator)
     denominator = np.sqrt(np.sum(a**2)) * np.sqrt(np.sum(b**2))
+
+    print(denominator)
 
     # If denominator is 0, cosim is undefined not 0
     if denominator == 0:
