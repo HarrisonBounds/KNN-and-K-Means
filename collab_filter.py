@@ -3,11 +3,16 @@ import pandas as pd
 from distance_metrics import cosim
 
 # Hyperparameters
+
 K = 10
 M = 7
-rating_threshold = 4
-min = float('inf')
+# Weight values for different metrics of the dataset.
+rating_weight = 3
+age_weight = 3
 
+
+# rating_threshold: is to discretize the value for calculating the precision etc metrics.
+rating_threshold = 4
 target_users = [405, 655, 13]
 user_ids = []
 similar_users = []
@@ -15,12 +20,15 @@ similarity_dict = {}
 ratings_vector_1 = []
 ratings_vector_2 = []
 
-
 total_matrix = pd.read_csv("movielens.txt", delimiter='\t')
+user_age = dict(zip(total_matrix['user_id'], total_matrix['age']))
 
 user_a_train = pd.read_csv("train_a.txt", delimiter='\t')
+user_age[user_a_train['user_id'].values[0]] = user_a_train['age'].values[0]
 user_b_train = pd.read_csv("train_b.txt", delimiter='\t')
+user_age[user_b_train['user_id'].values[0]] = user_b_train['age'].values[0]
 user_c_train = pd.read_csv("train_c.txt", delimiter='\t')
+user_age[user_c_train['user_id'].values[0]] = user_c_train['age'].values[0]
 
 user_a_valid = pd.read_csv("valid_a.txt", delimiter='\t')
 user_b_valid = pd.read_csv("valid_b.txt", delimiter='\t')
@@ -36,6 +44,8 @@ combined_data_test = pd.concat([user_a_test, user_b_test, user_c_test])
 
 
 user_total_matrix = total_matrix.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
+
+
 user_item_matrix = combined_data.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
 user_valid_matrix = combined_data_valid.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
 user_test_matrix = combined_data_test.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
@@ -46,12 +56,14 @@ user_test_matrix = combined_data_test.pivot_table(index='user_id', columns='movi
 
 print("user ids: ", user_ids)
 
+def normalised_metric_similarity(user_id_first:int, user_id_second:int):
+    max_age_difference = max(user_age.values()) - min(user_age.values())
+    age_similarity = 1 - abs(user_age.get(user_id_first) - user_age.get(user_id_second)) / max_age_difference
+    return age_similarity
+
+#Calculate similarity between users
 for id1 in target_users:
-    print("id1: ", id1)
-    # ratings_vector1 = user_item_matrix.loc[id1]
-    # print("vector1 Shape: ", ratings_vector1.shape)
-    # print("Vector1: ", ratings_vector1)
-    
+    print("user id: ", id1)
     for id2 in user_total_matrix.index:
         if id1 == id2:
             continue
@@ -64,13 +76,15 @@ for id1 in target_users:
                     ratings_vector_2.append(rating2)
                 
         # Calculate the similarity
-        user_sim = cosim(np.array(ratings_vector_1), np.array(ratings_vector_2))
+        rating_sim = cosim(np.array(ratings_vector_1), np.array(ratings_vector_2))
+        age_sim = normalised_metric_similarity(id1,id2)
+        user_sim = rating_sim * rating_weight + age_sim * age_weight 
         similar_users.append((id2, user_sim))
 
     similar_users = sorted(similar_users, key=lambda x: x[1], reverse=True)
-    similarity_dict[id1] = similar_users[:K]  # Keep only top K similar users
+    # Keep only top K similar users
+    similarity_dict[id1] = similar_users[:K]  
 
-#print("Similarity Dictionary: ", similarity_dict)
 # Recommend movies for each user
 true_positive = 0
 false_positive = 0
@@ -79,16 +93,12 @@ false_negative = 0
 for user_id in target_users:
     weighted_ratings = {}
     
-    #similar_users = user_similarity.loc[user_id].sort_values(ascending=False).drop(user_id)
     top_k_users = similarity_dict[user_id][:K]
     #print("Top K Users: ", top_k_users)
     #target_user_ratings = user_item_matrix.loc[user_id]
     
     for sim_user_id in top_k_users:
-        #print("Sim User Id[0]: ", sim_user_id[0])
-        #print("Sim User Id[1]: ", sim_user_id[1])
         sim_user_ratings = user_total_matrix.loc[sim_user_id[0]]
-        #print("Sim User Ratings: ", sim_user_ratings)
         similarity_score = sim_user_id[1]
         
         for movie_id in user_total_matrix.columns:
