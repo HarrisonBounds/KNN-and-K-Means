@@ -48,7 +48,7 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
             [t for t in train], key=lambda x: f_d(x[1], q)
         )[:k]
         # Find the most common label among the k closest neighbors
-        labels_for_neighbor = [t[0] for t in nearest_neighbors]
+        labels_for_neighbor = [int(t[0]) for t in nearest_neighbors]
         # Find the most common label among the k closest neighbors
         # and assign it to the query
         most_common_label = np.argmax(np.bincount(labels_for_neighbor))

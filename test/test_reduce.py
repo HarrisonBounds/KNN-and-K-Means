@@ -12,7 +12,7 @@ data = [["1", np.array([0, 1, 2])],
 
 
 def test_reduce_data():
-    reduced_data = reduce_data(data)
+    reduced_data, reduced_features = reduce_data(data)
     print(reduced_data)
     assert len(reduced_data) == 8
     assert len(reduced_data[1]) == 2
