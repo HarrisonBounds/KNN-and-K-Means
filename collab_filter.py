@@ -102,7 +102,6 @@ for user_id in target_users:
     best_movies = sorted(weighted_ratings, key=weighted_ratings.get, reverse=True)[:M]
     
     print(f"The best movies for user {user_id} based off of {K} similar users: {best_movies}")
-<<<<<<< HEAD:collab_filer.py
     
     # Evaluate using the validation set
     for best_movie_id in best_movies:
@@ -124,5 +123,3 @@ recall = true_positive / (true_positive + false_negative)
 f1_score = (precision * recall) / (precision + recall)
 
 print(f"Precision: {precision}\nRecall: {recall}, \nF1 Score: {f1_score}")
-=======
->>>>>>> main:collab_filter.py
