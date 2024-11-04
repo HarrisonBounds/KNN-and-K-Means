@@ -1,6 +1,5 @@
-from starter import *
 import numpy as np
-import unittest
+from k_means_clustering import initialize_centroids, kmeans, calculate_clustering_accuracy
 
 np.random.seed(30)
 
@@ -44,5 +43,5 @@ def test_kmeans():
     print(labels)
     assert len(labels) == len(test_set)
 
-    acc = accuracy(labels, test_set, k=10)
+    acc = calculate_clustering_accuracy(labels, test_set, k=10)
     assert acc == 1.0

@@ -1,5 +1,4 @@
 from k_nearest_neighbors import knn, generate_confision_matrix, evaluate_knn_accuracy
-import pytest
 from starter import read_data, show
 import numpy as np
 
