@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from starter import cosim
+from distance_metrics import cosim
 
 # Users and their IDs
 #users = ["A", "B", "C"]
