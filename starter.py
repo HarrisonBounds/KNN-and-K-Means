@@ -9,7 +9,7 @@ IMAGE_WIDTH = 28
 IMAGE_HEIGHT = 28
 
 
-def reduce_data(data_set):
+def reduce_data(data_set, threshold=0.01):
     """ Returns the reduced dataset using variance thresholding
 
     Args:
@@ -22,7 +22,6 @@ def reduce_data(data_set):
     data_cp = deepcopy(data_set)
     features = np.array([feature[1] for feature in data_cp])
     variances = np.var(features, axis=0)
-    threshold = 0.01
     removed_features = [index for index, variance in enumerate(
         variances) if variance < threshold]
 
@@ -81,7 +80,7 @@ def initialize_centroids(k, data):
 def kmeans(train, query, metric, k=10, threshold=0.01):
     max_iters = 100
     labels = []
-    train_reduced, reduced_features = reduce_data(train)
+    train_reduced, removed_features = reduce_data(train, threshold=threshold)
     centroids = initialize_centroids(k, train_reduced)
     cluster_assignments = {}
 
@@ -127,9 +126,7 @@ def kmeans(train, query, metric, k=10, threshold=0.01):
         else:
             centroids = new_centroids
 
-    print(centroids)
-
-    query_reduced = reduce_query(query, reduced_features)
+    query_reduced = reduce_query(query, removed_features)
 
     query_distances = []
     for c in centroids:
@@ -198,7 +195,7 @@ def read_data(file_name: str) -> list:
             for i in range(784):
                 attribs.append(tokens[i+1])
             data_set.append([label, np.array(attribs, dtype=float)])
-    return data_set
+    return (data_set)
 
 
 def show(file_name, mode):
