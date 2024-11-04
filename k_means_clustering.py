@@ -1,10 +1,10 @@
 import numpy as np
 from distance_metrics import euclidean, cosim
-from starter import reduce_data, reduce_query
-from copy import deepcopy
+from starter import reduce_data, reduce_query, read_data
 
 
 np.random.seed(30)
+
 
 def initialize_centroids(k, data):
     centroids = []
@@ -138,3 +138,17 @@ def calculate_clustering_accuracy(labels, test_data, k=10):
     acc = correct / len(true_labels)
     print(f"K-Means Clustering Accuracy: {acc}")
     return acc
+
+
+def main():
+    mnist_training_data = read_data("mnist_train.csv")
+    mnist_testing_data = read_data("mnist_test.csv")
+    mnist_validation_data = read_data("mnist_valid.csv")
+
+    labels = kmeans(mnist_training_data,
+                    mnist_testing_data, "euclidean", k=36, threshold=3.0)
+    calculate_clustering_accuracy(labels, mnist_testing_data, k=36)
+
+
+if __name__ == "__main__":
+    main()

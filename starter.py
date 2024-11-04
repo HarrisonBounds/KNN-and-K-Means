@@ -1,10 +1,9 @@
 import numpy as np
-from distance_metrics import euclidean, cosim, pearson, hamming
-from k_means_clustering import kmeans, calculate_clustering_accuracy
 from copy import deepcopy
 
 
 np.random.seed(30)
+
 
 def reduce_data(data_set, threshold=0.01):
     """ Returns the reduced dataset using variance thresholding
@@ -44,6 +43,7 @@ def reduce_query(data_set, removed_features):
 
     return query_cp
 
+
 def read_data(file_name: str) -> list:
 
     data_set = []
@@ -75,17 +75,3 @@ def show(file_name, mode):
                 print(' ')
         print('LABEL: %s' % data_set[obs][0], end='')
         print(' ')
-
-
-def main():
-    mnist_training_data = read_data("mnist_train.csv")
-    mnist_testing_data = read_data("mnist_test.csv")
-    mnist_validation_data = read_data("mnist_valid.csv")
-
-    labels = kmeans(mnist_training_data,
-                    mnist_testing_data, "euclidean", k=36, threshold=3.0)
-    calculate_clustering_accuracy(labels, mnist_testing_data, k=36)
-
-
-if __name__ == "__main__":
-    main()
