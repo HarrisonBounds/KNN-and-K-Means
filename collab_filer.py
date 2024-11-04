@@ -5,12 +5,11 @@ from starter import cosim
 users = ["A", "B", "C"]
 user_ids = [405, 655, 13]
 
-K = 2
-M = 5
-rating_threshold = 4
+K = 1
+M = 10
+rating_threshold = 3
 true_postive = 0
 false_positive = 0
-true_negative = 0
 false_negative = 0
 
 user_a_train = pd.read_csv("train_a.txt", delimiter='\t')
@@ -21,13 +20,21 @@ user_a_test = pd.read_csv("test_a.txt", delimiter='\t')
 user_b_test = pd.read_csv("test_b.txt", delimiter='\t')
 user_c_test = pd.read_csv("test_c.txt", delimiter='\t')
 
+user_a_validate = pd.read_csv("valid_a.txt", delimiter='\t')
+user_b_validate = pd.read_csv("valid_b.txt", delimiter='\t')
+user_c_validate = pd.read_csv("valid_c.txt", delimiter='\t')
+
 combined_data = pd.concat([user_a_train, user_b_train, user_c_train])
 
 combined_test_data = pd.concat([user_a_test, user_b_test, user_c_test])
 
+combined_validate_data = pd.concat([user_a_validate, user_b_validate, user_c_validate])
+
 user_item_matrix = combined_data.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
 
 user_test_matrix = combined_test_data.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
+
+user_valid_matrix = combined_validate_data.pivot_table(index='user_id', columns='movie_id', values='rating').fillna(0)
 
 #print("\nUser-Item Matrix:")
 #print(user_item_matrix)
@@ -84,12 +91,30 @@ for user_id in user_ids:
     
     #Use test set to apply evaluation metrics
     for best_movie_id in best_movies:
-        actual_rating = user_test_matrix.loc[user_id, best_movie_id]
-        
-        if actual_rating >= rating_threshold:
-            true_postive += 1
-        else: 
-            false_positive += 1
+        if best_movie_id in user_valid_matrix.columns:
+            actual_rating = user_valid_matrix.loc[user_id, best_movie_id]
+            
+            if actual_rating >= rating_threshold:
+                true_postive += 1
+            else: 
+                false_positive += 1
+                
+            user_ratings = user_valid_matrix.loc[user_id]
+            for test_movie_id, user_rating in user_ratings.items():
+                
+                if movie_id not in best_movies and user_rating >= rating_threshold:
+                    false_negative += 1
+                
+
+#Evaluation Metrics
+precision = true_postive / (true_postive + false_positive)
+recall = true_postive / (true_postive + false_negative)
+f1_score = (precision * recall) / (precision + recall)
+
+print(f"Precision: {precision}\nRecall: {recall}, \nF1 Score: {f1_score}")
+
+
+
             
         
             
