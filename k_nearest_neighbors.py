@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # All hyper-parameters should be hard-coded in the algorithm.
 
 
-def knn(train: list, query: list, metric: str, k: int = 5) -> list:
+def knn(train: list, query: list, metric: str, k: int = 5, debug: bool = False) -> list:
     """
     Returns a list of labels for the query dataset based upon observations in the train dataset.
 
@@ -22,6 +22,7 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         query (list): The dataset of queries that KNN will assign labels to [query_label, [list(pixels)]]
         metric (str): The distance metric to use for KNN. Either 'euclidean' or 'cosim'
         k (int, optional): The number of neighbors to consider. Defaults to 5.
+        debug (bool, optional): Whether to print debug information. Defaults to False.
 
     Raises:
         ValueError: If the distance metric is not 'euclidean' or 'cosim'
@@ -37,28 +38,28 @@ def knn(train: list, query: list, metric: str, k: int = 5) -> list:
         f_d = cosim
     else:
         raise ValueError('Invalid distance metric given')
-    # print(
-    #     f'K-Nearest Neighbors using {metric} distance metric and k={k}, ' +
-    #     f'{len(train)} training examples and {len(query)} queries:'
-    # )
+    if debug:
+        print(
+            f'K-Nearest Neighbors using {metric} distance metric and k={k}, ' +
+            f'{len(train)} training examples and {len(query)} queries:'
+        )
     labels = []
     for q_label, q in query:
-        # Sort neighbors using distance metric
+        # Sort neighbors using distance metric and take the first k entries
         nearest_neighbors = sorted(
             [t for t in train], key=lambda x: f_d(x[1], q)
         )[:k]
-        # Find the most common label among the k closest neighbors
         labels_for_neighbor = [int(t[0]) for t in nearest_neighbors]
         # Find the most common label among the k closest neighbors
-        # and assign it to the query
         most_common_label = np.argmax(np.bincount(labels_for_neighbor))
-        # print(
-        #     f'Query {q}\n' +
-        #     f'Nearest neighbors: {nearest_neighbors}\n' +
-        #     f'Labels for neighbors: {labels_for_neighbor}\n' +
-        #     f'Most common label: {most_common_label}\n' +
-        #     f'Expected label: {q_label}'
-        # )
+        if debug:
+            print(
+                f'Query {q}\n' +
+                f'Nearest neighbors: {nearest_neighbors}\n' +
+                f'Labels for neighbors: {labels_for_neighbor}\n' +
+                f'Most common label: {most_common_label}\n' +
+                f'Expected label: {q_label}'
+            )
         labels.append(most_common_label)
     return labels
 
