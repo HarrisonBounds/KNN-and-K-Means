@@ -69,12 +69,3 @@ for user_id in user_ids:
     best_movies = sorted(weighted_ratings, key=weighted_ratings.get, reverse=True)[:M]
     
     print(f"The best movies for user {user_id} based off of {K} similar users: {best_movies}")
-                
-            
-        
-        
-    
-    
-    
-        
-
