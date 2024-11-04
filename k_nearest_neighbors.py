@@ -167,8 +167,8 @@ def run_knn():
     # so that we can compare the assigned label to the actual label
     # Not actually sure if this is how we do this
     predicted_labels = knn(
-        train=mnist_training_data,
-        query=mnist_testing_data,
+        train=reduced_training_data,
+        query=test_query,
         metric='euclidean',
         k=5
     )
@@ -179,7 +179,7 @@ def run_knn():
 
     (accuracy, precision, recall, f1_score) = evaluate_knn_accuracy(
         labels=predicted_labels,
-        query=mnist_testing_data
+        query=test_query
     )
 
     print(
