@@ -15,8 +15,7 @@ def euclidean(a, b):
     Raises:
         ValueError: If the given vectors are different dimensions
     """
-    dist = np.sqrt(np.sum(np.subtract(a, b)**2))
-    return dist
+    return np.sqrt(np.sum(np.subtract(a, b)**2))
 
 
 # returns Cosine Similarity between vectors a and b
@@ -49,9 +48,7 @@ def cosim(a, b):
     if denominator == 0:
         return np.nan
 
-    dist = numerator / denominator
-
-    return dist
+    return numerator / denominator
 
 
 # returns Pearson Correlation between vectors a and b
@@ -78,9 +75,7 @@ def pearson(a: np.ndarray, b: np.ndarray):
     if numerator == 0 or denominator == 0:
         return 0
 
-    r = numerator / denominator
-
-    return r
+    return numerator / denominator
 
 
 def hamming(a: np.ndarray, b: np.ndarray) -> int:

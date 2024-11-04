@@ -1,7 +1,6 @@
-import scipy.spatial
 from distance_metrics import hamming
 import sklearn.metrics
-import scipy
+import scipy.spatial
 
 
 def test_hamming():
