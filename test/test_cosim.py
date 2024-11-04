@@ -1,5 +1,5 @@
-import numpy as np
 from distance_metrics import cosim
+import numpy as np
 
 
 def test_cosim():
